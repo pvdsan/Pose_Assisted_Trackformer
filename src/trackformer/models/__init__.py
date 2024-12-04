@@ -47,6 +47,8 @@ def build_model(args):
 
     if args.deformable:
         transformer = build_deforamble_transformer(args)
+        if args.pose_features:
+            
 
         detr_kwargs['transformer'] = transformer
         detr_kwargs['num_feature_levels'] = args.num_feature_levels

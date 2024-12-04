@@ -1,7 +1,7 @@
 lr: 0.0002
 lr_backbone_names: ['backbone.0']
 
-lr_backbone: 0.00002
+lr_backbone: 0.00000
 lr_linear_proj_names: ['reference_points', 'sampling_offsets']
 lr_linear_proj_mult: 0.1
 lr_track: 0.0001
@@ -18,7 +18,7 @@ deformable: false
 with_box_refine: false
 two_stage: false
 # Model parameters
-freeze_detr: True
+freeze_detr: false
 load_mask_head_from_model: null
 # Backbone
 # Name of the convolutional backbone to use. ('resnet50', 'resnet101')
@@ -66,10 +66,8 @@ multi_frame_encoding: true
 multi_frame_attention_separate_encoder: true
 merge_frame_features: false
 overflow_boxes: false
-
-# Pose Features
+# Pose Estimation
 pose_features: true
-
 # Segmentation
 masks: false
 # Matcher

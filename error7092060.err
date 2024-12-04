@@ -1,0 +1,258 @@
+WARNING - root - Changed type of config entry "tracker_cfg.public_detections" from bool to str
+WARNING - track - No observers have been added to this run
+INFO - track - Running command 'main'
+INFO - track - Started
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/track.py:71: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  obj_detect_checkpoint = torch.load(
+INFO - main - INIT object detector [EPOCH: 50]
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-01-DPM
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/trackformer/datasets/tracking/mot17_sequence.py:76: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/torch/csrc/utils/tensor_new.cpp:278.)
+  sample['dets'] = torch.tensor([det[:4] for det in data['dets']])
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+INFO - main - NUM TRACKS: 74 ReIDs: 16
+INFO - main - RUNTIME: 45.88 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-01-FRCNN
+INFO - main - NUM TRACKS: 120 ReIDs: 31
+INFO - main - RUNTIME: 43.95 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-01-SDP
+INFO - main - NUM TRACKS: 112 ReIDs: 40
+INFO - main - RUNTIME: 44.13 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-02-DPM
+INFO - main - NUM TRACKS: 96 ReIDs: 13
+INFO - main - RUNTIME: 59.47 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-02-FRCNN
+INFO - main - NUM TRACKS: 114 ReIDs: 16
+INFO - main - RUNTIME: 60.18 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-02-SDP
+INFO - main - NUM TRACKS: 168 ReIDs: 22
+INFO - main - RUNTIME: 60.13 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-03-DPM
+INFO - main - NUM TRACKS: 446 ReIDs: 82
+INFO - main - RUNTIME: 162.24 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-03-FRCNN
+INFO - main - NUM TRACKS: 426 ReIDs: 96
+INFO - main - RUNTIME: 160.75 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-03-SDP
+INFO - main - NUM TRACKS: 567 ReIDs: 104
+INFO - main - RUNTIME: 177.85 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-04-DPM
+INFO - main - NUM TRACKS: 197 ReIDs: 17
+INFO - main - RUNTIME: 109.76 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-04-FRCNN
+INFO - main - NUM TRACKS: 202 ReIDs: 17
+INFO - main - RUNTIME: 109.45 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-04-SDP
+INFO - main - NUM TRACKS: 306 ReIDs: 29
+INFO - main - RUNTIME: 109.59 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-05-DPM
+INFO - main - NUM TRACKS: 164 ReIDs: 67
+INFO - main - RUNTIME: 59.09 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-05-FRCNN
+INFO - main - NUM TRACKS: 160 ReIDs: 65
+INFO - main - RUNTIME: 59.13 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-05-SDP
+INFO - main - NUM TRACKS: 210 ReIDs: 79
+INFO - main - RUNTIME: 58.86 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-06-DPM
+INFO - main - NUM TRACKS: 271 ReIDs: 141
+INFO - main - RUNTIME: 84.64 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-06-FRCNN
+INFO - main - NUM TRACKS: 351 ReIDs: 182
+INFO - main - RUNTIME: 85.29 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-06-SDP
+INFO - main - NUM TRACKS: 345 ReIDs: 181
+INFO - main - RUNTIME: 84.70 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-07-DPM
+INFO - main - NUM TRACKS: 113 ReIDs: 60
+INFO - main - RUNTIME: 50.82 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-07-FRCNN
+INFO - main - NUM TRACKS: 149 ReIDs: 67
+INFO - main - RUNTIME: 50.58 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-07-SDP
+INFO - main - NUM TRACKS: 161 ReIDs: 81
+INFO - main - RUNTIME: 50.73 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-08-DPM
+INFO - main - NUM TRACKS: 172 ReIDs: 45
+INFO - main - RUNTIME: 64.16 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-08-FRCNN
+INFO - main - NUM TRACKS: 150 ReIDs: 34
+INFO - main - RUNTIME: 63.73 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-08-SDP
+INFO - main - NUM TRACKS: 184 ReIDs: 51
+INFO - main - RUNTIME: 63.75 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-09-DPM
+INFO - main - NUM TRACKS: 51 ReIDs: 12
+INFO - main - RUNTIME: 52.47 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-09-FRCNN
+INFO - main - NUM TRACKS: 51 ReIDs: 11
+INFO - main - RUNTIME: 52.35 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-09-SDP
+INFO - main - NUM TRACKS: 54 ReIDs: 13
+INFO - main - RUNTIME: 52.35 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-10-DPM
+INFO - main - NUM TRACKS: 107 ReIDs: 22
+INFO - main - RUNTIME: 64.73 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-10-FRCNN
+INFO - main - NUM TRACKS: 145 ReIDs: 26
+INFO - main - RUNTIME: 64.57 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-10-SDP
+INFO - main - NUM TRACKS: 165 ReIDs: 33
+INFO - main - RUNTIME: 64.59 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-11-DPM
+INFO - main - NUM TRACKS: 70 ReIDs: 17
+INFO - main - RUNTIME: 89.41 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-11-FRCNN
+INFO - main - NUM TRACKS: 77 ReIDs: 12
+INFO - main - RUNTIME: 88.69 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-11-SDP
+INFO - main - NUM TRACKS: 93 ReIDs: 17
+INFO - main - RUNTIME: 88.45 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-12-DPM
+INFO - main - NUM TRACKS: 128 ReIDs: 72
+INFO - main - RUNTIME: 88.05 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-12-FRCNN
+INFO - main - NUM TRACKS: 127 ReIDs: 68
+INFO - main - RUNTIME: 87.77 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-12-SDP
+INFO - main - NUM TRACKS: 141 ReIDs: 80
+INFO - main - RUNTIME: 88.03 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-13-DPM
+INFO - main - NUM TRACKS: 158 ReIDs: 13
+INFO - main - RUNTIME: 76.16 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-13-FRCNN
+INFO - main - NUM TRACKS: 237 ReIDs: 34
+INFO - main - RUNTIME: 76.10 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-13-SDP
+INFO - main - NUM TRACKS: 238 ReIDs: 33
+INFO - main - RUNTIME: 76.65 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-14-DPM
+INFO - main - NUM TRACKS: 244 ReIDs: 66
+INFO - main - RUNTIME: 76.64 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-14-FRCNN
+INFO - main - NUM TRACKS: 335 ReIDs: 77
+INFO - main - RUNTIME: 76.85 s
+INFO - main - NO GT AVAILBLE
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-14-SDP
+INFO - main - NUM TRACKS: 350 ReIDs: 96
+INFO - main - RUNTIME: 76.94 s
+INFO - main - NO GT AVAILBLE
+INFO - main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 3259.65 s for 33705 frames (10.34 Hz)
+INFO - main - EVAL:
+INFO - root - partials: 1.998 seconds.
+INFO - root - mergeOverall: 2.005 seconds.
+INFO - main - 
+                IDF1   IDP   IDR  Rcll  Prcn   GT  MT  PT  ML   FP     FN  IDs    FM  MOTA  MOTP IDt  IDa IDm
+MOT17-02-DPM   38.2% 70.1% 26.3% 37.1% 98.8%   62   9  24  29   83  11689   65    71 36.3% 0.130  14   56   5
+MOT17-02-FRCNN 42.2% 71.4% 29.9% 41.4% 98.8%   62   9  28  25   97  10888   81    82 40.4% 0.135  15   69   3
+MOT17-02-SDP   43.3% 65.8% 32.3% 48.3% 98.5%   62  10  35  17  138   9598  130   118 46.9% 0.145  17  118   5
+MOT17-04-DPM   72.5% 86.8% 62.2% 71.3% 99.4%   83  39  26  18  196  13667  143    94 70.5% 0.115  17  130   4
+MOT17-04-FRCNN 73.0% 88.1% 62.4% 70.3% 99.4%   83  42  23  18  203  14119  142    77 69.6% 0.115  12  133   3
+MOT17-04-SDP   76.2% 84.9% 69.1% 80.7% 99.2%   83  50  22  11  307   9179  290   127 79.4% 0.116  62  231   3
+MOT17-05-DPM   61.9% 78.6% 51.1% 61.3% 94.3%  133  34  62  37  255   2677   92    87 56.3% 0.174  32   72  12
+MOT17-05-FRCNN 60.6% 76.9% 49.9% 60.8% 93.6%  133  37  60  36  286   2712   92    78 55.3% 0.182  37   67  12
+MOT17-05-SDP   62.7% 75.6% 53.6% 66.4% 93.8%  133  40  70  23  306   2321  130   107 60.1% 0.178  40  104  14
+MOT17-09-DPM   58.9% 71.2% 50.2% 69.1% 97.9%   26  12  12   2   78   1646   34    33 67.0% 0.109   8   30   4
+MOT17-09-FRCNN 59.3% 72.2% 50.4% 68.3% 97.9%   26  13  11   2   78   1688   34    32 66.2% 0.109   7   30   3
+MOT17-09-SDP   59.1% 70.6% 50.9% 70.5% 97.9%   26  14  11   1   79   1569   38    35 68.3% 0.110   9   34   5
+MOT17-10-DPM   55.7% 68.9% 46.8% 65.7% 96.8%   57  21  26  10  280   4400  110   164 62.7% 0.187  55   68  14
+MOT17-10-FRCNN 57.9% 67.0% 50.9% 72.4% 95.4%   57  25  30   2  449   3541  158   236 67.7% 0.196  69   94   6
+MOT17-10-SDP   57.2% 64.1% 51.6% 76.2% 94.7%   57  29  27   1  546   3053  188   261 70.5% 0.198  82  114   8
+MOT17-11-DPM   59.9% 74.1% 50.3% 66.3% 97.8%   75  20  33  22  141   3176   18    33 64.7% 0.104   5   18   5
+MOT17-11-FRCNN 64.3% 76.4% 55.4% 71.2% 98.1%   75  28  29  18  128   2719   23    35 69.6% 0.113   6   21   4
+MOT17-11-SDP   66.4% 75.5% 59.3% 76.9% 98.0%   75  36  25  14  148   2175   37    52 75.0% 0.118   9   32   4
+MOT17-13-DPM   58.4% 80.1% 46.0% 55.7% 97.1%  110  33  45  32  196   5154  192   125 52.4% 0.187 126   91  25
+MOT17-13-FRCNN 68.0% 76.9% 60.9% 75.3% 95.1%  110  61  38  11  448   2871  285   211 69.0% 0.203 158  152  26
+MOT17-13-SDP   65.3% 75.5% 57.5% 72.6% 95.3%  110  58  35  17  415   3193  273   200 66.7% 0.205 144  157  29
+OVERALL        63.9% 78.9% 53.8% 66.7% 97.9% 1638 620 672 346 4857 112035 2555  2258 64.5% 0.139 924 1821 194
+INFO - track - Result:                     idf1       idp  ...  num_ascend  num_migrate
+MOT17-02-DPM    0.382454  0.700645  ...          56            5
+MOT17-02-FRCNN  0.421979  0.714249  ...          69            3
+MOT17-02-SDP    0.433471  0.658261  ...         118            5
+MOT17-04-DPM    0.724594  0.867776  ...         130            4
+MOT17-04-FRCNN  0.730363  0.881424  ...         133            3
+MOT17-04-SDP    0.761879  0.849244  ...         231            3
+MOT17-05-DPM    0.618998  0.785762  ...          72           12
+MOT17-05-FRCNN  0.605540  0.769094  ...          67           12
+MOT17-05-SDP    0.626957  0.755814  ...         104           14
+MOT17-09-DPM    0.588857  0.711738  ...          30            4
+MOT17-09-FRCNN  0.593363  0.721938  ...          30            3
+MOT17-09-SDP    0.591266  0.706128  ...          34            5
+MOT17-10-DPM    0.557195  0.688840  ...          68           14
+MOT17-10-FRCNN  0.578589  0.670360  ...          94            6
+MOT17-10-SDP    0.571663  0.641018  ...         114            8
+MOT17-11-DPM    0.598851  0.740822  ...          18            5
+MOT17-11-FRCNN  0.642712  0.764354  ...          21            4
+MOT17-11-SDP    0.664055  0.754893  ...          32            4
+MOT17-13-DPM    0.584416  0.801167  ...          91           25
+MOT17-13-FRCNN  0.679546  0.768847  ...         152           26
+MOT17-13-SDP    0.652980  0.755302  ...         157           29
+OVERALL         0.639466  0.788645  ...        1821          194
+
+[22 rows x 18 columns]
+INFO - track - Completed after 1:01:50

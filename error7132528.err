@@ -1,0 +1,64 @@
+WARNING - track - No observers have been added to this run
+INFO - track - Running command 'main'
+INFO - track - Started
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+INFO - main - INIT object detector [EPOCH: 40]
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-02-SDP
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+INFO - main - NUM TRACKS: 133 ReIDs: 25
+INFO - main - RUNTIME: 62.74 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-04-SDP
+INFO - main - NUM TRACKS: 104 ReIDs: 37
+INFO - main - RUNTIME: 109.67 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-05-SDP
+INFO - main - NUM TRACKS: 182 ReIDs: 112
+INFO - main - RUNTIME: 59.11 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-09-SDP
+INFO - main - NUM TRACKS: 51 ReIDs: 27
+INFO - main - RUNTIME: 52.78 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-10-SDP
+INFO - main - NUM TRACKS: 127 ReIDs: 38
+INFO - main - RUNTIME: 64.88 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-11-SDP
+INFO - main - NUM TRACKS: 91 ReIDs: 25
+INFO - main - RUNTIME: 89.89 s
+INFO - main - ------------------
+INFO - main - TRACK SEQ: MOT17-13-SDP
+INFO - main - NUM TRACKS: 138 ReIDs: 45
+INFO - main - RUNTIME: 77.74 s
+INFO - main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 516.80 s for 5316 frames (10.29 Hz)
+INFO - main - EVAL:
+INFO - root - partials: 0.707 seconds.
+INFO - root - mergeOverall: 0.710 seconds.
+INFO - main - 
+              IDF1   IDP   IDR  Rcll  Prcn  GT  MT  PT ML   FP    FN IDs   FM  MOTA  MOTP IDt IDa IDm
+MOT17-02-SDP 43.5% 64.0% 33.0% 50.3% 97.6%  62  11  37 14  231  9230 105  125 48.5% 0.160  28  84   7
+MOT17-04-SDP 84.7% 91.8% 78.7% 85.3% 99.5%  83  58  19  6  198  6994  28   65 84.8% 0.122   3  26   1
+MOT17-05-SDP 64.3% 74.4% 56.6% 69.8% 91.8% 133  50  63 20  433  2087  83   96 62.4% 0.180  24  65   7
+MOT17-09-SDP 56.7% 67.1% 49.1% 72.6% 99.2%  26  14  11  1   33  1460  34   42 71.3% 0.125   9  30   5
+MOT17-10-SDP 64.8% 70.2% 60.2% 80.2% 93.6%  57  33  24  0  705  2536 115  239 73.9% 0.211  41  71   6
+MOT17-11-SDP 67.3% 74.9% 61.2% 79.3% 97.1%  75  36  27 12  226  1952  35   54 76.5% 0.124  11  28   5
+MOT17-13-SDP 77.7% 81.4% 74.2% 85.5% 93.7% 110  80  24  6  664  1693  82  151 79.0% 0.209  55  47  20
+OVERALL      71.8% 81.3% 64.3% 76.9% 97.2% 546 282 205 59 2490 25952 482  772 74.2% 0.150 171 351  51
+INFO - track - Result:                   idf1       idp  ...  num_ascend  num_migrate
+MOT17-02-SDP  0.435323  0.639741  ...          84            7
+MOT17-04-SDP  0.847302  0.917936  ...          26            1
+MOT17-05-SDP  0.643350  0.744442  ...          65            7
+MOT17-09-SDP  0.567061  0.670857  ...          30            5
+MOT17-10-SDP  0.647796  0.701672  ...          71            6
+MOT17-11-SDP  0.673277  0.748638  ...          28            5
+MOT17-13-SDP  0.776634  0.814284  ...          47           20
+OVERALL       0.718106  0.812934  ...         351           51
+
+[8 rows x 18 columns]
+INFO - track - Completed after 0:11:07

@@ -21,7 +21,7 @@ def build_model(args):
     elif args.dataset in ['coco_person', 'mot', 'mot_crowdhuman', 'crowdhuman', 'mot_coco_person']:
         # num_classes = 91
         num_classes = 20
-        # num_classes = 1
+        #num_classes = 1
     else:
         raise NotImplementedError
 

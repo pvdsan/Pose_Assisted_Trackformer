@@ -1,5 +1,6 @@
 lr: 0.0002
 lr_backbone_names: ['backbone.0']
+
 lr_backbone: 0.00002
 lr_linear_proj_names: ['reference_points', 'sampling_offsets']
 lr_linear_proj_mult: 0.1
@@ -17,7 +18,7 @@ deformable: false
 with_box_refine: false
 two_stage: false
 # Model parameters
-freeze_detr: false
+freeze_detr: True
 load_mask_head_from_model: null
 # Backbone
 # Name of the convolutional backbone to use. ('resnet50', 'resnet101')
@@ -65,6 +66,10 @@ multi_frame_encoding: true
 multi_frame_attention_separate_encoder: true
 merge_frame_features: false
 overflow_boxes: false
+
+# Pose Features
+pose_features: true
+
 # Segmentation
 masks: false
 # Matcher
@@ -127,12 +132,11 @@ debug: false
 save_model_interval: 5
 # distributed training parameters
 # number of distributed processes
-world_size: 1
+world_size: 4
 # url used to set up distributed training
 dist_url: env://
 # Visdom params
-# vis_server: http://localhost
-vis_server: ''
+vis_server: http://localhost:8097
 vis_port: 8090
 vis_and_log_interval: 50
-no_vis: false
+no_vis: true

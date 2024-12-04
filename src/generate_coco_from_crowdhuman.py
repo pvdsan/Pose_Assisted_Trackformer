@@ -98,17 +98,7 @@ def generate_coco_from_crowdhuman(split_name='train_val', split='train_val'):
     print(f'ignore augs: {ignores}/{len(annotations["annotations"])}')
     print(len(annotations['images']))
 
-    # for img_id, num_objs in num_objs_per_image.items():
-    #     if num_objs > 50 or num_objs < 2:
-    #         annotations['images'] = [
-    #             img for img in annotations['images']
-    #             if img_id != img['id']]
 
-    #         annotations['annotations'] = [
-    #             anno for anno in annotations['annotations']
-    #             if img_id != anno['image_id']]
-
-    # print(len(annotations['images']))
 
     with open(annotation_file, 'w') as anno_file:
         json.dump(annotations, anno_file, indent=4)

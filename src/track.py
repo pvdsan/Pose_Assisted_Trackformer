@@ -11,7 +11,7 @@ import torch
 import tqdm
 import yaml
 from torch.utils.data import DataLoader
-
+import debugpy
 from trackformer.datasets.tracking import TrackDatasetFactory
 from trackformer.models import build_model
 from trackformer.models.tracker import Tracker
@@ -25,12 +25,19 @@ ex = sacred.Experiment('track')
 ex.add_config('cfgs/track.yaml')
 ex.add_named_config('reid', 'cfgs/track_reid.yaml')
 
-
 @ex.automain
 def main(seed, dataset_name, obj_detect_checkpoint_file, tracker_cfg,
          write_images, output_dir, interpolate, verbose, load_results_dir,
          data_root_dir, generate_attention_maps, frame_range,
          _config, _log, _run, obj_detector_model=None):
+    
+    # Allow debugger to attach on port 5678
+    debugpy.listen(("localhost", 5678))
+    print("Waiting for debugger to attach...")
+
+    # Pause the script until debugger attaches
+    debugpy.wait_for_client()
+    print("Debugger attached. Continuing execution.")
     if write_images:
         assert output_dir is not None
 
@@ -69,17 +76,12 @@ def main(seed, dataset_name, obj_detect_checkpoint_file, tracker_cfg,
         obj_detector, _, obj_detector_post = build_model(obj_detect_args)
 
         obj_detect_checkpoint = torch.load(
-            obj_detect_checkpoint_file, map_location=lambda storage, loc: storage)
+            obj_detect_checkpoint_file, weights_only=False,  map_location=lambda storage, loc: storage  )
 
         obj_detect_state_dict = obj_detect_checkpoint['model']
-        # obj_detect_state_dict = {
-        #     k: obj_detect_state_dict[k] if k in obj_detect_state_dict
-        #     else v
-        #     for k, v in obj_detector.state_dict().items()}
-
         obj_detect_state_dict = {
             k.replace('detr.', ''): v
-            for k, v in obj_detect_state_dict.items()
+             for k, v in obj_detect_state_dict.items()
             if 'track_encoding' not in k}
 
         obj_detector.load_state_dict(obj_detect_state_dict)

@@ -24,27 +24,6 @@ from .vis import vis_results
 def make_results(outputs, targets, postprocessors, tracking, return_only_orig=True):
     target_sizes = torch.stack([t["size"] for t in targets], dim=0)
     orig_target_sizes = torch.stack([t["orig_size"] for t in targets], dim=0)
-
-    # remove placeholder track queries
-    # results_mask = None
-    # if tracking:
-    #     results_mask = [~t['track_queries_placeholder_mask'] for t in targets]
-    #     for target, res_mask in zip(targets, results_mask):
-    #         target['track_queries_mask'] = target['track_queries_mask'][res_mask]
-    #         target['track_queries_fal_pos_mask'] = target['track_queries_fal_pos_mask'][res_mask]
-
-    # results = None
-    # if not return_only_orig:
-    #     results = postprocessors['bbox'](outputs, target_sizes, results_mask)
-    # results_orig = postprocessors['bbox'](outputs, orig_target_sizes, results_mask)
-
-    # if 'segm' in postprocessors:
-    #     results_orig = postprocessors['segm'](
-    #         results_orig, outputs, orig_target_sizes, target_sizes, results_mask)
-    #     if not return_only_orig:
-    #         results = postprocessors['segm'](
-    #             results, outputs, target_sizes, target_sizes, results_mask)
-
     results = None
     if not return_only_orig:
         results = postprocessors['bbox'](outputs, target_sizes)
@@ -190,7 +169,6 @@ def evaluate(model, criterion, postprocessors, data_loader, device,
     base_ds = get_coco_api_from_dataset(data_loader.dataset)
     iou_types = tuple(k for k in ('bbox', 'segm') if k in postprocessors.keys())
     coco_evaluator = CocoEvaluator(base_ds, iou_types)
-    # coco_evaluator.coco_eval[iou_types[0]].params.iouThrs = [0, 0.1, 0.5, 0.75]
 
     panoptic_evaluator = None
     if 'panoptic' in postprocessors.keys():

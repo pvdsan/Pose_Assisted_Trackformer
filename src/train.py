@@ -124,7 +124,6 @@ def train(args: Namespace) -> None:
 
     if args.distributed:
         sampler_train = utils.DistributedWeightedSampler(dataset_train)
-        # sampler_train = DistributedSampler(dataset_train)
         sampler_val = DistributedSampler(dataset_val, shuffle=False)
     else:
         sampler_train = torch.utils.data.RandomSampler(dataset_train)
@@ -182,28 +181,13 @@ def train(args: Namespace) -> None:
                     resume_state_dict[k] = v
                     print(f'Load {k} {tuple(v.shape)} from scratch.')
                     continue
-                #     if checkpoint_value.shape[1] * 2 == v.shape[1]:
-                #         # from hidden size 256 to 512
-                #         resume_value = checkpoint_value.repeat(1, 2)
-                #     elif checkpoint_value.shape[0] * 5 == v.shape[0]:
-                #         # from 100 to 500 object queries
-                #         resume_value = checkpoint_value.repeat(5, 1)
-                #     elif checkpoint_value.shape[0] > v.shape[0]:
-                #         resume_value = checkpoint_value[:v.shape[0]]
-                #     elif checkpoint_value.shape[0] < v.shape[0]:
-                #         resume_value = v
-                #     else:
-                #         raise NotImplementedError
                 elif 'linear2' in k or 'input_proj' in k:
                     resume_value = checkpoint_value.repeat((2,) + (num_dims - 1) * (1, ))
                 elif 'class_embed' in k:
                     # person and no-object class
-                    # resume_value = checkpoint_value[[1, -1]]
-                    # resume_value = checkpoint_value[[0, -1]]
-                    # resume_value = checkpoint_value[[1,]]
+
                     resume_value = checkpoint_value[list(range(0, 20))]
-                    # resume_value = v
-                    # print(f'Load {k} {tuple(v.shape)} from scratch.')
+
                 else:
                     raise NotImplementedError(f"No rule for {k} with shape {v.shape}.")
 
@@ -214,7 +198,6 @@ def train(args: Namespace) -> None:
                 # no-object class
                 resume_value = checkpoint_value.clone()
                 # no-object class
-                # resume_value[:-2] = checkpoint_value[1:-1].clone()
                 resume_value[:-1] = checkpoint_value[1:].clone()
                 resume_value[-2] = checkpoint_value[0].clone()
                 print(f"Load {k} {tuple(v.shape)} from resume model and "
@@ -301,9 +284,6 @@ def train(args: Namespace) -> None:
                 output_dir, visualizers['val'], args, epoch)
 
             checkpoint_paths = [output_dir / 'checkpoint.pth']
-            # extra checkpoint before LR drop and every 100 epochs
-            # if (epoch + 1) % args.lr_drop == 0 or (epoch + 1) % 10 == 0:
-            #     checkpoint_paths.append(output_dir / f'checkpoint{epoch:04}.pth')
 
             # checkpoint for best validation stats
             stat_names = ['BBOX_AP_IoU_0_50-0_95', 'BBOX_AP_IoU_0_50', 'BBOX_AP_IoU_0_75']
@@ -352,5 +332,4 @@ if __name__ == '__main__':
     # TODO: hierachical Namespacing for nested dict
     config = ex.run_commandline().config
     args = nested_dict_to_namespace(config)
-    # args.train = Namespace(**config['train'])
     train(args)

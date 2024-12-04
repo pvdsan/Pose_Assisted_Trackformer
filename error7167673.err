@@ -1,0 +1,945 @@
+W1127 21:40:46.768685 1696050 site-packages/torch/distributed/run.py:793] 
+W1127 21:40:46.768685 1696050 site-packages/torch/distributed/run.py:793] *****************************************
+W1127 21:40:46.768685 1696050 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1127 21:40:46.768685 1696050 site-packages/torch/distributed/run.py:793] *****************************************
+WARNING - train - No observers have been added to this run
+WARNING - train - No observers have been added to this run
+WARNING - train - No observers have been added to this run
+WARNING - train - No observers have been added to this run
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/train.py:154: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(args.resume, map_location='cpu')
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/train.py:154: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(args.resume, map_location='cpu')
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/train.py:154: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(args.resume, map_location='cpu')
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/train.py:154: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(args.resume, map_location='cpu')
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /opt/conda/conda-bld/pytorch_1729647350383/work/aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[rank1]:[W1127 21:41:08.053554460 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank3]:[W1127 21:41:08.141220056 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank0]:[W1127 21:41:08.165637382 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank2]:[W1127 21:41:09.216975669 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/trackformer/util/misc.py:106: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  storage = torch.ByteStorage.from_buffer(buffer)
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/trackformer/util/misc.py:106: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  storage = torch.ByteStorage.from_buffer(buffer)
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/trackformer/util/misc.py:106: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  storage = torch.ByteStorage.from_buffer(buffer)
+/data/users4/sdeshpande8/DL_Assignements/trackformer/src/trackformer/util/misc.py:106: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  storage = torch.ByteStorage.from_buffer(buffer)
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 55 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.35 s
+INFO - submitit.main - NUM TRACKS: 112 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.00 s
+INFO - submitit.main - NUM TRACKS: 522 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.02 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.35 s for 263 frames (8.13 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff658207070>]
+INFO - submitit.track - Completed after 0:00:44
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 1876 ReIDs: 0
+INFO - submitit.main - RUNTIME: 68.55 s
+INFO - submitit.main - NUM TRACKS: 263 ReIDs: 0
+INFO - submitit.main - RUNTIME: 40.09 s
+INFO - submitit.main - NUM TRACKS: 359 ReIDs: 0
+INFO - submitit.main - RUNTIME: 46.39 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 77.10 s for 627 frames (8.13 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe43745a550>, <motmetrics.mot.MOTAccumulator object at 0x7fe42010b910>]
+INFO - submitit.track - Completed after 0:01:43
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.39 s for 794 frames (9.52 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c64a220>, <motmetrics.mot.MOTAccumulator object at 0x7f046c64a8b0>]
+INFO - submitit.track - Completed after 0:01:47
+INFO - submitit.main - NUM TRACKS: 67 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.69 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 122.24 s for 975 frames (7.98 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f27afe3ccd0>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe0c9a0>]
+INFO - submitit.track - Completed after 0:02:44
+INFO - root - partials: 0.578 seconds.
+INFO - root - partials: 0.567 seconds.
+INFO - root - mergeOverall: 0.582 seconds.
+INFO - root - mergeOverall: 0.571 seconds.
+INFO - root - partials: 0.578 seconds.
+INFO - root - mergeOverall: 0.582 seconds.
+INFO - root - partials: 0.581 seconds.
+INFO - root - mergeOverall: 0.587 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - NUM TRACKS: 33 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.01 s
+INFO - submitit.main - NUM TRACKS: 84 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.43 s
+INFO - submitit.main - NUM TRACKS: 92 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.00 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.01 s for 263 frames (8.22 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff3b156ad00>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 161 ReIDs: 0
+INFO - submitit.main - RUNTIME: 66.66 s
+INFO - submitit.main - NUM TRACKS: 84 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.45 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 173 ReIDs: 0
+INFO - submitit.main - RUNTIME: 45.99 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 75.88 s for 627 frames (8.26 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe3b4b08ca0>, <motmetrics.mot.MOTAccumulator object at 0x7fe3b4b08490>]
+INFO - submitit.track - Completed after 0:01:41
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 82.99 s for 794 frames (9.57 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c64a220>, <motmetrics.mot.MOTAccumulator object at 0x7f046c64a460>]
+INFO - submitit.track - Completed after 0:01:47
+INFO - submitit.main - NUM TRACKS: 56 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.03 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 119.68 s for 975 frames (8.15 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f27afe142e0>, <motmetrics.mot.MOTAccumulator object at 0x7f27afd81df0>]
+INFO - submitit.track - Completed after 0:02:40
+INFO - root - partials: 0.482 seconds.
+INFO - root - mergeOverall: 0.486 seconds.
+INFO - root - partials: 0.486 seconds.
+INFO - root - partials: 0.490 seconds.
+INFO - root - mergeOverall: 0.489 seconds.
+INFO - root - partials: 0.487 seconds.
+INFO - root - mergeOverall: 0.493 seconds.
+INFO - root - mergeOverall: 0.490 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 36 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.47 s
+INFO - submitit.main - NUM TRACKS: 107 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.11 s
+INFO - submitit.main - NUM TRACKS: 104 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.62 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.47 s for 263 frames (8.10 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff131905100>]
+INFO - submitit.track - Completed after 0:00:44
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 198 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.89 s
+INFO - submitit.main - NUM TRACKS: 71 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.72 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 148 ReIDs: 0
+INFO - submitit.main - RUNTIME: 46.02 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.83 s for 627 frames (8.16 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe420137dc0>, <motmetrics.mot.MOTAccumulator object at 0x7fe420137a60>]
+INFO - submitit.track - Completed after 0:01:43
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.64 s for 794 frames (9.49 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c779af0>, <motmetrics.mot.MOTAccumulator object at 0x7f046c7790a0>]
+INFO - submitit.track - Completed after 0:01:48
+INFO - submitit.main - NUM TRACKS: 66 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.26 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 121.15 s for 975 frames (8.05 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f27afe2b040>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe1aca0>]
+INFO - submitit.track - Completed after 0:02:42
+INFO - root - partials: 0.487 seconds.
+INFO - root - mergeOverall: 0.490 seconds.
+INFO - root - partials: 0.491 seconds.
+INFO - root - partials: 0.494 seconds.
+INFO - root - partials: 0.494 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+INFO - root - mergeOverall: 0.497 seconds.
+INFO - root - mergeOverall: 0.497 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 38 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.35 s
+INFO - submitit.main - NUM TRACKS: 130 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.84 s
+INFO - submitit.main - NUM TRACKS: 108 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.25 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.35 s for 263 frames (8.13 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff13167c940>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 176 ReIDs: 0
+INFO - submitit.main - RUNTIME: 66.88 s
+INFO - submitit.main - NUM TRACKS: 79 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.55 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 163 ReIDs: 0
+INFO - submitit.main - RUNTIME: 45.77 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.39 s for 627 frames (8.21 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe42010bac0>, <motmetrics.mot.MOTAccumulator object at 0x7fe3b4b08cd0>]
+INFO - submitit.track - Completed after 0:01:42
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.02 s for 794 frames (9.56 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c642880>, <motmetrics.mot.MOTAccumulator object at 0x7f046c7791c0>]
+INFO - submitit.track - Completed after 0:01:46
+INFO - submitit.main - NUM TRACKS: 60 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.25 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 120.13 s for 975 frames (8.12 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f2850288130>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe1a160>]
+INFO - submitit.track - Completed after 0:02:40
+INFO - root - partials: 0.488 seconds.
+INFO - root - mergeOverall: 0.491 seconds.
+INFO - root - partials: 0.491 seconds.
+INFO - root - partials: 0.492 seconds.
+INFO - root - partials: 0.493 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+INFO - root - mergeOverall: 0.495 seconds.
+INFO - root - mergeOverall: 0.496 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 33 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.18 s
+INFO - submitit.main - NUM TRACKS: 128 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.88 s
+INFO - submitit.main - NUM TRACKS: 114 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.21 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.18 s for 263 frames (8.17 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff729e9f9a0>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 176 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.50 s
+INFO - submitit.main - NUM TRACKS: 77 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.49 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 162 ReIDs: 0
+INFO - submitit.main - RUNTIME: 45.86 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.36 s for 627 frames (8.21 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe4201074c0>, <motmetrics.mot.MOTAccumulator object at 0x7fe420107460>]
+INFO - submitit.track - Completed after 0:01:42
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.06 s for 794 frames (9.56 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c672310>, <motmetrics.mot.MOTAccumulator object at 0x7f046c64a850>]
+INFO - submitit.track - Completed after 0:01:46
+INFO - submitit.main - NUM TRACKS: 60 ReIDs: 0
+INFO - submitit.main - RUNTIME: 52.90 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 120.40 s for 975 frames (8.10 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f2934823970>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe14e50>]
+INFO - submitit.track - Completed after 0:02:40
+INFO - root - partials: 0.486 seconds.
+INFO - root - mergeOverall: 0.489 seconds.
+INFO - root - partials: 0.490 seconds.
+INFO - root - partials: 0.490 seconds.
+INFO - root - mergeOverall: 0.493 seconds.
+INFO - root - mergeOverall: 0.493 seconds.
+INFO - root - partials: 0.502 seconds.
+INFO - root - mergeOverall: 0.505 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 34 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.19 s
+INFO - submitit.main - NUM TRACKS: 112 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.79 s
+INFO - submitit.main - NUM TRACKS: 109 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.23 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.19 s for 263 frames (8.17 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff3b156ad30>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 150 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.59 s
+INFO - submitit.main - NUM TRACKS: 70 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.78 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 136 ReIDs: 0
+INFO - submitit.main - RUNTIME: 46.16 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.58 s for 627 frames (8.19 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe4f37df9a0>, <motmetrics.mot.MOTAccumulator object at 0x7fe42010baf0>]
+INFO - submitit.track - Completed after 0:01:42
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.40 s for 794 frames (9.52 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c653790>, <motmetrics.mot.MOTAccumulator object at 0x7f046c653070>]
+INFO - submitit.track - Completed after 0:01:47
+INFO - submitit.main - NUM TRACKS: 60 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.17 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 120.76 s for 975 frames (8.07 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f2934823970>, <motmetrics.mot.MOTAccumulator object at 0x7f27afd81ee0>]
+INFO - submitit.track - Completed after 0:02:41
+INFO - root - partials: 0.490 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+INFO - root - partials: 0.489 seconds.
+INFO - root - partials: 0.488 seconds.
+INFO - root - mergeOverall: 0.492 seconds.
+INFO - root - mergeOverall: 0.491 seconds.
+INFO - root - partials: 0.500 seconds.
+INFO - root - mergeOverall: 0.503 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 38 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.17 s
+INFO - submitit.main - NUM TRACKS: 118 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.72 s
+INFO - submitit.main - NUM TRACKS: 116 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.17 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.17 s for 263 frames (8.18 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff6582076d0>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 165 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.15 s
+INFO - submitit.main - NUM TRACKS: 71 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.50 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 149 ReIDs: 0
+INFO - submitit.main - RUNTIME: 46.30 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.22 s for 627 frames (8.23 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe0b9d31820>, <motmetrics.mot.MOTAccumulator object at 0x7fe0ba1518b0>]
+INFO - submitit.track - Completed after 0:01:41
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.47 s for 794 frames (9.51 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c779910>, <motmetrics.mot.MOTAccumulator object at 0x7f051036a9d0>]
+INFO - submitit.track - Completed after 0:01:47
+INFO - submitit.main - NUM TRACKS: 65 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.26 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 120.41 s for 975 frames (8.10 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f2850344190>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe141f0>]
+INFO - submitit.track - Completed after 0:02:41
+INFO - root - partials: 0.487 seconds.
+INFO - root - mergeOverall: 0.490 seconds.
+INFO - root - partials: 0.493 seconds.
+INFO - root - mergeOverall: 0.497 seconds.
+INFO - root - partials: 0.494 seconds.
+INFO - root - mergeOverall: 0.497 seconds.
+INFO - root - partials: 0.505 seconds.
+INFO - root - mergeOverall: 0.508 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 33 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.19 s
+INFO - submitit.main - NUM TRACKS: 117 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.85 s
+INFO - submitit.main - NUM TRACKS: 105 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.12 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.19 s for 263 frames (8.17 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff5a5574190>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 135 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.00 s
+INFO - submitit.main - NUM TRACKS: 66 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.56 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 134 ReIDs: 0
+INFO - submitit.main - RUNTIME: 45.90 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.41 s for 627 frames (8.21 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe0ba4396a0>, <motmetrics.mot.MOTAccumulator object at 0x7fe0ba439850>]
+INFO - submitit.track - Completed after 0:01:42
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.02 s for 794 frames (9.56 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f05103b1f70>, <motmetrics.mot.MOTAccumulator object at 0x7f046c64a460>]
+INFO - submitit.track - Completed after 0:01:46
+INFO - submitit.main - NUM TRACKS: 60 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.09 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 120.09 s for 975 frames (8.12 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f27afe24070>, <motmetrics.mot.MOTAccumulator object at 0x7f2850311c40>]
+INFO - submitit.track - Completed after 0:02:40
+INFO - root - partials: 0.485 seconds.
+INFO - root - mergeOverall: 0.488 seconds.
+INFO - root - partials: 0.488 seconds.
+INFO - root - partials: 0.490 seconds.
+INFO - root - mergeOverall: 0.491 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+INFO - root - partials: 0.495 seconds.
+INFO - root - mergeOverall: 0.498 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - NUM TRACKS: 36 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.06 s
+INFO - submitit.main - NUM TRACKS: 111 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.20 s
+INFO - submitit.main - NUM TRACKS: 115 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.06 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.06 s for 263 frames (8.20 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff3b1877c70>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 172 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.65 s
+INFO - submitit.main - NUM TRACKS: 131 ReIDs: 0
+INFO - submitit.main - RUNTIME: 45.90 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 68 ReIDs: 0
+INFO - submitit.main - RUNTIME: 40.06 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 77.12 s for 627 frames (8.13 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe420030f40>, <motmetrics.mot.MOTAccumulator object at 0x7fe0b9d31a60>]
+INFO - submitit.track - Completed after 0:01:43
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.10 s for 794 frames (9.56 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f0463c36820>, <motmetrics.mot.MOTAccumulator object at 0x7f046c65b1c0>]
+INFO - submitit.track - Completed after 0:01:46
+INFO - submitit.main - NUM TRACKS: 61 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.40 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 121.05 s for 975 frames (8.05 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f27afe2b580>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe2be50>]
+INFO - submitit.track - Completed after 0:02:41
+INFO - root - partials: 0.486 seconds.
+INFO - root - mergeOverall: 0.489 seconds.
+INFO - root - partials: 0.487 seconds.
+INFO - root - mergeOverall: 0.490 seconds.
+INFO - root - partials: 0.492 seconds.
+INFO - root - partials: 0.491 seconds.
+INFO - root - mergeOverall: 0.495 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 34 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.56 s
+INFO - submitit.main - NUM TRACKS: 109 ReIDs: 0
+INFO - submitit.main - RUNTIME: 36.94 s
+INFO - submitit.main - NUM TRACKS: 112 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.24 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.56 s for 263 frames (8.08 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff13167c9d0>]
+INFO - submitit.track - Completed after 0:00:44
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 150 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.66 s
+INFO - submitit.main - NUM TRACKS: 72 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.77 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - NUM TRACKS: 134 ReIDs: 0
+INFO - submitit.main - RUNTIME: 46.11 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 76.70 s for 627 frames (8.17 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe0c967bb80>, <motmetrics.mot.MOTAccumulator object at 0x7fe0c967b910>]
+INFO - submitit.track - Completed after 0:01:42
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.36 s for 794 frames (9.53 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f046c642820>, <motmetrics.mot.MOTAccumulator object at 0x7f046c642040>]
+INFO - submitit.track - Completed after 0:01:46
+INFO - submitit.main - NUM TRACKS: 65 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.36 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 121.02 s for 975 frames (8.06 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f27afe2b580>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe33dc0>]
+INFO - submitit.track - Completed after 0:02:41
+INFO - root - partials: 0.489 seconds.
+INFO - root - mergeOverall: 0.491 seconds.
+INFO - root - partials: 0.490 seconds.
+INFO - root - partials: 0.496 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+INFO - root - partials: 0.496 seconds.
+INFO - root - mergeOverall: 0.500 seconds.
+INFO - root - mergeOverall: 0.500 seconds.
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+WARNING - submitit - Added new config entry: "obj_detector_model.img_transform"
+WARNING - submitit - Added new config entry: "obj_detector_model.model"
+WARNING - submitit - Added new config entry: "obj_detector_model.post.bbox"
+WARNING - submitit - Changed type of config entry "seed" from int to NoneType
+WARNING - submitit - Changed type of config entry "dataset_name" from str to DogmaticList
+WARNING - submitit.track - No observers have been added to this run
+INFO - submitit.track - Running command 'main'
+INFO - submitit.track - Started
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-09-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-05-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-02-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-04-FRCNN
+INFO - submitit.main - NUM TRACKS: 34 ReIDs: 0
+INFO - submitit.main - RUNTIME: 32.32 s
+INFO - submitit.main - NUM TRACKS: 107 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.18 s
+INFO - submitit.main - NUM TRACKS: 107 ReIDs: 0
+INFO - submitit.main - RUNTIME: 37.50 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 32.32 s for 263 frames (8.14 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7ff3b1877c70>]
+INFO - submitit.track - Completed after 0:00:43
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-13-FRCNN
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-10-FRCNN
+INFO - submitit.main - NUM TRACKS: 127 ReIDs: 0
+INFO - submitit.main - RUNTIME: 67.82 s
+INFO - submitit.main - NUM TRACKS: 68 ReIDs: 0
+INFO - submitit.main - RUNTIME: 39.64 s
+INFO - submitit.main - NUM TRACKS: 136 ReIDs: 0
+INFO - submitit.main - RUNTIME: 45.95 s
+INFO - submitit.main - ------------------
+INFO - submitit.main - TRACK SEQ: MOT17-11-FRCNN
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 77.14 s for 627 frames (8.13 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7fe4f9eafc40>, <motmetrics.mot.MOTAccumulator object at 0x7fe42012a4c0>]
+INFO - submitit.track - Completed after 0:01:43
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 83.13 s for 794 frames (9.55 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f0463c36040>, <motmetrics.mot.MOTAccumulator object at 0x7f046c682a90>]
+INFO - submitit.track - Completed after 0:01:46
+INFO - submitit.main - NUM TRACKS: 67 ReIDs: 0
+INFO - submitit.main - RUNTIME: 53.52 s
+INFO - submitit.main - RUNTIME ALL SEQS (w/o EVAL or IMG WRITE): 121.34 s for 975 frames (8.04 Hz)
+INFO - submitit.track - Result: [<motmetrics.mot.MOTAccumulator object at 0x7f2867e7d670>, <motmetrics.mot.MOTAccumulator object at 0x7f27afe33dc0>]
+INFO - submitit.track - Completed after 0:02:42
+INFO - root - partials: 0.488 seconds.
+INFO - root - mergeOverall: 0.491 seconds.
+INFO - root - partials: 0.488 seconds.
+INFO - root - partials: 0.491 seconds.
+INFO - root - mergeOverall: 0.491 seconds.
+INFO - root - partials: 0.491 seconds.
+INFO - root - mergeOverall: 0.495 seconds.
+INFO - root - mergeOverall: 0.494 seconds.
+[rank0]:[W1128 07:04:01.522486454 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

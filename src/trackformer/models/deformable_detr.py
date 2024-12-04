@@ -54,7 +54,6 @@ class DeformableDETR(DETR):
             self.query_embed = nn.Embedding(num_queries, self.hidden_dim * 2)
         num_channels = backbone.num_channels[-3:]
         if num_feature_levels > 1:
-            # return_layers = {"layer2": "0", "layer3": "1", "layer4": "2"}
             num_backbone_outs = len(backbone.strides) - 1
 
             input_proj_list = []
@@ -116,10 +115,6 @@ class DeformableDETR(DETR):
             self.merge_features = nn.Conv2d(self.hidden_dim * 2, self.hidden_dim, kernel_size=1)
             self.merge_features = _get_clones(self.merge_features, num_feature_levels)
 
-    # def fpn_channels(self):
-    #     """ Returns FPN channels. """
-    #     num_backbone_outs = len(self.backbone.strides)
-    #     return [self.hidden_dim, ] * num_backbone_outs
 
     def forward(self, samples: NestedTensor, targets: list = None, prev_features=None):
         """ The forward expects a NestedTensor, which consists of:
@@ -141,22 +136,18 @@ class DeformableDETR(DETR):
         features, pos = self.backbone(samples)
 
         features_all = features
-        # pos_all = pos
-        # return_layers = {"layer2": "0", "layer3": "1", "layer4": "2"}
         features = features[-3:]
-        # pos = pos[-3:]
+
 
         if prev_features is None:
             prev_features = features
         else:
             prev_features = prev_features[-3:]
 
-        # srcs = []
-        # masks = []
         src_list = []
         mask_list = []
         pos_list = []
-        # for l, (feat, prev_feat) in enumerate(zip(features, prev_features)):
+
 
         frame_features = [prev_features, features]
         if not self.multi_frame_attention:
@@ -167,11 +158,6 @@ class DeformableDETR(DETR):
                 pos_list.extend([p[:, frame] for p in pos[-3:]])
             else:
                 pos_list.extend(pos[-3:])
-
-            # src, mask = feat.decompose()
-
-            # prev_src, _ = prev_feat.decompose()
-
             for l, feat in enumerate(frame_feat):
                 src, mask = feat.decompose()
 
@@ -183,23 +169,13 @@ class DeformableDETR(DETR):
 
                 mask_list.append(mask)
 
-            # if hasattr(self, 'merge_features'):
-            #     srcs.append(self.merge_features[l](torch.cat([self.input_proj[l](src), self.input_proj[l](prev_src)], dim=1)))
-            # else:
-            #     srcs.append(self.input_proj[l](src))
 
-            # masks.append(mask)
                 assert mask is not None
 
             if self.num_feature_levels > len(frame_feat):
                 _len_srcs = len(frame_feat)
                 for l in range(_len_srcs, self.num_feature_levels):
                     if l == _len_srcs:
-                        # src = self.input_proj[l](frame_feat[-1].tensors)
-                        # if hasattr(self, 'merge_features'):
-                        #     src = self.merge_features[l](torch.cat([self.input_proj[l](features[-1].tensors), self.input_proj[l](prev_features[-1].tensors)], dim=1))
-                        # else:
-                        #     src = self.input_proj[l](features[-1].tensors)
 
                         if self.merge_frame_features:
                             src = self.merge_features[l](torch.cat([self.input_proj[l](frame_feat[-1].tensors), self.input_proj[l](prev_features[-1].tensors)], dim=1))
@@ -207,8 +183,6 @@ class DeformableDETR(DETR):
                             src = self.input_proj[l](frame_feat[-1].tensors)
                     else:
                         src = self.input_proj[l](src_list[-1])
-                        # src = self.input_proj[l](srcs[-1])
-                    # m = samples.mask
                     _, m = frame_feat[0].decompose()
                     mask = F.interpolate(m[None].float(), size=src.shape[-2:]).to(torch.bool)[0]
 
@@ -269,9 +243,6 @@ class DeformableDETR(DETR):
             offset += height * width
 
         memory = memory_slices
-        # memory = memory_slices[-1]
-        # features = [NestedTensor(memory_slide) for memory_slide in memory_slices]
-
         return out, targets, features_all, memory, hs
 
     @torch.jit.unused
@@ -302,19 +273,7 @@ class DeformablePostProcess(PostProcess):
 
         prob = out_logits.sigmoid()
 
-        ###
-        # topk_values, topk_indexes = torch.topk(prob.view(out_logits.shape[0], -1), 100, dim=1)
-        # scores = topk_values
-
-        # topk_boxes = topk_indexes // out_logits.shape[2]
-        # labels = topk_indexes % out_logits.shape[2]
-
-        # boxes = box_ops.box_cxcywh_to_xyxy(out_bbox)
-        # boxes = torch.gather(boxes, 1, topk_boxes.unsqueeze(-1).repeat(1,1,4))
-        ###
-
         scores, labels = prob.max(-1)
-        # scores, labels = prob[..., 0:1].max(-1)
         boxes = box_ops.box_cxcywh_to_xyxy(out_bbox)
 
         # and from relative [0, 1] to absolute [0, height] coordinates

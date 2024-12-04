@@ -1,0 +1,427 @@
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = True
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 2e-05
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=2e-05, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=True, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = True
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 2e-05
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=2e-05, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=True, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = True
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 2e-05
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=2e-05, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=True, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = True
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 2e-05
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=2e-05, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=True, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+| distributed init (rank 0): env://
+git:
+  sha: e468bf156b029869f6de1be358bc11cd1f517f3c, status: has uncommited changes, branch: main
+
+| distributed init (rank 1): env://
+| distributed init (rank 2): env://
+| distributed init (rank 3): env://
+NUM TRAINABLE MODEL PARAMS: 44011474
+loading annotations into memory...
+Done (t=0.78s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.39s)
+creating index...
+index created!
+Load class_embed.0.weight (20, 288) from resume model (91, 288).
+Load class_embed.0.bias (20,) from resume model (91,).
+Load class_embed.1.weight (20, 288) from resume model (91, 288).
+Load class_embed.1.bias (20,) from resume model (91,).
+Load class_embed.2.weight (20, 288) from resume model (91, 288).
+Load class_embed.2.bias (20,) from resume model (91,).
+Load class_embed.3.weight (20, 288) from resume model (91, 288).
+Load class_embed.3.bias (20,) from resume model (91,).
+Load class_embed.4.weight (20, 288) from resume model (91, 288).
+Load class_embed.4.bias (20,) from resume model (91,).
+Load class_embed.5.weight (20, 288) from resume model (91, 288).
+Load class_embed.5.bias (20,) from resume model (91,).
+Start training
+Epoch: [1]  [   0/2656]  eta: 0:38:42  lr: 0.000200  class_error: 0.00  loss: 11.8142 (11.8142)  loss_bbox: 0.3268 (0.3268)  loss_bbox_0: 0.3345 (0.3345)  loss_bbox_1: 0.3076 (0.3076)  loss_bbox_2: 0.3077 (0.3077)  loss_bbox_3: 0.3009 (0.3009)  loss_bbox_4: 0.2985 (0.2985)  loss_ce: 1.1350 (1.1350)  loss_ce_0: 0.6553 (0.6553)  loss_ce_1: 0.7503 (0.7503)  loss_ce_2: 0.8747 (0.8747)  loss_ce_3: 1.0407 (1.0407)  loss_ce_4: 1.1695 (1.1695)  loss_giou: 0.7298 (0.7298)  loss_giou_0: 0.7685 (0.7685)  loss_giou_1: 0.6949 (0.6949)  loss_giou_2: 0.7190 (0.7190)  loss_giou_3: 0.6979 (0.6979)  loss_giou_4: 0.7027 (0.7027)  cardinality_error_unscaled: 495.8750 (495.8750)  cardinality_error_0_unscaled: 495.2500 (495.2500)  cardinality_error_1_unscaled: 495.7500 (495.7500)  cardinality_error_2_unscaled: 495.6250 (495.6250)  cardinality_error_3_unscaled: 495.3750 (495.3750)  cardinality_error_4_unscaled: 495.7500 (495.7500)  class_error_unscaled: 0.0000 (0.0000)  loss_bbox_unscaled: 0.0654 (0.0654)  loss_bbox_0_unscaled: 0.0669 (0.0669)  loss_bbox_1_unscaled: 0.0615 (0.0615)  loss_bbox_2_unscaled: 0.0615 (0.0615)  loss_bbox_3_unscaled: 0.0602 (0.0602)  loss_bbox_4_unscaled: 0.0597 (0.0597)  loss_ce_unscaled: 0.5675 (0.5675)  loss_ce_0_unscaled: 0.3276 (0.3276)  loss_ce_1_unscaled: 0.3752 (0.3752)  loss_ce_2_unscaled: 0.4373 (0.4373)  loss_ce_3_unscaled: 0.5204 (0.5204)  loss_ce_4_unscaled: 0.5847 (0.5847)  loss_giou_unscaled: 0.3649 (0.3649)  loss_giou_0_unscaled: 0.3842 (0.3842)  loss_giou_1_unscaled: 0.3474 (0.3474)  loss_giou_2_unscaled: 0.3595 (0.3595)  loss_giou_3_unscaled: 0.3489 (0.3489)  loss_giou_4_unscaled: 0.3513 (0.3513)  lr_backbone: 0.0000 (0.0000)  time: 3.4978  data: 0.7981  max mem: 9600
+Epoch: [1]  [ 200/2656]  eta: 0:09:40  lr: 0.000200  class_error: 0.00  loss: 7.4039 (8.0166)  loss_bbox: 0.2211 (0.2627)  loss_bbox_0: 0.2397 (0.2899)  loss_bbox_1: 0.2198 (0.2649)  loss_bbox_2: 0.2191 (0.2629)  loss_bbox_3: 0.2241 (0.2616)  loss_bbox_4: 0.2207 (0.2619)  loss_ce: 0.3597 (0.4260)  loss_ce_0: 0.3542 (0.3960)  loss_ce_1: 0.3588 (0.4135)  loss_ce_2: 0.3558 (0.4186)  loss_ce_3: 0.3584 (0.4227)  loss_ce_4: 0.3563 (0.4248)  loss_giou: 0.5883 (0.6352)  loss_giou_0: 0.6792 (0.7156)  loss_giou_1: 0.6195 (0.6469)  loss_giou_2: 0.6111 (0.6391)  loss_giou_3: 0.6000 (0.6376)  loss_giou_4: 0.6053 (0.6365)  cardinality_error_unscaled: 491.7500 (492.0074)  cardinality_error_0_unscaled: 491.7500 (491.9657)  cardinality_error_1_unscaled: 491.7500 (492.0000)  cardinality_error_2_unscaled: 491.7500 (491.9828)  cardinality_error_3_unscaled: 491.7500 (491.9461)  cardinality_error_4_unscaled: 491.7500 (491.9804)  class_error_unscaled: 0.0000 (0.0765)  loss_bbox_unscaled: 0.0442 (0.0525)  loss_bbox_0_unscaled: 0.0479 (0.0580)  loss_bbox_1_unscaled: 0.0440 (0.0530)  loss_bbox_2_unscaled: 0.0438 (0.0526)  loss_bbox_3_unscaled: 0.0448 (0.0523)  loss_bbox_4_unscaled: 0.0441 (0.0524)  loss_ce_unscaled: 0.1799 (0.2130)  loss_ce_0_unscaled: 0.1771 (0.1980)  loss_ce_1_unscaled: 0.1794 (0.2068)  loss_ce_2_unscaled: 0.1779 (0.2093)  loss_ce_3_unscaled: 0.1792 (0.2114)  loss_ce_4_unscaled: 0.1782 (0.2124)  loss_giou_unscaled: 0.2942 (0.3176)  loss_giou_0_unscaled: 0.3396 (0.3578)  loss_giou_1_unscaled: 0.3098 (0.3235)  loss_giou_2_unscaled: 0.3055 (0.3195)  loss_giou_3_unscaled: 0.3000 (0.3188)  loss_giou_4_unscaled: 0.3027 (0.3183)  lr_backbone: 0.0000 (0.0000)  time: 0.8800  data: 0.0092  max mem: 16569

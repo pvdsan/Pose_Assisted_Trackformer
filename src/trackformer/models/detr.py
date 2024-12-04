@@ -196,10 +196,6 @@ class SetCriterion(nn.Module):
                     target_classes = target_classes.clone()
                     target_classes[i, target['track_queries_fal_pos_mask']] = 0
 
-        # weight = None
-        # if self.tracking:
-        #     weight = torch.stack([~t['track_queries_placeholder_mask'] for t in targets]).float()
-        #     loss_ce *= weight
 
         loss_ce = loss_ce.sum() / self.empty_weight[target_classes].sum()
 
@@ -229,46 +225,19 @@ class SetCriterion(nn.Module):
 
         target_classes_onehot = target_classes_onehot[:,:,:-1]
 
-        # query_mask = None
-        # if self.tracking:
-        #     query_mask = torch.stack([~t['track_queries_placeholder_mask'] for t in targets])[..., None]
-        #     query_mask = query_mask.repeat(1, 1, self.num_classes)
 
         loss_ce = sigmoid_focal_loss(
             src_logits, target_classes_onehot, num_boxes,
             alpha=self.focal_alpha, gamma=self.focal_gamma)
             # , query_mask=query_mask)
 
-        # if self.tracking:
-        #     mean_num_queries = torch.tensor([len(m.nonzero()) for m in query_mask]).float().mean()
-        #     loss_ce *= mean_num_queries
-        # else:
-        #     loss_ce *= src_logits.shape[1]
+
         loss_ce *= src_logits.shape[1]
         losses = {'loss_ce': loss_ce}
 
         if log:
             # TODO this should probably be a separate loss, not hacked in this one here
             losses['class_error'] = 100 - accuracy(src_logits[idx], target_classes_o)[0]
-
-        # compute seperate track and object query losses
-        # loss_ce = sigmoid_focal_loss(
-        #     src_logits, target_classes_onehot, num_boxes,
-        #     alpha=self.focal_alpha, gamma=self.focal_gamma, query_mask=query_mask, reduction=False)
-        # loss_ce *= src_logits.shape[1]
-
-        # track_query_target_masks = []
-        # for t, ind in zip(targets, indices):
-        #     track_query_target_mask = torch.zeros_like(ind[1]).bool()
-
-        #     for i in t['track_query_match_ids']:
-        #         track_query_target_mask[ind[1].eq(i).nonzero()[0]] = True
-
-        #     track_query_target_masks.append(track_query_target_mask)
-        # track_query_target_masks = torch.cat(track_query_target_masks)
-
-        # losses['loss_ce_track_queries'] = loss_ce[idx][track_query_target_masks].mean(1).sum() / num_boxes
-        # losses['loss_ce_object_queries'] = loss_ce[idx][~track_query_target_masks].mean(1).sum() / num_boxes
 
         return losses
 
@@ -307,23 +276,6 @@ class SetCriterion(nn.Module):
             box_ops.box_cxcywh_to_xyxy(src_boxes),
             box_ops.box_cxcywh_to_xyxy(target_boxes)))
         losses['loss_giou'] = loss_giou.sum() / num_boxes
-
-        # compute seperate track and object query losses
-        # track_query_target_masks = []
-        # for t, ind in zip(targets, indices):
-        #     track_query_target_mask = torch.zeros_like(ind[1]).bool()
-
-        #     for i in t['track_query_match_ids']:
-        #         track_query_target_mask[ind[1].eq(i).nonzero()[0]] = True
-
-        #     track_query_target_masks.append(track_query_target_mask)
-        # track_query_target_masks = torch.cat(track_query_target_masks)
-
-        # losses['loss_bbox_track_queries'] = loss_bbox[track_query_target_masks].sum() / num_boxes
-        # losses['loss_bbox_object_queries'] = loss_bbox[~track_query_target_masks].sum() / num_boxes
-
-        # losses['loss_giou_track_queries'] = loss_giou[track_query_target_masks].sum() / num_boxes
-        # losses['loss_giou_object_queries'] = loss_giou[~track_query_target_masks].sum() / num_boxes
 
         return losses
 

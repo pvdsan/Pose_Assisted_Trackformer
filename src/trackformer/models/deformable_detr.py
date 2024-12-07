@@ -28,7 +28,7 @@ def _get_clones(module, N):
 
 class DeformableDETR(DETR):
     """ This is the Deformable DETR module that performs object detection """
-    def __init__(self, backbone, transformer, num_classes, num_queries, num_feature_levels,
+    def __init__(self, backbone, transformer, num_classes, num_queries, num_feature_levels, pose_model,
                  aux_loss=True, overflow_boxes=False,
                  multi_frame_attention=False, multi_frame_encoding=False, merge_frame_features=False):
         """ Initializes the model.
@@ -41,7 +41,7 @@ class DeformableDETR(DETR):
                          we recommend 100 queries.
             aux_loss: True if auxiliary decoding losses (loss at each decoder layer) are to be used.
         """
-        super().__init__(backbone, transformer, num_classes, num_queries, aux_loss)
+        super().__init__(backbone, transformer, pose_model, num_classes, num_queries, aux_loss)
 
         self.merge_frame_features = merge_frame_features
         self.multi_frame_attention = multi_frame_attention

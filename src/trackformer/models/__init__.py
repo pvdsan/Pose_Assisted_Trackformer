@@ -63,7 +63,8 @@ def build_model(args):
             for param in backbone.parameters():
                 param.requires_grad = False
 
-            pose_model = build_pose_model(args)    
+            pose_model = build_pose_model(args)
+            detr_kwargs['pose_model'] = pose_model    
 
         if args.tracking:
             if args.masks:

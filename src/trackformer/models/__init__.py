@@ -1,3 +1,4 @@
+# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 import torch
 
 from .backbone import build_backbone
@@ -14,7 +15,6 @@ from .pose_model import build_pose_model
 
 
 def build_model(args):
-    # Determine the number of classes based on the dataset
     if args.dataset == 'coco':
         num_classes = 91
     elif args.dataset == 'coco_panoptic':
@@ -22,39 +22,31 @@ def build_model(args):
     elif args.dataset in ['coco_person', 'mot', 'mot_crowdhuman', 'crowdhuman', 'mot_coco_person']:
         num_classes = 20
     else:
-        raise NotImplementedError(f"Dataset {args.dataset} not supported.")
-    
+        raise NotImplementedError
+
     device = torch.device(args.device)
     backbone = build_backbone(args)
     matcher = build_matcher(args)
-    
-    # Define DETR-specific keyword arguments
+
+
     detr_kwargs = {
         'backbone': backbone,
         'num_classes': num_classes - 1 if args.focal_loss else num_classes,
         'num_queries': args.num_queries,
         'aux_loss': args.aux_loss,
-        'overflow_boxes': args.overflow_boxes
-    }
-    
-    # Define Tracking-specific keyword arguments
+        'overflow_boxes': args.overflow_boxes}
+
     tracking_kwargs = {
         'track_query_false_positive_prob': args.track_query_false_positive_prob,
         'track_query_false_negative_prob': args.track_query_false_negative_prob,
         'matcher': matcher,
-        'backprop_prev_frame': args.track_backprop_prev_frame,
-    }
-    
-    # Define Mask-specific keyword arguments
+        'backprop_prev_frame': args.track_backprop_prev_frame,}
+
     mask_kwargs = {
-        'freeze_detr': args.freeze_detr
-    }
-    
-    # Initialize the Transformer
+        'freeze_detr': args.freeze_detr}
+
     if args.deformable:
         transformer = build_deforamble_transformer(args)
-        
-        # If pose_features is enabled, freeze the encoder and backbone
         if args.pose_features:
             # Freeze the encoder of the transformer
             if hasattr(transformer, 'encoder'):
@@ -72,35 +64,29 @@ def build_model(args):
 
         print(f"Trainable parameters in transformer: {num_trainable_transformer}")
         print(f"Trainable parameters in backbone: {num_trainable_backbone}")
-        
-        # Initialize the PoseEmbeddingModule if pose_features is enabled
-        if args.pose_features:
-            pose_embedding_module = build_pose_model(args)  # Build the PoseEmbeddingModule
-            detr_kwargs['pose_embedding_module'] = pose_embedding_module  # Add to DETR kwargs
-        else:
-            pose_embedding_module = None  # No pose embedding
-        
-        # Update DETR kwargs with transformer and other parameters
+
+        if pose_features:
+            pose_model = build_pose_model(args)          
+            detr_kwargs['pose_model'] = pose_model
         detr_kwargs['transformer'] = transformer
         detr_kwargs['num_feature_levels'] = args.num_feature_levels
         detr_kwargs['multi_frame_attention'] = args.multi_frame_attention
         detr_kwargs['multi_frame_encoding'] = args.multi_frame_encoding
         detr_kwargs['merge_frame_features'] = args.merge_frame_features
 
-        # Build the appropriate model based on tracking and mask options
         if args.tracking:
             if args.masks:
-                model = DeformableDETRSegmTracking(mask_kwargs, tracking_kwargs, detr_kwargs, pose_embedding_module)
+                model = DeformableDETRSegmTracking(mask_kwargs, tracking_kwargs, detr_kwargs)
             else:
-                model = DeformableDETRTracking(tracking_kwargs, detr_kwargs, pose_embedding_module)
+                model = DeformableDETRTracking(tracking_kwargs, detr_kwargs)
         else:
             if args.masks:
                 model = DeformableDETRSegm(mask_kwargs, detr_kwargs)
             else:
                 model = DeformableDETR(**detr_kwargs)
     else:
-        # Non-deformable Transformer
         transformer = build_transformer(args)
+
         detr_kwargs['transformer'] = transformer
 
         if args.tracking:
@@ -113,31 +99,26 @@ def build_model(args):
                 model = DETRSegm(mask_kwargs, detr_kwargs)
             else:
                 model = DETR(**detr_kwargs)
-    
-    # Define the loss weights
-    weight_dict = {
-        'loss_ce': args.cls_loss_coef,
-        'loss_bbox': args.bbox_loss_coef,
-        'loss_giou': args.giou_loss_coef,
-    }
-    
+
+    weight_dict = {'loss_ce': args.cls_loss_coef,
+                   'loss_bbox': args.bbox_loss_coef,
+                   'loss_giou': args.giou_loss_coef,}
+
     if args.masks:
         weight_dict["loss_mask"] = args.mask_loss_coef
         weight_dict["loss_dice"] = args.dice_loss_coef
-    
-    # Handle auxiliary losses
+
+    # TODO this is a hack
     if args.aux_loss:
         aux_weight_dict = {}
         for i in range(args.dec_layers - 1):
             aux_weight_dict.update({k + f'_{i}': v for k, v in weight_dict.items()})
         weight_dict.update(aux_weight_dict)
-    
-    # Define the list of losses
+
     losses = ['labels', 'boxes', 'cardinality']
     if args.masks:
         losses.append('masks')
-    
-    # Initialize the SetCriterion
+
     criterion = SetCriterion(
         num_classes,
         matcher=matcher,
@@ -148,20 +129,17 @@ def build_model(args):
         focal_alpha=args.focal_alpha,
         focal_gamma=args.focal_gamma,
         tracking=args.tracking,
-        track_query_false_positive_eos_weight=args.track_query_false_positive_eos_weight,
-    )
+        track_query_false_positive_eos_weight=args.track_query_false_positive_eos_weight,)
     criterion.to(device)
-    
-    # Define postprocessors
+
     if args.focal_loss:
         postprocessors = {'bbox': DeformablePostProcess()}
     else:
         postprocessors = {'bbox': PostProcess()}
-    
     if args.masks:
         postprocessors['segm'] = PostProcessSegm()
         if args.dataset == "coco_panoptic":
             is_thing_map = {i: i <= 90 for i in range(201)}
             postprocessors["panoptic"] = PostProcessPanoptic(is_thing_map, threshold=0.85)
-    
+
     return model, criterion, postprocessors

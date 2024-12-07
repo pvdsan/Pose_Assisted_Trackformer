@@ -15,8 +15,6 @@ lr_drop: 40
 clip_max_norm: 0.1
 # Deformable DETR
 deformable: false
-with_box_refine: false
-two_stage: false
 # Model parameters
 freeze_detr: false
 load_mask_head_from_model: null

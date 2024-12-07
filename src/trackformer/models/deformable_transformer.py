@@ -22,17 +22,15 @@ class DeformableTransformer(nn.Module):
     def __init__(self, d_model=256, nhead=8,
                  num_encoder_layers=6, num_decoder_layers=6, dim_feedforward=1024,
                  dropout=0.1, activation="relu", return_intermediate_dec=False,
-                 num_feature_levels=4, dec_n_points=4,  enc_n_points=4,
-                 two_stage=False, two_stage_num_proposals=300,
+                 num_feature_levels=4, dec_n_points=4,  enc_n_points=4, 
                  multi_frame_attention_separate_encoder=False):
         super().__init__()
 
         self.d_model = d_model
         self.nhead = nhead
-        self.two_stage = two_stage
-        self.two_stage_num_proposals = two_stage_num_proposals
         self.num_feature_levels = num_feature_levels
         self.multi_frame_attention_separate_encoder = multi_frame_attention_separate_encoder
+        
 
         enc_num_feature_levels = num_feature_levels
         if multi_frame_attention_separate_encoder:
@@ -49,17 +47,8 @@ class DeformableTransformer(nn.Module):
 
         self.level_embed = nn.Parameter(torch.Tensor(num_feature_levels, d_model))
 
-        if two_stage:
-            self.enc_output = nn.Linear(d_model, d_model)
-            self.enc_output_norm = nn.LayerNorm(d_model)
-            self.pos_trans = nn.Linear(d_model * 2, d_model * 2)
-            self.pos_trans_norm = nn.LayerNorm(d_model * 2)
-        else:
-            self.reference_points = nn.Linear(d_model, 2)
-            # self.hs_embed_to_query_embed = nn.Linear(d_model, d_model)
-            # self.hs_embed_to_tgt = nn.Linear(d_model, d_model)
-            # self.track_query_embed = nn.Embedding(1, d_model)
-
+        self.reference_points = nn.Linear(d_model, 2)
+        
         self._reset_parameters()
 
     def _reset_parameters(self):
@@ -69,9 +58,8 @@ class DeformableTransformer(nn.Module):
         for m in self.modules():
             if isinstance(m, MSDeformAttn):
                 m._reset_parameters()
-        if not self.two_stage:
-            xavier_uniform_(self.reference_points.weight.data, gain=1.0)
-            constant_(self.reference_points.bias.data, 0.)
+        xavier_uniform_(self.reference_points.weight.data, gain=1.0)
+        constant_(self.reference_points.bias.data, 0.)
         normal_(self.level_embed)
 
     def get_proposal_pos_embed(self, proposals):
@@ -131,7 +119,7 @@ class DeformableTransformer(nn.Module):
         return valid_ratio
 
     def forward(self, srcs, masks, pos_embeds, query_embed=None, targets=None):
-        assert self.two_stage or query_embed is not None
+        assert query_embed is not None
 
         # prepare input for encoder
         src_flatten = []
@@ -177,81 +165,30 @@ class DeformableTransformer(nn.Module):
         # prepare input for decoder
         bs, _, c = memory.shape
         query_attn_mask = None
-        if self.two_stage:
-            output_memory, output_proposals = self.gen_encoder_output_proposals(memory, mask_flatten, spatial_shapes)
+        query_embed, tgt = torch.split(query_embed, c, dim=1)
+        query_embed = query_embed.unsqueeze(0).expand(bs, -1, -1)
+        tgt = tgt.unsqueeze(0).expand(bs, -1, -1)
 
-            # hack implementation for two-stage Deformable DETR
-            enc_outputs_class = self.decoder.class_embed[self.decoder.num_layers](output_memory)
-            enc_outputs_coord_unact = self.decoder.bbox_embed[self.decoder.num_layers](output_memory) + output_proposals
+        reference_points = self.reference_points(query_embed).sigmoid()
 
-            topk = self.two_stage_num_proposals
-            topk_proposals = torch.topk(enc_outputs_class[..., 0], topk, dim=1)[1]
-            topk_coords_unact = torch.gather(enc_outputs_coord_unact, 1, topk_proposals.unsqueeze(-1).repeat(1, 1, 4))
-            topk_coords_unact = topk_coords_unact.detach()
-            reference_points = topk_coords_unact.sigmoid()
-            init_reference_out = reference_points
-            pos_trans_out = self.pos_trans_norm(self.pos_trans(self.get_proposal_pos_embed(topk_coords_unact)))
-            query_embed, tgt = torch.split(pos_trans_out, c, dim=2)
-        else:
-            query_embed, tgt = torch.split(query_embed, c, dim=1)
-            query_embed = query_embed.unsqueeze(0).expand(bs, -1, -1)
-            tgt = tgt.unsqueeze(0).expand(bs, -1, -1)
+        if targets is not None and 'track_query_hs_embeds' in targets[0]:
 
-            reference_points = self.reference_points(query_embed).sigmoid()
+            prev_hs_embed = torch.stack([t['track_query_hs_embeds'] for t in targets])
+            prev_boxes = torch.stack([t['track_query_boxes'] for t in targets])
+            prev_query_embed = torch.zeros_like(prev_hs_embed)
+            prev_tgt = prev_hs_embed
+            query_embed = torch.cat([prev_query_embed, query_embed], dim=1)
+            tgt = torch.cat([prev_tgt, tgt], dim=1)
+            reference_points = torch.cat([prev_boxes[..., :2], reference_points], dim=1)
 
-            if targets is not None and 'track_query_hs_embeds' in targets[0]:
-
-                # print([t['track_query_hs_embeds'].shape for t in targets])
-                # prev_hs_embed = torch.nn.utils.rnn.pad_sequence([t['track_query_hs_embeds'] for t in targets], batch_first=True, padding_value=float('nan'))
-                # prev_boxes = torch.nn.utils.rnn.pad_sequence([t['track_query_boxes'] for t in targets], batch_first=True, padding_value=float('nan'))
-                # print(prev_hs_embed.shape)
-                # query_mask = torch.isnan(prev_hs_embed)
-                # print(query_mask)
-
-                prev_hs_embed = torch.stack([t['track_query_hs_embeds'] for t in targets])
-                prev_boxes = torch.stack([t['track_query_boxes'] for t in targets])
-
-                prev_query_embed = torch.zeros_like(prev_hs_embed)
-                # prev_query_embed = self.track_query_embed.weight.expand_as(prev_hs_embed)
-                # prev_query_embed = self.hs_embed_to_query_embed(prev_hs_embed)
-                # prev_query_embed = None
-
-                prev_tgt = prev_hs_embed
-                # prev_tgt = self.hs_embed_to_tgt(prev_hs_embed)
-
-                query_embed = torch.cat([prev_query_embed, query_embed], dim=1)
-                tgt = torch.cat([prev_tgt, tgt], dim=1)
-
-                reference_points = torch.cat([prev_boxes[..., :2], reference_points], dim=1)
-
-                # if 'track_queries_placeholder_mask' in targets[0]:
-                #     query_attn_mask = torch.stack([t['track_queries_placeholder_mask'] for t in targets])
-
-            init_reference_out = reference_points
+        init_reference_out = reference_points
 
         # decoder
-        # query_embed = None
         hs, inter_references = self.decoder(
             tgt, reference_points, memory, spatial_shapes,
             valid_ratios, query_embed, mask_flatten, query_attn_mask)
 
         inter_references_out = inter_references
-
-        # offset = 0
-        # memory_slices = []
-        # for src in srcs:
-        #     _, _, height, width = src.shape
-        #     memory_slice = memory[:, offset:offset +h * w].permute(0, 2, 1).view(
-        #         bs, c, height, width)
-        #     memory_slices.append(memory_slice)
-        #     offset += h * w
-
-        # # memory = memory_slices[-1]
-        # print([m.shape for m in memory_slices])
-
-        if self.two_stage:
-            return (hs, memory, init_reference_out, inter_references_out,
-                    enc_outputs_class, enc_outputs_coord_unact)
         return hs, memory, init_reference_out, inter_references_out, None, None
 
 
@@ -389,7 +326,6 @@ class DeformableTransformerDecoder(nn.Module):
         self.layers = _get_clones(decoder_layer, num_layers)
         self.num_layers = num_layers
         self.return_intermediate = return_intermediate
-        # hack implementation for iterative bounding box refinement and two-stage Deformable DETR
         self.bbox_embed = None
         self.class_embed = None
 
@@ -449,6 +385,4 @@ def build_deforamble_transformer(args):
         num_feature_levels=num_feature_levels,
         dec_n_points=args.dec_n_points,
         enc_n_points=args.enc_n_points,
-        two_stage=args.two_stage,
-        two_stage_num_proposals=args.num_queries,
         multi_frame_attention_separate_encoder=args.multi_frame_attention and args.multi_frame_attention_separate_encoder)

@@ -51,7 +51,7 @@ class DETRTrackingBase(nn.Module):
             prev_out_ind, prev_target_ind = prev_ind
 
             # random subset
-            if self._track_query_false_negative_prob: # and len(prev_target_ind):
+            if self._track_query_false_negative_prob:
                 random_subset_mask = torch.randperm(len(prev_target_ind))[:num_prev_target_ind]
 
                 prev_out_ind = prev_out_ind[random_subset_mask]
@@ -162,8 +162,6 @@ class DETRTrackingBase(nn.Module):
                     else:
                         prev_out, _, prev_features, _, _ = super().forward([t['prev_image'] for t in targets])
 
-                    # prev_out = {k: v.detach() for k, v in prev_out.items() if torch.is_tensor(v)}
-
                     prev_outputs_without_aux = {
                         k: v for k, v in prev_out.items() if 'aux_outputs' not in k}
                     prev_indices = self._matcher(prev_outputs_without_aux, prev_targets)
@@ -176,7 +174,6 @@ class DETRTrackingBase(nn.Module):
                     device = target['boxes'].device
 
                     target['track_query_hs_embeds'] = torch.zeros(0, self.hidden_dim).float().to(device)
-                    # target['track_queries_placeholder_mask'] = torch.zeros(self.num_queries).bool().to(device)
                     target['track_queries_mask'] = torch.zeros(self.num_queries).bool().to(device)
                     target['track_queries_fal_pos_mask'] = torch.zeros(self.num_queries).bool().to(device)
                     target['track_query_boxes'] = torch.zeros(0, 4).to(device)

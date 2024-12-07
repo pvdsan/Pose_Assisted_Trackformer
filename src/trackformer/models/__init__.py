@@ -19,9 +19,7 @@ def build_model(args):
     elif args.dataset == 'coco_panoptic':
         num_classes = 250
     elif args.dataset in ['coco_person', 'mot', 'mot_crowdhuman', 'crowdhuman', 'mot_coco_person']:
-        # num_classes = 91
-        num_classes = 20
-        #num_classes = 1
+        num_classes = 3
     else:
         raise NotImplementedError
 
@@ -68,8 +66,6 @@ def build_model(args):
 
         detr_kwargs['transformer'] = transformer
         detr_kwargs['num_feature_levels'] = args.num_feature_levels
-        detr_kwargs['with_box_refine'] = args.with_box_refine
-        detr_kwargs['two_stage'] = args.two_stage
         detr_kwargs['multi_frame_attention'] = args.multi_frame_attention
         detr_kwargs['multi_frame_encoding'] = args.multi_frame_encoding
         detr_kwargs['merge_frame_features'] = args.merge_frame_features
@@ -113,9 +109,6 @@ def build_model(args):
         aux_weight_dict = {}
         for i in range(args.dec_layers - 1):
             aux_weight_dict.update({k + f'_{i}': v for k, v in weight_dict.items()})
-
-        if args.two_stage:
-            aux_weight_dict.update({k + f'_enc': v for k, v in weight_dict.items()})
         weight_dict.update(aux_weight_dict)
 
     losses = ['labels', 'boxes', 'cardinality']

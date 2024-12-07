@@ -29,7 +29,7 @@ def _get_clones(module, N):
 class DeformableDETR(DETR):
     """ This is the Deformable DETR module that performs object detection """
     def __init__(self, backbone, transformer, num_classes, num_queries, num_feature_levels,
-                 aux_loss=True, with_box_refine=False, two_stage=False, overflow_boxes=False,
+                 aux_loss=True, overflow_boxes=False,
                  multi_frame_attention=False, multi_frame_encoding=False, merge_frame_features=False):
         """ Initializes the model.
         Parameters:
@@ -40,8 +40,6 @@ class DeformableDETR(DETR):
                          number of objects DETR can detect in a single image. For COCO,
                          we recommend 100 queries.
             aux_loss: True if auxiliary decoding losses (loss at each decoder layer) are to be used.
-            with_box_refine: iterative bounding box refinement
-            two_stage: two-stage Deformable DETR
         """
         super().__init__(backbone, transformer, num_classes, num_queries, aux_loss)
 
@@ -50,8 +48,10 @@ class DeformableDETR(DETR):
         self.multi_frame_encoding = multi_frame_encoding
         self.overflow_boxes = overflow_boxes
         self.num_feature_levels = num_feature_levels
-        if not two_stage:
-            self.query_embed = nn.Embedding(num_queries, self.hidden_dim * 2)
+        self.query_embed = nn.Embedding(num_queries, self.hidden_dim * 2)
+            
+        # Learned fusion layer for track and pose embeddings. This maps from (2*D) -> D
+        self.track_pose_fusion = nn.Linear(self.hidden_dim * 2, self.hidden_dim)
         num_channels = backbone.num_channels[-3:]
         if num_feature_levels > 1:
             num_backbone_outs = len(backbone.strides) - 1
@@ -76,8 +76,6 @@ class DeformableDETR(DETR):
                     nn.Conv2d(num_channels[0], self.hidden_dim, kernel_size=1),
                     nn.GroupNorm(32, self.hidden_dim),
                 )])
-        self.with_box_refine = with_box_refine
-        self.two_stage = two_stage
 
         prior_prob = 0.01
         bias_value = -math.log((1 - prior_prob) / prior_prob)
@@ -88,28 +86,13 @@ class DeformableDETR(DETR):
             nn.init.xavier_uniform_(proj[0].weight, gain=1)
             nn.init.constant_(proj[0].bias, 0)
 
-        # if two-stage, the last class_embed and bbox_embed is for
         # region proposal generation
         num_pred = transformer.decoder.num_layers
-        if two_stage:
-            num_pred += 1
 
-        if with_box_refine:
-            self.class_embed = _get_clones(self.class_embed, num_pred)
-            self.bbox_embed = _get_clones(self.bbox_embed, num_pred)
-            nn.init.constant_(self.bbox_embed[0].layers[-1].bias.data[2:], -2.0)
-            # hack implementation for iterative bounding box refinement
-            self.transformer.decoder.bbox_embed = self.bbox_embed
-        else:
-            nn.init.constant_(self.bbox_embed.layers[-1].bias.data[2:], -2.0)
-            self.class_embed = nn.ModuleList([self.class_embed for _ in range(num_pred)])
-            self.bbox_embed = nn.ModuleList([self.bbox_embed for _ in range(num_pred)])
-            self.transformer.decoder.bbox_embed = None
-        if two_stage:
-            # hack implementation for two-stage
-            self.transformer.decoder.class_embed = self.class_embed
-            for box_embed in self.bbox_embed:
-                nn.init.constant_(box_embed.layers[-1].bias.data[2:], 0.0)
+        nn.init.constant_(self.bbox_embed.layers[-1].bias.data[2:], -2.0)
+        self.class_embed = nn.ModuleList([self.class_embed for _ in range(num_pred)])
+        self.bbox_embed = nn.ModuleList([self.bbox_embed for _ in range(num_pred)])
+        self.transformer.decoder.bbox_embed = None
 
         if self.merge_frame_features:
             self.merge_features = nn.Conv2d(self.hidden_dim * 2, self.hidden_dim, kernel_size=1)
@@ -195,8 +178,8 @@ class DeformableDETR(DETR):
                         pos_list.append(pos_l)
 
         query_embeds = None
-        if not self.two_stage:
-            query_embeds = self.query_embed.weight
+        query_embeds = self.query_embed.weight
+        
         hs, memory, init_reference, inter_references, enc_outputs_class, enc_outputs_coord_unact = \
             self.transformer(src_list, mask_list, pos_list, query_embeds, targets)
 
@@ -227,10 +210,6 @@ class DeformableDETR(DETR):
 
         if self.aux_loss:
             out['aux_outputs'] = self._set_aux_loss(outputs_class, outputs_coord)
-
-        if self.two_stage:
-            enc_outputs_coord = enc_outputs_coord_unact.sigmoid()
-            out['enc_outputs'] = {'pred_logits': enc_outputs_class, 'pred_boxes': enc_outputs_coord}
 
         offset = 0
         memory_slices = []

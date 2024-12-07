@@ -27,21 +27,11 @@ def build_model(args):
     device = torch.device(args.device)
     backbone = build_backbone(args)
     matcher = build_matcher(args)
-    if args.pose_features:
-        # Freeze the encoder of the transformer
-        if hasattr(transformer, 'encoder'):
-            for param in transformer.encoder.parameters():
-                param.requires_grad = False
-        # Freeze the backbone
-        for param in backbone.parameters():
-            param.requires_grad = False
-
-        pose_model = build_pose_model(args)          
+      
 
 
     detr_kwargs = {
         'backbone': backbone,
-        'pose_model':pose_model,
         'num_classes': num_classes - 1 if args.focal_loss else num_classes,
         'num_queries': args.num_queries,
         'aux_loss': args.aux_loss,
@@ -63,6 +53,17 @@ def build_model(args):
         detr_kwargs['multi_frame_attention'] = args.multi_frame_attention
         detr_kwargs['multi_frame_encoding'] = args.multi_frame_encoding
         detr_kwargs['merge_frame_features'] = args.merge_frame_features
+        
+        if args.pose_features:
+            # Freeze the encoder of the transformer
+            if hasattr(transformer, 'encoder'):
+                for param in transformer.encoder.parameters():
+                    param.requires_grad = False
+            # Freeze the backbone
+            for param in backbone.parameters():
+                param.requires_grad = False
+
+            pose_model = build_pose_model(args)    
 
         if args.tracking:
             if args.masks:

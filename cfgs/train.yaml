@@ -64,8 +64,13 @@ multi_frame_encoding: true
 multi_frame_attention_separate_encoder: true
 merge_frame_features: false
 overflow_boxes: false
+
 # Pose Estimation
 pose_features: true
+pose_embedding_dim: 288          # Dimension of the output pose embeddings
+bbox_format: 'xyxy'               # Format of bounding boxes ('xyxy' or 'cxcywh')
+pose_threshold: 0.3                # Confidence threshold for pose keypoints
+
 # Segmentation
 masks: false
 # Matcher

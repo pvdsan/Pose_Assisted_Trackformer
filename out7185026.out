@@ -1,0 +1,470 @@
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = False
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 0.0
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=0.0, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=False, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = False
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 0.0
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=0.0, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=False, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = False
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 0.0
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=0.0, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=False, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+Configuration ([34mmodified[0m, [32madded[0m, [31mtypechanged[0m, [2mdoc[0m):
+  aux_loss = True
+  backbone = 'resnet50'
+  batch_size = 2
+  bbox_loss_coef = 5.0
+  clip_max_norm = 0.1
+[34m  cls_loss_coef = 2.0[0m
+  coco_and_crowdhuman_prev_frame_rnd_augs = 0.2
+  coco_min_num_objects = 0
+  coco_panoptic_path = None
+  coco_path = 'data/coco_2017'
+  coco_person_train_split = None
+  crowdhuman_path = 'data/CrowdHuman'
+  crowdhuman_train_split = None
+[34m  dataset = 'mot'[0m
+  debug = False
+  dec_layers = 6
+  dec_n_points = 4
+[34m  deformable = True[0m
+  device = 'cuda'
+  dice_loss_coef = 1.0
+  dilation = False
+[34m  dim_feedforward = 1024[0m
+  dist_url = 'env://'
+  dropout = 0.1
+  enc_layers = 6
+  enc_n_points = 4
+  eos_coef = 0.1
+  epochs = 50
+  eval_only = False
+  eval_train = False
+  focal_alpha = 0.25
+  focal_gamma = 2
+[34m  focal_loss = True[0m
+  freeze_detr = False
+  giou_loss_coef = 2
+[34m  hidden_dim = 288[0m
+  load_mask_head_from_model = None
+  lr = 0.0002
+  lr_backbone = 0.0
+  lr_backbone_names = ['backbone.0']
+[34m  lr_drop = 10[0m
+  lr_linear_proj_mult = 0.1
+  lr_linear_proj_names = ['reference_points', 'sampling_offsets']
+  lr_track = 0.0001
+  mask_loss_coef = 1.0
+  masks = False
+  merge_frame_features = False
+  mot_path_train = 'data/MOT17'
+  mot_path_val = 'data/MOT17'
+[34m  multi_frame_attention = True[0m
+  multi_frame_attention_separate_encoder = True
+  multi_frame_encoding = True
+  nheads = 8
+  no_vis = True
+[34m  num_feature_levels = 4[0m
+[34m  num_queries = 500[0m
+  num_workers = 2
+[34m  output_dir = 'models/mot17_deformable_multi_frame'[0m
+[34m  overflow_boxes = True[0m
+  overwrite_lr_scheduler = False
+  overwrite_lrs = False
+  pose_features = True
+  position_embedding = 'sine'
+  pre_norm = False
+[34m  resume = 'models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth'[0m
+  resume_optim = False
+  resume_shift_neuron = False
+  resume_vis = False
+  save_model_interval = 5
+  seed = 42
+  set_cost_bbox = 5.0
+[34m  set_cost_class = 2.0[0m
+  set_cost_giou = 2.0
+  start_epoch = 1
+  track_attention = False
+  track_backprop_prev_frame = False
+[34m  track_prev_frame_range = 5[0m
+  track_prev_frame_rnd_augs = 0.01
+  track_prev_prev_frame = False
+  track_query_false_negative_prob = 0.4
+  track_query_false_positive_eos_weight = True
+  track_query_false_positive_prob = 0.1
+[34m  tracking = True[0m
+  tracking_eval = True
+[34m  train_split = 'mot17_train_coco'[0m
+  two_stage = False
+  val_interval = 5
+[34m  val_split = 'mot17_train_cross_val_frame_0_5_to_1_0_coco'[0m
+  vis_and_log_interval = 50
+  vis_port = 8090
+  vis_server = 'http://localhost:8097'
+  weight_decay = 0.0001
+[34m  with_box_refine = True[0m
+  world_size = 4
+  img_transform:
+    max_size = 1333
+    val_width = 800
+Namespace(lr=0.0002, lr_backbone_names=['backbone.0'], lr_backbone=0.0, lr_linear_proj_names=['reference_points', 'sampling_offsets'], lr_linear_proj_mult=0.1, lr_track=0.0001, overwrite_lrs=False, overwrite_lr_scheduler=False, batch_size=2, weight_decay=0.0001, epochs=50, lr_drop=10, clip_max_norm=0.1, deformable=True, with_box_refine=True, two_stage=False, freeze_detr=False, load_mask_head_from_model=None, backbone='resnet50', dilation=False, position_embedding='sine', num_feature_levels=4, enc_layers=6, dec_layers=6, dim_feedforward=1024, hidden_dim=288, dropout=0.1, nheads=8, num_queries=500, pre_norm=False, dec_n_points=4, enc_n_points=4, tracking=True, tracking_eval=True, track_prev_frame_range=5, track_prev_frame_rnd_augs=0.01, track_prev_prev_frame=False, track_backprop_prev_frame=False, track_query_false_positive_prob=0.1, track_query_false_negative_prob=0.4, track_query_false_positive_eos_weight=True, track_attention=False, multi_frame_attention=True, multi_frame_encoding=True, multi_frame_attention_separate_encoder=True, merge_frame_features=False, overflow_boxes=True, pose_features=True, masks=False, set_cost_class=2.0, set_cost_bbox=5.0, set_cost_giou=2.0, aux_loss=True, mask_loss_coef=1.0, dice_loss_coef=1.0, cls_loss_coef=2.0, bbox_loss_coef=5.0, giou_loss_coef=2, eos_coef=0.1, focal_loss=True, focal_alpha=0.25, focal_gamma=2, dataset='mot', train_split='mot17_train_coco', val_split='mot17_train_cross_val_frame_0_5_to_1_0_coco', coco_path='data/coco_2017', coco_panoptic_path=None, mot_path_train='data/MOT17', mot_path_val='data/MOT17', crowdhuman_path='data/CrowdHuman', crowdhuman_train_split=None, coco_person_train_split=None, coco_and_crowdhuman_prev_frame_rnd_augs=0.2, coco_min_num_objects=0, img_transform=Namespace(max_size=1333, val_width=800), output_dir='models/mot17_deformable_multi_frame', device='cuda', seed=42, resume='models/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint_hidden_dim_288.pth', resume_shift_neuron=False, resume_optim=False, resume_vis=False, start_epoch=1, eval_only=False, eval_train=False, num_workers=2, val_interval=5, debug=False, save_model_interval=5, world_size=4, dist_url='env://', vis_server='http://localhost:8097', vis_port=8090, vis_and_log_interval=50, no_vis=True)
+| distributed init (rank 0): env://
+git:
+  sha: 45c01b0542b97f7ce222c1887a2b8fc6c13329d6, status: has uncommited changes, branch: main
+
+| distributed init (rank 3): env://
+| distributed init (rank 2): env://
+| distributed init (rank 1): env://
+Encoder and backbone frozen.
+Trainable parameters in transformer: 7888130
+Trainable parameters in backbone: 0
+NUM TRAINABLE MODEL PARAMS: 15560594
+loading annotations into memory...
+Done (t=1.45s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.56s)
+creating index...
+index created!
+Load class_embed.0.weight (20, 288) from resume model (91, 288).
+Load class_embed.0.bias (20,) from resume model (91,).
+Load class_embed.1.weight (20, 288) from resume model (91, 288).
+Load class_embed.1.bias (20,) from resume model (91,).
+Load class_embed.2.weight (20, 288) from resume model (91, 288).
+Load class_embed.2.bias (20,) from resume model (91,).
+Load class_embed.3.weight (20, 288) from resume model (91, 288).
+Load class_embed.3.bias (20,) from resume model (91,).
+Load class_embed.4.weight (20, 288) from resume model (91, 288).
+Load class_embed.4.bias (20,) from resume model (91,).
+Load class_embed.5.weight (20, 288) from resume model (91, 288).
+Load class_embed.5.bias (20,) from resume model (91,).
+Start training
+Epoch: [1]  [   0/2656]  eta: 0:44:47  lr: 0.000200  class_error: 0.00  loss: 11.8142 (11.8142)  loss_bbox: 0.3268 (0.3268)  loss_bbox_0: 0.3345 (0.3345)  loss_bbox_1: 0.3076 (0.3076)  loss_bbox_2: 0.3077 (0.3077)  loss_bbox_3: 0.3009 (0.3009)  loss_bbox_4: 0.2985 (0.2985)  loss_ce: 1.1350 (1.1350)  loss_ce_0: 0.6553 (0.6553)  loss_ce_1: 0.7503 (0.7503)  loss_ce_2: 0.8747 (0.8747)  loss_ce_3: 1.0407 (1.0407)  loss_ce_4: 1.1695 (1.1695)  loss_giou: 0.7298 (0.7298)  loss_giou_0: 0.7685 (0.7685)  loss_giou_1: 0.6949 (0.6949)  loss_giou_2: 0.7190 (0.7190)  loss_giou_3: 0.6979 (0.6979)  loss_giou_4: 0.7027 (0.7027)  cardinality_error_unscaled: 495.8750 (495.8750)  cardinality_error_0_unscaled: 495.2500 (495.2500)  cardinality_error_1_unscaled: 495.7500 (495.7500)  cardinality_error_2_unscaled: 495.6250 (495.6250)  cardinality_error_3_unscaled: 495.3750 (495.3750)  cardinality_error_4_unscaled: 495.7500 (495.7500)  class_error_unscaled: 0.0000 (0.0000)  loss_bbox_unscaled: 0.0654 (0.0654)  loss_bbox_0_unscaled: 0.0669 (0.0669)  loss_bbox_1_unscaled: 0.0615 (0.0615)  loss_bbox_2_unscaled: 0.0615 (0.0615)  loss_bbox_3_unscaled: 0.0602 (0.0602)  loss_bbox_4_unscaled: 0.0597 (0.0597)  loss_ce_unscaled: 0.5675 (0.5675)  loss_ce_0_unscaled: 0.3276 (0.3276)  loss_ce_1_unscaled: 0.3752 (0.3752)  loss_ce_2_unscaled: 0.4373 (0.4373)  loss_ce_3_unscaled: 0.5204 (0.5204)  loss_ce_4_unscaled: 0.5847 (0.5847)  loss_giou_unscaled: 0.3649 (0.3649)  loss_giou_0_unscaled: 0.3842 (0.3842)  loss_giou_1_unscaled: 0.3474 (0.3474)  loss_giou_2_unscaled: 0.3595 (0.3595)  loss_giou_3_unscaled: 0.3489 (0.3489)  loss_giou_4_unscaled: 0.3513 (0.3513)  lr_backbone: 0.0000 (0.0000)  time: 4.0472  data: 0.8916  max mem: 5915
+Epoch: [1]  [ 200/2656]  eta: 0:10:13  lr: 0.000200  class_error: 0.00  loss: 7.9994 (8.9090)  loss_bbox: 0.2791 (0.3133)  loss_bbox_0: 0.3075 (0.3490)  loss_bbox_1: 0.2785 (0.3176)  loss_bbox_2: 0.2780 (0.3152)  loss_bbox_3: 0.2822 (0.3145)  loss_bbox_4: 0.2820 (0.3140)  loss_ce: 0.3981 (0.4601)  loss_ce_0: 0.3949 (0.4417)  loss_ce_1: 0.4081 (0.4576)  loss_ce_2: 0.4054 (0.4566)  loss_ce_3: 0.3934 (0.4577)  loss_ce_4: 0.3924 (0.4583)  loss_giou: 0.6613 (0.6927)  loss_giou_0: 0.7356 (0.7706)  loss_giou_1: 0.6778 (0.7022)  loss_giou_2: 0.6687 (0.6958)  loss_giou_3: 0.6648 (0.6971)  loss_giou_4: 0.6647 (0.6950)  cardinality_error_unscaled: 492.7500 (491.9657)  cardinality_error_0_unscaled: 492.7500 (491.8162)  cardinality_error_1_unscaled: 492.7500 (491.9142)  cardinality_error_2_unscaled: 492.7500 (491.9314)  cardinality_error_3_unscaled: 492.7500 (491.8382)  cardinality_error_4_unscaled: 492.7500 (491.9216)  class_error_unscaled: 0.0000 (0.2378)  loss_bbox_unscaled: 0.0558 (0.0627)  loss_bbox_0_unscaled: 0.0615 (0.0698)  loss_bbox_1_unscaled: 0.0557 (0.0635)  loss_bbox_2_unscaled: 0.0556 (0.0630)  loss_bbox_3_unscaled: 0.0564 (0.0629)  loss_bbox_4_unscaled: 0.0564 (0.0628)  loss_ce_unscaled: 0.1990 (0.2300)  loss_ce_0_unscaled: 0.1975 (0.2208)  loss_ce_1_unscaled: 0.2041 (0.2288)  loss_ce_2_unscaled: 0.2027 (0.2283)  loss_ce_3_unscaled: 0.1967 (0.2289)  loss_ce_4_unscaled: 0.1962 (0.2292)  loss_giou_unscaled: 0.3307 (0.3464)  loss_giou_0_unscaled: 0.3678 (0.3853)  loss_giou_1_unscaled: 0.3389 (0.3511)  loss_giou_2_unscaled: 0.3343 (0.3479)  loss_giou_3_unscaled: 0.3324 (0.3486)  loss_giou_4_unscaled: 0.3323 (0.3475)  lr_backbone: 0.0000 (0.0000)  time: 0.9377  data: 0.0139  max mem: 10052
+Epoch: [1]  [ 400/2656]  eta: 0:09:05  lr: 0.000200  class_error: 1.79  loss: 7.6106 (8.3842)  loss_bbox: 0.2485 (0.2897)  loss_bbox_0: 0.2795 (0.3235)  loss_bbox_1: 0.2506 (0.2931)  loss_bbox_2: 0.2493 (0.2911)  loss_bbox_3: 0.2495 (0.2906)  loss_bbox_4: 0.2474 (0.2900)  loss_ce: 0.3455 (0.4081)  loss_ce_0: 0.3585 (0.4040)  loss_ce_1: 0.3675 (0.4144)  loss_ce_2: 0.3695 (0.4133)  loss_ce_3: 0.3556 (0.4097)  loss_ce_4: 0.3599 (0.4077)  loss_giou: 0.6258 (0.6771)  loss_giou_0: 0.7142 (0.7505)  loss_giou_1: 0.6306 (0.6852)  loss_giou_2: 0.6237 (0.6787)  loss_giou_3: 0.6245 (0.6795)  loss_giou_4: 0.6240 (0.6781)  cardinality_error_unscaled: 492.5000 (491.9121)  cardinality_error_0_unscaled: 492.5000 (491.8267)  cardinality_error_1_unscaled: 492.5000 (491.8824)  cardinality_error_2_unscaled: 492.5000 (491.8911)  cardinality_error_3_unscaled: 492.5000 (491.8441)  cardinality_error_4_unscaled: 492.5000 (491.8899)  class_error_unscaled: 0.0000 (0.1490)  loss_bbox_unscaled: 0.0497 (0.0579)  loss_bbox_0_unscaled: 0.0559 (0.0647)  loss_bbox_1_unscaled: 0.0501 (0.0586)  loss_bbox_2_unscaled: 0.0499 (0.0582)  loss_bbox_3_unscaled: 0.0499 (0.0581)  loss_bbox_4_unscaled: 0.0495 (0.0580)  loss_ce_unscaled: 0.1728 (0.2040)  loss_ce_0_unscaled: 0.1793 (0.2020)  loss_ce_1_unscaled: 0.1838 (0.2072)  loss_ce_2_unscaled: 0.1847 (0.2066)  loss_ce_3_unscaled: 0.1778 (0.2048)  loss_ce_4_unscaled: 0.1800 (0.2039)  loss_giou_unscaled: 0.3129 (0.3385)  loss_giou_0_unscaled: 0.3571 (0.3753)  loss_giou_1_unscaled: 0.3153 (0.3426)  loss_giou_2_unscaled: 0.3118 (0.3393)  loss_giou_3_unscaled: 0.3122 (0.3398)  loss_giou_4_unscaled: 0.3120 (0.3390)  lr_backbone: 0.0000 (0.0000)  time: 0.9320  data: 0.0126  max mem: 10052
+Epoch: [1]  [ 600/2656]  eta: 0:08:08  lr: 0.000200  class_error: 0.00  loss: 7.2599 (8.1141)  loss_bbox: 0.2424 (0.2754)  loss_bbox_0: 0.2710 (0.3079)  loss_bbox_1: 0.2427 (0.2790)  loss_bbox_2: 0.2402 (0.2767)  loss_bbox_3: 0.2468 (0.2766)  loss_bbox_4: 0.2450 (0.2760)  loss_ce: 0.3322 (0.3852)  loss_ce_0: 0.3439 (0.3867)  loss_ce_1: 0.3536 (0.3959)  loss_ce_2: 0.3490 (0.3939)  loss_ce_3: 0.3418 (0.3878)  loss_ce_4: 0.3286 (0.3848)  loss_giou: 0.6195 (0.6665)  loss_giou_0: 0.6998 (0.7394)  loss_giou_1: 0.6426 (0.6761)  loss_giou_2: 0.6347 (0.6687)  loss_giou_3: 0.6307 (0.6694)  loss_giou_4: 0.6243 (0.6681)  cardinality_error_unscaled: 491.6250 (491.9462)  cardinality_error_0_unscaled: 491.6250 (491.8858)  cardinality_error_1_unscaled: 491.6250 (491.9263)  cardinality_error_2_unscaled: 491.6250 (491.9321)  cardinality_error_3_unscaled: 491.6250 (491.8932)  cardinality_error_4_unscaled: 491.6250 (491.9296)  class_error_unscaled: 0.0000 (0.0997)  loss_bbox_unscaled: 0.0485 (0.0551)  loss_bbox_0_unscaled: 0.0542 (0.0616)  loss_bbox_1_unscaled: 0.0485 (0.0558)  loss_bbox_2_unscaled: 0.0480 (0.0553)  loss_bbox_3_unscaled: 0.0494 (0.0553)  loss_bbox_4_unscaled: 0.0490 (0.0552)  loss_ce_unscaled: 0.1661 (0.1926)  loss_ce_0_unscaled: 0.1719 (0.1933)  loss_ce_1_unscaled: 0.1768 (0.1980)  loss_ce_2_unscaled: 0.1745 (0.1969)  loss_ce_3_unscaled: 0.1709 (0.1939)  loss_ce_4_unscaled: 0.1643 (0.1924)  loss_giou_unscaled: 0.3097 (0.3332)  loss_giou_0_unscaled: 0.3499 (0.3697)  loss_giou_1_unscaled: 0.3213 (0.3381)  loss_giou_2_unscaled: 0.3173 (0.3343)  loss_giou_3_unscaled: 0.3154 (0.3347)  loss_giou_4_unscaled: 0.3121 (0.3340)  lr_backbone: 0.0000 (0.0000)  time: 0.9076  data: 0.0125  max mem: 10052
+Epoch: [1]  [ 800/2656]  eta: 0:07:19  lr: 0.000200  class_error: 0.00  loss: 7.7599 (7.9837)  loss_bbox: 0.2106 (0.2688)  loss_bbox_0: 0.2486 (0.3013)  loss_bbox_1: 0.2126 (0.2721)  loss_bbox_2: 0.2099 (0.2699)  loss_bbox_3: 0.2075 (0.2694)  loss_bbox_4: 0.2123 (0.2692)  loss_ce: 0.3444 (0.3726)  loss_ce_0: 0.3585 (0.3790)  loss_ce_1: 0.3824 (0.3876)  loss_ce_2: 0.3687 (0.3848)  loss_ce_3: 0.3556 (0.3775)  loss_ce_4: 0.3552 (0.3733)  loss_giou: 0.6517 (0.6614)  loss_giou_0: 0.7269 (0.7350)  loss_giou_1: 0.6493 (0.6709)  loss_giou_2: 0.6549 (0.6638)  loss_giou_3: 0.6467 (0.6640)  loss_giou_4: 0.6527 (0.6631)  cardinality_error_unscaled: 493.7500 (492.0833)  cardinality_error_0_unscaled: 493.7500 (492.0392)  cardinality_error_1_unscaled: 493.7500 (492.0697)  cardinality_error_2_unscaled: 493.7500 (492.0746)  cardinality_error_3_unscaled: 493.7500 (492.0386)  cardinality_error_4_unscaled: 493.7500 (492.0721)  class_error_unscaled: 0.0000 (0.0788)  loss_bbox_unscaled: 0.0421 (0.0538)  loss_bbox_0_unscaled: 0.0497 (0.0603)  loss_bbox_1_unscaled: 0.0425 (0.0544)  loss_bbox_2_unscaled: 0.0420 (0.0540)  loss_bbox_3_unscaled: 0.0415 (0.0539)  loss_bbox_4_unscaled: 0.0425 (0.0538)  loss_ce_unscaled: 0.1722 (0.1863)  loss_ce_0_unscaled: 0.1793 (0.1895)  loss_ce_1_unscaled: 0.1912 (0.1938)  loss_ce_2_unscaled: 0.1843 (0.1924)  loss_ce_3_unscaled: 0.1778 (0.1887)  loss_ce_4_unscaled: 0.1776 (0.1867)  loss_giou_unscaled: 0.3259 (0.3307)  loss_giou_0_unscaled: 0.3634 (0.3675)  loss_giou_1_unscaled: 0.3246 (0.3354)  loss_giou_2_unscaled: 0.3275 (0.3319)  loss_giou_3_unscaled: 0.3233 (0.3320)  loss_giou_4_unscaled: 0.3264 (0.3315)  lr_backbone: 0.0000 (0.0000)  time: 0.9538  data: 0.0128  max mem: 10394
+Epoch: [1]  [1000/2656]  eta: 0:06:32  lr: 0.000200  class_error: 0.00  loss: 6.6244 (7.7982)  loss_bbox: 0.1647 (0.2568)  loss_bbox_0: 0.2024 (0.2893)  loss_bbox_1: 0.1658 (0.2598)  loss_bbox_2: 0.1637 (0.2577)  loss_bbox_3: 0.1660 (0.2574)  loss_bbox_4: 0.1660 (0.2573)  loss_ce: 0.2812 (0.3583)  loss_ce_0: 0.3195 (0.3701)  loss_ce_1: 0.3207 (0.3785)  loss_ce_2: 0.3102 (0.3743)  loss_ce_3: 0.2897 (0.3652)  loss_ce_4: 0.2870 (0.3604)  loss_giou: 0.5763 (0.6540)  loss_giou_0: 0.6764 (0.7298)  loss_giou_1: 0.5932 (0.6626)  loss_giou_2: 0.5814 (0.6556)  loss_giou_3: 0.5724 (0.6558)  loss_giou_4: 0.5792 (0.6553)  cardinality_error_unscaled: 492.1250 (492.0792)  cardinality_error_0_unscaled: 492.1250 (492.0438)  cardinality_error_1_unscaled: 492.1250 (492.0672)  cardinality_error_2_unscaled: 492.1250 (492.0717)  cardinality_error_3_unscaled: 492.1250 (492.0413)  cardinality_error_4_unscaled: 492.1250 (492.0677)  class_error_unscaled: 0.0000 (0.0631)  loss_bbox_unscaled: 0.0329 (0.0514)  loss_bbox_0_unscaled: 0.0405 (0.0579)  loss_bbox_1_unscaled: 0.0332 (0.0520)  loss_bbox_2_unscaled: 0.0327 (0.0515)  loss_bbox_3_unscaled: 0.0332 (0.0515)  loss_bbox_4_unscaled: 0.0332 (0.0515)  loss_ce_unscaled: 0.1406 (0.1791)  loss_ce_0_unscaled: 0.1597 (0.1850)  loss_ce_1_unscaled: 0.1603 (0.1892)  loss_ce_2_unscaled: 0.1551 (0.1872)  loss_ce_3_unscaled: 0.1449 (0.1826)  loss_ce_4_unscaled: 0.1435 (0.1802)  loss_giou_unscaled: 0.2881 (0.3270)  loss_giou_0_unscaled: 0.3382 (0.3649)  loss_giou_1_unscaled: 0.2966 (0.3313)  loss_giou_2_unscaled: 0.2907 (0.3278)  loss_giou_3_unscaled: 0.2862 (0.3279)  loss_giou_4_unscaled: 0.2896 (0.3276)  lr_backbone: 0.0000 (0.0000)  time: 0.9419  data: 0.0126  max mem: 10394
+Epoch: [1]  [1200/2656]  eta: 0:05:44  lr: 0.000200  class_error: 0.00  loss: 6.8370 (7.6589)  loss_bbox: 0.1901 (0.2493)  loss_bbox_0: 0.2104 (0.2816)  loss_bbox_1: 0.1896 (0.2523)  loss_bbox_2: 0.1885 (0.2502)  loss_bbox_3: 0.1873 (0.2499)  loss_bbox_4: 0.1890 (0.2497)  loss_ce: 0.2739 (0.3475)  loss_ce_0: 0.3329 (0.3642)  loss_ce_1: 0.3386 (0.3715)  loss_ce_2: 0.3292 (0.3663)  loss_ce_3: 0.2843 (0.3546)  loss_ce_4: 0.2859 (0.3499)  loss_giou: 0.5780 (0.6469)  loss_giou_0: 0.6504 (0.7238)  loss_giou_1: 0.5939 (0.6558)  loss_giou_2: 0.5842 (0.6490)  loss_giou_3: 0.5825 (0.6486)  loss_giou_4: 0.5812 (0.6479)  cardinality_error_unscaled: 491.8750 (491.9909)  cardinality_error_0_unscaled: 491.8750 (491.9626)  cardinality_error_1_unscaled: 491.8750 (491.9817)  cardinality_error_2_unscaled: 491.8750 (491.9846)  cardinality_error_3_unscaled: 491.6250 (491.9539)  cardinality_error_4_unscaled: 491.7500 (491.9813)  class_error_unscaled: 0.0000 (0.0526)  loss_bbox_unscaled: 0.0380 (0.0499)  loss_bbox_0_unscaled: 0.0421 (0.0563)  loss_bbox_1_unscaled: 0.0379 (0.0505)  loss_bbox_2_unscaled: 0.0377 (0.0500)  loss_bbox_3_unscaled: 0.0375 (0.0500)  loss_bbox_4_unscaled: 0.0378 (0.0499)  loss_ce_unscaled: 0.1369 (0.1737)  loss_ce_0_unscaled: 0.1664 (0.1821)  loss_ce_1_unscaled: 0.1693 (0.1857)  loss_ce_2_unscaled: 0.1646 (0.1832)  loss_ce_3_unscaled: 0.1422 (0.1773)  loss_ce_4_unscaled: 0.1430 (0.1750)  loss_giou_unscaled: 0.2890 (0.3234)  loss_giou_0_unscaled: 0.3252 (0.3619)  loss_giou_1_unscaled: 0.2970 (0.3279)  loss_giou_2_unscaled: 0.2921 (0.3245)  loss_giou_3_unscaled: 0.2913 (0.3243)  loss_giou_4_unscaled: 0.2906 (0.3239)  lr_backbone: 0.0000 (0.0000)  time: 0.9312  data: 0.0132  max mem: 10394
+Epoch: [1]  [1400/2656]  eta: 0:04:57  lr: 0.000200  class_error: 0.00  loss: 6.9014 (7.5507)  loss_bbox: 0.1824 (0.2442)  loss_bbox_0: 0.2121 (0.2763)  loss_bbox_1: 0.1814 (0.2472)  loss_bbox_2: 0.1787 (0.2450)  loss_bbox_3: 0.1813 (0.2449)  loss_bbox_4: 0.1818 (0.2447)  loss_ce: 0.2686 (0.3357)  loss_ce_0: 0.3407 (0.3588)  loss_ce_1: 0.3426 (0.3653)  loss_ce_2: 0.3236 (0.3591)  loss_ce_3: 0.2785 (0.3429)  loss_ce_4: 0.2678 (0.3381)  loss_giou: 0.6117 (0.6423)  loss_giou_0: 0.6798 (0.7209)  loss_giou_1: 0.6123 (0.6519)  loss_giou_2: 0.6202 (0.6451)  loss_giou_3: 0.6056 (0.6445)  loss_giou_4: 0.6116 (0.6437)  cardinality_error_unscaled: 492.0000 (491.9551)  cardinality_error_0_unscaled: 492.0000 (491.9341)  cardinality_error_1_unscaled: 492.0000 (491.9501)  cardinality_error_2_unscaled: 492.0000 (491.9516)  cardinality_error_3_unscaled: 491.8750 (491.9145)  cardinality_error_4_unscaled: 492.0000 (491.9494)  class_error_unscaled: 0.0000 (0.0477)  loss_bbox_unscaled: 0.0365 (0.0488)  loss_bbox_0_unscaled: 0.0424 (0.0553)  loss_bbox_1_unscaled: 0.0363 (0.0494)  loss_bbox_2_unscaled: 0.0357 (0.0490)  loss_bbox_3_unscaled: 0.0363 (0.0490)  loss_bbox_4_unscaled: 0.0364 (0.0489)  loss_ce_unscaled: 0.1343 (0.1678)  loss_ce_0_unscaled: 0.1703 (0.1794)  loss_ce_1_unscaled: 0.1713 (0.1826)  loss_ce_2_unscaled: 0.1618 (0.1796)  loss_ce_3_unscaled: 0.1393 (0.1715)  loss_ce_4_unscaled: 0.1339 (0.1691)  loss_giou_unscaled: 0.3059 (0.3212)  loss_giou_0_unscaled: 0.3399 (0.3605)  loss_giou_1_unscaled: 0.3062 (0.3260)  loss_giou_2_unscaled: 0.3101 (0.3225)  loss_giou_3_unscaled: 0.3028 (0.3222)  loss_giou_4_unscaled: 0.3058 (0.3219)  lr_backbone: 0.0000 (0.0000)  time: 0.9678  data: 0.0123  max mem: 10394
+Epoch: [1]  [1600/2656]  eta: 0:04:09  lr: 0.000200  class_error: 0.00  loss: 6.7784 (7.4611)  loss_bbox: 0.2185 (0.2415)  loss_bbox_0: 0.2635 (0.2739)  loss_bbox_1: 0.2291 (0.2449)  loss_bbox_2: 0.2211 (0.2425)  loss_bbox_3: 0.2247 (0.2426)  loss_bbox_4: 0.2250 (0.2423)  loss_ce: 0.2358 (0.3256)  loss_ce_0: 0.3152 (0.3542)  loss_ce_1: 0.3235 (0.3609)  loss_ce_2: 0.3119 (0.3537)  loss_ce_3: 0.2491 (0.3334)  loss_ce_4: 0.2459 (0.3281)  loss_giou: 0.5772 (0.6369)  loss_giou_0: 0.6797 (0.7159)  loss_giou_1: 0.5799 (0.6469)  loss_giou_2: 0.5746 (0.6400)  loss_giou_3: 0.5779 (0.6393)  loss_giou_4: 0.5823 (0.6385)  cardinality_error_unscaled: 493.0000 (492.0290)  cardinality_error_0_unscaled: 493.0000 (492.0128)  cardinality_error_1_unscaled: 493.0000 (492.0268)  cardinality_error_2_unscaled: 493.0000 (492.0274)  cardinality_error_3_unscaled: 493.0000 (491.9885)  cardinality_error_4_unscaled: 493.0000 (492.0256)  class_error_unscaled: 0.0000 (0.0417)  loss_bbox_unscaled: 0.0437 (0.0483)  loss_bbox_0_unscaled: 0.0527 (0.0548)  loss_bbox_1_unscaled: 0.0458 (0.0490)  loss_bbox_2_unscaled: 0.0442 (0.0485)  loss_bbox_3_unscaled: 0.0449 (0.0485)  loss_bbox_4_unscaled: 0.0450 (0.0485)  loss_ce_unscaled: 0.1179 (0.1628)  loss_ce_0_unscaled: 0.1576 (0.1771)  loss_ce_1_unscaled: 0.1617 (0.1805)  loss_ce_2_unscaled: 0.1559 (0.1769)  loss_ce_3_unscaled: 0.1245 (0.1667)  loss_ce_4_unscaled: 0.1229 (0.1641)  loss_giou_unscaled: 0.2886 (0.3184)  loss_giou_0_unscaled: 0.3398 (0.3580)  loss_giou_1_unscaled: 0.2900 (0.3235)  loss_giou_2_unscaled: 0.2873 (0.3200)  loss_giou_3_unscaled: 0.2889 (0.3197)  loss_giou_4_unscaled: 0.2911 (0.3192)  lr_backbone: 0.0000 (0.0000)  time: 0.9125  data: 0.0134  max mem: 10394
+Epoch: [1]  [1800/2656]  eta: 0:03:21  lr: 0.000200  class_error: 0.00  loss: 6.3841 (7.3767)  loss_bbox: 0.1823 (0.2395)  loss_bbox_0: 0.2201 (0.2717)  loss_bbox_1: 0.1872 (0.2427)  loss_bbox_2: 0.1851 (0.2404)  loss_bbox_3: 0.1887 (0.2406)  loss_bbox_4: 0.1852 (0.2403)  loss_ce: 0.2368 (0.3167)  loss_ce_0: 0.3193 (0.3502)  loss_ce_1: 0.3141 (0.3568)  loss_ce_2: 0.2969 (0.3487)  loss_ce_3: 0.2408 (0.3246)  loss_ce_4: 0.2401 (0.3193)  loss_giou: 0.5726 (0.6314)  loss_giou_0: 0.6483 (0.7104)  loss_giou_1: 0.5800 (0.6417)  loss_giou_2: 0.5750 (0.6346)  loss_giou_3: 0.5730 (0.6342)  loss_giou_4: 0.5696 (0.6331)  cardinality_error_unscaled: 491.8750 (491.9789)  cardinality_error_0_unscaled: 491.8750 (491.9648)  cardinality_error_1_unscaled: 491.8750 (491.9773)  cardinality_error_2_unscaled: 491.8750 (491.9778)  cardinality_error_3_unscaled: 491.7500 (491.9393)  cardinality_error_4_unscaled: 491.8750 (491.9762)  class_error_unscaled: 0.0000 (0.0371)  loss_bbox_unscaled: 0.0365 (0.0479)  loss_bbox_0_unscaled: 0.0440 (0.0543)  loss_bbox_1_unscaled: 0.0374 (0.0485)  loss_bbox_2_unscaled: 0.0370 (0.0481)  loss_bbox_3_unscaled: 0.0377 (0.0481)  loss_bbox_4_unscaled: 0.0370 (0.0481)  loss_ce_unscaled: 0.1184 (0.1584)  loss_ce_0_unscaled: 0.1596 (0.1751)  loss_ce_1_unscaled: 0.1571 (0.1784)  loss_ce_2_unscaled: 0.1484 (0.1744)  loss_ce_3_unscaled: 0.1204 (0.1623)  loss_ce_4_unscaled: 0.1201 (0.1597)  loss_giou_unscaled: 0.2863 (0.3157)  loss_giou_0_unscaled: 0.3242 (0.3552)  loss_giou_1_unscaled: 0.2900 (0.3209)  loss_giou_2_unscaled: 0.2875 (0.3173)  loss_giou_3_unscaled: 0.2865 (0.3171)  loss_giou_4_unscaled: 0.2848 (0.3165)  lr_backbone: 0.0000 (0.0000)  time: 0.9444  data: 0.0131  max mem: 10394
+Epoch: [1]  [2000/2656]  eta: 0:02:35  lr: 0.000200  class_error: 0.00  loss: 6.7438 (7.3068)  loss_bbox: 0.1903 (0.2371)  loss_bbox_0: 0.2300 (0.2694)  loss_bbox_1: 0.1973 (0.2405)  loss_bbox_2: 0.1932 (0.2382)  loss_bbox_3: 0.1961 (0.2384)  loss_bbox_4: 0.1931 (0.2380)  loss_ce: 0.2456 (0.3093)  loss_ce_0: 0.3225 (0.3469)  loss_ce_1: 0.3308 (0.3537)  loss_ce_2: 0.3127 (0.3451)  loss_ce_3: 0.2516 (0.3169)  loss_ce_4: 0.2477 (0.3118)  loss_giou: 0.5649 (0.6271)  loss_giou_0: 0.6559 (0.7065)  loss_giou_1: 0.5786 (0.6378)  loss_giou_2: 0.5747 (0.6307)  loss_giou_3: 0.5699 (0.6304)  loss_giou_4: 0.5632 (0.6289)  cardinality_error_unscaled: 493.5000 (492.0786)  cardinality_error_0_unscaled: 493.5000 (492.0674)  cardinality_error_1_unscaled: 493.5000 (492.0778)  cardinality_error_2_unscaled: 493.5000 (492.0786)  cardinality_error_3_unscaled: 493.3750 (492.0309)  cardinality_error_4_unscaled: 493.5000 (492.0766)  class_error_unscaled: 0.0000 (0.0384)  loss_bbox_unscaled: 0.0381 (0.0474)  loss_bbox_0_unscaled: 0.0460 (0.0539)  loss_bbox_1_unscaled: 0.0395 (0.0481)  loss_bbox_2_unscaled: 0.0386 (0.0476)  loss_bbox_3_unscaled: 0.0392 (0.0477)  loss_bbox_4_unscaled: 0.0386 (0.0476)  loss_ce_unscaled: 0.1228 (0.1546)  loss_ce_0_unscaled: 0.1613 (0.1735)  loss_ce_1_unscaled: 0.1654 (0.1768)  loss_ce_2_unscaled: 0.1563 (0.1726)  loss_ce_3_unscaled: 0.1258 (0.1585)  loss_ce_4_unscaled: 0.1238 (0.1559)  loss_giou_unscaled: 0.2825 (0.3135)  loss_giou_0_unscaled: 0.3279 (0.3533)  loss_giou_1_unscaled: 0.2893 (0.3189)  loss_giou_2_unscaled: 0.2874 (0.3153)  loss_giou_3_unscaled: 0.2849 (0.3152)  loss_giou_4_unscaled: 0.2816 (0.3145)  lr_backbone: 0.0000 (0.0000)  time: 1.0264  data: 0.0125  max mem: 10712
+Epoch: [1]  [2200/2656]  eta: 0:01:48  lr: 0.000200  class_error: 0.00  loss: 6.4359 (7.2347)  loss_bbox: 0.1966 (0.2350)  loss_bbox_0: 0.2194 (0.2670)  loss_bbox_1: 0.2011 (0.2385)  loss_bbox_2: 0.1974 (0.2360)  loss_bbox_3: 0.2009 (0.2363)  loss_bbox_4: 0.2002 (0.2359)  loss_ce: 0.2145 (0.3016)  loss_ce_0: 0.2967 (0.3433)  loss_ce_1: 0.3094 (0.3495)  loss_ce_2: 0.2977 (0.3409)  loss_ce_3: 0.2309 (0.3094)  loss_ce_4: 0.2193 (0.3041)  loss_giou: 0.5598 (0.6231)  loss_giou_0: 0.6305 (0.7021)  loss_giou_1: 0.5733 (0.6339)  loss_giou_2: 0.5617 (0.6266)  loss_giou_3: 0.5715 (0.6264)  loss_giou_4: 0.5629 (0.6249)  cardinality_error_unscaled: 491.6250 (491.9780)  cardinality_error_0_unscaled: 491.6250 (491.9685)  cardinality_error_1_unscaled: 491.6250 (491.9780)  cardinality_error_2_unscaled: 491.6250 (491.9787)  cardinality_error_3_unscaled: 491.5000 (491.9292)  cardinality_error_4_unscaled: 491.6250 (491.9764)  class_error_unscaled: 0.0000 (0.0349)  loss_bbox_unscaled: 0.0393 (0.0470)  loss_bbox_0_unscaled: 0.0439 (0.0534)  loss_bbox_1_unscaled: 0.0402 (0.0477)  loss_bbox_2_unscaled: 0.0395 (0.0472)  loss_bbox_3_unscaled: 0.0402 (0.0473)  loss_bbox_4_unscaled: 0.0400 (0.0472)  loss_ce_unscaled: 0.1072 (0.1508)  loss_ce_0_unscaled: 0.1484 (0.1716)  loss_ce_1_unscaled: 0.1547 (0.1747)  loss_ce_2_unscaled: 0.1488 (0.1705)  loss_ce_3_unscaled: 0.1154 (0.1547)  loss_ce_4_unscaled: 0.1096 (0.1521)  loss_giou_unscaled: 0.2799 (0.3115)  loss_giou_0_unscaled: 0.3152 (0.3511)  loss_giou_1_unscaled: 0.2867 (0.3169)  loss_giou_2_unscaled: 0.2809 (0.3133)  loss_giou_3_unscaled: 0.2857 (0.3132)  loss_giou_4_unscaled: 0.2814 (0.3125)  lr_backbone: 0.0000 (0.0000)  time: 0.9089  data: 0.0119  max mem: 10712
+Epoch: [1]  [2400/2656]  eta: 0:01:00  lr: 0.000200  class_error: 0.00  loss: 6.3058 (7.1649)  loss_bbox: 0.1857 (0.2320)  loss_bbox_0: 0.2199 (0.2639)  loss_bbox_1: 0.1946 (0.2356)  loss_bbox_2: 0.1877 (0.2330)  loss_bbox_3: 0.1871 (0.2334)  loss_bbox_4: 0.1880 (0.2330)  loss_ce: 0.2264 (0.2957)  loss_ce_0: 0.3081 (0.3403)  loss_ce_1: 0.2998 (0.3463)  loss_ce_2: 0.2870 (0.3374)  loss_ce_3: 0.2307 (0.3037)  loss_ce_4: 0.2256 (0.2983)  loss_giou: 0.5603 (0.6187)  loss_giou_0: 0.6492 (0.6986)  loss_giou_1: 0.5862 (0.6299)  loss_giou_2: 0.5699 (0.6223)  loss_giou_3: 0.5667 (0.6222)  loss_giou_4: 0.5606 (0.6207)  cardinality_error_unscaled: 490.5000 (491.8717)  cardinality_error_0_unscaled: 490.5000 (491.8638)  cardinality_error_1_unscaled: 490.5000 (491.8723)  cardinality_error_2_unscaled: 490.5000 (491.8731)  cardinality_error_3_unscaled: 490.5000 (491.8215)  cardinality_error_4_unscaled: 490.5000 (491.8704)  class_error_unscaled: 0.0000 (0.0320)  loss_bbox_unscaled: 0.0371 (0.0464)  loss_bbox_0_unscaled: 0.0440 (0.0528)  loss_bbox_1_unscaled: 0.0389 (0.0471)  loss_bbox_2_unscaled: 0.0375 (0.0466)  loss_bbox_3_unscaled: 0.0374 (0.0467)  loss_bbox_4_unscaled: 0.0376 (0.0466)  loss_ce_unscaled: 0.1132 (0.1479)  loss_ce_0_unscaled: 0.1540 (0.1701)  loss_ce_1_unscaled: 0.1499 (0.1731)  loss_ce_2_unscaled: 0.1435 (0.1687)  loss_ce_3_unscaled: 0.1153 (0.1518)  loss_ce_4_unscaled: 0.1128 (0.1491)  loss_giou_unscaled: 0.2801 (0.3093)  loss_giou_0_unscaled: 0.3246 (0.3493)  loss_giou_1_unscaled: 0.2931 (0.3150)  loss_giou_2_unscaled: 0.2850 (0.3111)  loss_giou_3_unscaled: 0.2834 (0.3111)  loss_giou_4_unscaled: 0.2803 (0.3104)  lr_backbone: 0.0000 (0.0000)  time: 0.9364  data: 0.0127  max mem: 10712
+Epoch: [1]  [2600/2656]  eta: 0:00:13  lr: 0.000200  class_error: 0.00  loss: 6.4193 (7.1053)  loss_bbox: 0.1992 (0.2307)  loss_bbox_0: 0.2301 (0.2626)  loss_bbox_1: 0.2025 (0.2343)  loss_bbox_2: 0.2033 (0.2318)  loss_bbox_3: 0.2022 (0.2321)  loss_bbox_4: 0.2015 (0.2317)  loss_ce: 0.2084 (0.2902)  loss_ce_0: 0.2969 (0.3385)  loss_ce_1: 0.3036 (0.3438)  loss_ce_2: 0.2863 (0.3344)  loss_ce_3: 0.2203 (0.2981)  loss_ce_4: 0.2078 (0.2925)  loss_giou: 0.5538 (0.6139)  loss_giou_0: 0.6352 (0.6939)  loss_giou_1: 0.5728 (0.6254)  loss_giou_2: 0.5588 (0.6177)  loss_giou_3: 0.5641 (0.6176)  loss_giou_4: 0.5593 (0.6161)  cardinality_error_unscaled: 490.8750 (491.8527)  cardinality_error_0_unscaled: 490.8750 (491.8470)  cardinality_error_1_unscaled: 490.8750 (491.8543)  cardinality_error_2_unscaled: 490.8750 (491.8550)  cardinality_error_3_unscaled: 490.7500 (491.8047)  cardinality_error_4_unscaled: 490.8750 (491.8520)  class_error_unscaled: 0.0000 (0.0295)  loss_bbox_unscaled: 0.0398 (0.0461)  loss_bbox_0_unscaled: 0.0460 (0.0525)  loss_bbox_1_unscaled: 0.0405 (0.0469)  loss_bbox_2_unscaled: 0.0407 (0.0464)  loss_bbox_3_unscaled: 0.0404 (0.0464)  loss_bbox_4_unscaled: 0.0403 (0.0463)  loss_ce_unscaled: 0.1042 (0.1451)  loss_ce_0_unscaled: 0.1485 (0.1693)  loss_ce_1_unscaled: 0.1518 (0.1719)  loss_ce_2_unscaled: 0.1431 (0.1672)  loss_ce_3_unscaled: 0.1102 (0.1491)  loss_ce_4_unscaled: 0.1039 (0.1463)  loss_giou_unscaled: 0.2769 (0.3069)  loss_giou_0_unscaled: 0.3176 (0.3470)  loss_giou_1_unscaled: 0.2864 (0.3127)  loss_giou_2_unscaled: 0.2794 (0.3088)  loss_giou_3_unscaled: 0.2821 (0.3088)  loss_giou_4_unscaled: 0.2797 (0.3080)  lr_backbone: 0.0000 (0.0000)  time: 0.9081  data: 0.0130  max mem: 10712
+Epoch: [1]  [2652/2656]  eta: 0:00:00  lr: 0.000200  class_error: 0.00  loss: 6.5415 (7.1006)  loss_bbox: 0.2033 (0.2311)  loss_bbox_0: 0.2363 (0.2631)  loss_bbox_1: 0.2128 (0.2347)  loss_bbox_2: 0.2084 (0.2322)  loss_bbox_3: 0.2080 (0.2326)  loss_bbox_4: 0.2056 (0.2321)  loss_ce: 0.2296 (0.2892)  loss_ce_0: 0.3207 (0.3385)  loss_ce_1: 0.3240 (0.3436)  loss_ce_2: 0.3179 (0.3342)  loss_ce_3: 0.2334 (0.2972)  loss_ce_4: 0.2278 (0.2915)  loss_giou: 0.5652 (0.6132)  loss_giou_0: 0.6609 (0.6933)  loss_giou_1: 0.5748 (0.6248)  loss_giou_2: 0.5612 (0.6170)  loss_giou_3: 0.5661 (0.6170)  loss_giou_4: 0.5699 (0.6154)  cardinality_error_unscaled: 493.1250 (491.8712)  cardinality_error_0_unscaled: 493.1250 (491.8654)  cardinality_error_1_unscaled: 493.1250 (491.8727)  cardinality_error_2_unscaled: 493.1250 (491.8731)  cardinality_error_3_unscaled: 493.0000 (491.8232)  cardinality_error_4_unscaled: 493.1250 (491.8705)  class_error_unscaled: 0.0000 (0.0290)  loss_bbox_unscaled: 0.0407 (0.0462)  loss_bbox_0_unscaled: 0.0473 (0.0526)  loss_bbox_1_unscaled: 0.0426 (0.0469)  loss_bbox_2_unscaled: 0.0417 (0.0464)  loss_bbox_3_unscaled: 0.0416 (0.0465)  loss_bbox_4_unscaled: 0.0411 (0.0464)  loss_ce_unscaled: 0.1148 (0.1446)  loss_ce_0_unscaled: 0.1604 (0.1692)  loss_ce_1_unscaled: 0.1620 (0.1718)  loss_ce_2_unscaled: 0.1589 (0.1671)  loss_ce_3_unscaled: 0.1167 (0.1486)  loss_ce_4_unscaled: 0.1139 (0.1458)  loss_giou_unscaled: 0.2826 (0.3066)  loss_giou_0_unscaled: 0.3304 (0.3466)  loss_giou_1_unscaled: 0.2874 (0.3124)  loss_giou_2_unscaled: 0.2806 (0.3085)  loss_giou_3_unscaled: 0.2831 (0.3085)  loss_giou_4_unscaled: 0.2850 (0.3077)  lr_backbone: 0.0000 (0.0000)  time: 0.9074  data: 0.0127  max mem: 10712
+Epoch: [1] Total time: 0:10:27 (0.9454 s / it)
+Averaged stats: lr: 0.000200  class_error: 0.00  loss: 6.5415 (7.1006)  loss_bbox: 0.2033 (0.2311)  loss_bbox_0: 0.2363 (0.2631)  loss_bbox_1: 0.2128 (0.2347)  loss_bbox_2: 0.2084 (0.2322)  loss_bbox_3: 0.2080 (0.2326)  loss_bbox_4: 0.2056 (0.2321)  loss_ce: 0.2296 (0.2892)  loss_ce_0: 0.3207 (0.3385)  loss_ce_1: 0.3240 (0.3436)  loss_ce_2: 0.3179 (0.3342)  loss_ce_3: 0.2334 (0.2972)  loss_ce_4: 0.2278 (0.2915)  loss_giou: 0.5652 (0.6132)  loss_giou_0: 0.6609 (0.6933)  loss_giou_1: 0.5748 (0.6248)  loss_giou_2: 0.5612 (0.6170)  loss_giou_3: 0.5661 (0.6170)  loss_giou_4: 0.5699 (0.6154)  cardinality_error_unscaled: 493.1250 (491.8712)  cardinality_error_0_unscaled: 493.1250 (491.8654)  cardinality_error_1_unscaled: 493.1250 (491.8727)  cardinality_error_2_unscaled: 493.1250 (491.8731)  cardinality_error_3_unscaled: 493.0000 (491.8232)  cardinality_error_4_unscaled: 493.1250 (491.8705)  class_error_unscaled: 0.0000 (0.0290)  loss_bbox_unscaled: 0.0407 (0.0462)  loss_bbox_0_unscaled: 0.0473 (0.0526)  loss_bbox_1_unscaled: 0.0426 (0.0469)  loss_bbox_2_unscaled: 0.0417 (0.0464)  loss_bbox_3_unscaled: 0.0416 (0.0465)  loss_bbox_4_unscaled: 0.0411 (0.0464)  loss_ce_unscaled: 0.1148 (0.1446)  loss_ce_0_unscaled: 0.1604 (0.1692)  loss_ce_1_unscaled: 0.1620 (0.1718)  loss_ce_2_unscaled: 0.1589 (0.1671)  loss_ce_3_unscaled: 0.1167 (0.1486)  loss_ce_4_unscaled: 0.1139 (0.1458)  loss_giou_unscaled: 0.2826 (0.3066)  loss_giou_0_unscaled: 0.3304 (0.3466)  loss_giou_1_unscaled: 0.2874 (0.3124)  loss_giou_2_unscaled: 0.2806 (0.3085)  loss_giou_3_unscaled: 0.2831 (0.3085)  loss_giou_4_unscaled: 0.2850 (0.3077)  lr_backbone: 0.0000 (0.0000)
+Epoch: [Test:]  [   0/1332]  eta: 0:07:05  class_error: 0.00  loss: 5.6929 (5.6929)  loss_bbox: 0.0772 (0.0772)  loss_bbox_0: 0.1288 (0.1288)  loss_bbox_1: 0.0809 (0.0809)  loss_bbox_2: 0.0773 (0.0773)  loss_bbox_3: 0.0814 (0.0814)  loss_bbox_4: 0.0831 (0.0831)  loss_ce: 0.2443 (0.2443)  loss_ce_0: 0.3447 (0.3447)  loss_ce_1: 0.3669 (0.3669)  loss_ce_2: 0.3060 (0.3060)  loss_ce_3: 0.2383 (0.2383)  loss_ce_4: 0.2389 (0.2389)  loss_giou: 0.5304 (0.5304)  loss_giou_0: 0.7394 (0.7394)  loss_giou_1: 0.5319 (0.5319)  loss_giou_2: 0.5375 (0.5375)  loss_giou_3: 0.5420 (0.5420)  loss_giou_4: 0.5441 (0.5441)  cardinality_error_unscaled: 483.8750 (483.8750)  cardinality_error_0_unscaled: 483.8750 (483.8750)  cardinality_error_1_unscaled: 483.8750 (483.8750)  cardinality_error_2_unscaled: 483.8750 (483.8750)  cardinality_error_3_unscaled: 483.8750 (483.8750)  cardinality_error_4_unscaled: 483.8750 (483.8750)  class_error_unscaled: 0.0000 (0.0000)  loss_bbox_unscaled: 0.0154 (0.0154)  loss_bbox_0_unscaled: 0.0258 (0.0258)  loss_bbox_1_unscaled: 0.0162 (0.0162)  loss_bbox_2_unscaled: 0.0155 (0.0155)  loss_bbox_3_unscaled: 0.0163 (0.0163)  loss_bbox_4_unscaled: 0.0166 (0.0166)  loss_ce_unscaled: 0.1222 (0.1222)  loss_ce_0_unscaled: 0.1724 (0.1724)  loss_ce_1_unscaled: 0.1835 (0.1835)  loss_ce_2_unscaled: 0.1530 (0.1530)  loss_ce_3_unscaled: 0.1191 (0.1191)  loss_ce_4_unscaled: 0.1194 (0.1194)  loss_giou_unscaled: 0.2652 (0.2652)  loss_giou_0_unscaled: 0.3697 (0.3697)  loss_giou_1_unscaled: 0.2659 (0.2659)  loss_giou_2_unscaled: 0.2687 (0.2687)  loss_giou_3_unscaled: 0.2710 (0.2710)  loss_giou_4_unscaled: 0.2721 (0.2721)  time: 1.2774  data: 0.7147  max mem: 10712
+Epoch: [Test:]  [ 200/1332]  eta: 0:02:45  class_error: 0.00  loss: 4.1375 (5.1465)  loss_bbox: 0.1006 (0.0932)  loss_bbox_0: 0.1152 (0.1185)  loss_bbox_1: 0.1011 (0.0973)  loss_bbox_2: 0.0991 (0.0930)  loss_bbox_3: 0.0980 (0.0947)  loss_bbox_4: 0.0987 (0.0949)  loss_ce: 0.1237 (0.2077)  loss_ce_0: 0.2051 (0.3018)  loss_ce_1: 0.1917 (0.2972)  loss_ce_2: 0.1743 (0.2816)  loss_ce_3: 0.1187 (0.2060)  loss_ce_4: 0.1220 (0.2054)  loss_giou: 0.4106 (0.4845)  loss_giou_0: 0.4719 (0.5985)  loss_giou_1: 0.4095 (0.5030)  loss_giou_2: 0.4106 (0.4897)  loss_giou_3: 0.4113 (0.4907)  loss_giou_4: 0.4068 (0.4887)  cardinality_error_unscaled: 465.6250 (479.1593)  cardinality_error_0_unscaled: 465.6250 (479.1593)  cardinality_error_1_unscaled: 465.6250 (479.1593)  cardinality_error_2_unscaled: 465.6250 (479.1593)  cardinality_error_3_unscaled: 465.6250 (479.1593)  cardinality_error_4_unscaled: 465.6250 (479.1593)  class_error_unscaled: 0.0000 (0.0000)  loss_bbox_unscaled: 0.0201 (0.0186)  loss_bbox_0_unscaled: 0.0230 (0.0237)  loss_bbox_1_unscaled: 0.0202 (0.0195)  loss_bbox_2_unscaled: 0.0198 (0.0186)  loss_bbox_3_unscaled: 0.0196 (0.0189)  loss_bbox_4_unscaled: 0.0197 (0.0190)  loss_ce_unscaled: 0.0619 (0.1038)  loss_ce_0_unscaled: 0.1025 (0.1509)  loss_ce_1_unscaled: 0.0959 (0.1486)  loss_ce_2_unscaled: 0.0871 (0.1408)  loss_ce_3_unscaled: 0.0594 (0.1030)  loss_ce_4_unscaled: 0.0610 (0.1027)  loss_giou_unscaled: 0.2053 (0.2422)  loss_giou_0_unscaled: 0.2360 (0.2993)  loss_giou_1_unscaled: 0.2048 (0.2515)  loss_giou_2_unscaled: 0.2053 (0.2448)  loss_giou_3_unscaled: 0.2057 (0.2454)  loss_giou_4_unscaled: 0.2034 (0.2444)  time: 0.5598  data: 0.0127  max mem: 10712
+Epoch: [Test:]  [ 400/1332]  eta: 0:02:19  class_error: -0.00  loss: 4.2789 (4.7016)  loss_bbox: 0.1091 (0.1032)  loss_bbox_0: 0.1192 (0.1224)  loss_bbox_1: 0.1087 (0.1047)  loss_bbox_2: 0.1084 (0.1024)  loss_bbox_3: 0.1115 (0.1046)  loss_bbox_4: 0.1107 (0.1049)  loss_ce: 0.1175 (0.1670)  loss_ce_0: 0.2194 (0.2595)  loss_ce_1: 0.2086 (0.2522)  loss_ce_2: 0.1687 (0.2326)  loss_ce_3: 0.1238 (0.1672)  loss_ce_4: 0.1202 (0.1651)  loss_giou: 0.4219 (0.4508)  loss_giou_0: 0.4513 (0.5381)  loss_giou_1: 0.4212 (0.4628)  loss_giou_2: 0.4202 (0.4539)  loss_giou_3: 0.4272 (0.4557)  loss_giou_4: 0.4230 (0.4545)  cardinality_error_unscaled: 461.1250 (470.4468)  cardinality_error_0_unscaled: 461.1250 (470.4468)  cardinality_error_1_unscaled: 461.1250 (470.4468)  cardinality_error_2_unscaled: 461.1250 (470.4468)  cardinality_error_3_unscaled: 461.1250 (470.4468)  cardinality_error_4_unscaled: 461.1250 (470.4468)  class_error_unscaled: 0.0000 (-0.0000)  loss_bbox_unscaled: 0.0218 (0.0206)  loss_bbox_0_unscaled: 0.0238 (0.0245)  loss_bbox_1_unscaled: 0.0217 (0.0209)  loss_bbox_2_unscaled: 0.0217 (0.0205)  loss_bbox_3_unscaled: 0.0223 (0.0209)  loss_bbox_4_unscaled: 0.0221 (0.0210)  loss_ce_unscaled: 0.0587 (0.0835)  loss_ce_0_unscaled: 0.1097 (0.1297)  loss_ce_1_unscaled: 0.1043 (0.1261)  loss_ce_2_unscaled: 0.0843 (0.1163)  loss_ce_3_unscaled: 0.0619 (0.0836)  loss_ce_4_unscaled: 0.0601 (0.0825)  loss_giou_unscaled: 0.2110 (0.2254)  loss_giou_0_unscaled: 0.2257 (0.2691)  loss_giou_1_unscaled: 0.2106 (0.2314)  loss_giou_2_unscaled: 0.2101 (0.2269)  loss_giou_3_unscaled: 0.2136 (0.2278)  loss_giou_4_unscaled: 0.2115 (0.2272)  time: 0.6511  data: 0.0167  max mem: 10712
+Epoch: [Test:]  [ 600/1332]  eta: 0:01:40  class_error: 0.00  loss: 8.3400 (5.8878)  loss_bbox: 0.6954 (0.2777)  loss_bbox_0: 0.7115 (0.2946)  loss_bbox_1: 0.6937 (0.2754)  loss_bbox_2: 0.6843 (0.2739)  loss_bbox_3: 0.7124 (0.2789)  loss_bbox_4: 0.6905 (0.2791)  loss_ce: 0.1800 (0.1804)  loss_ce_0: 0.3423 (0.2952)  loss_ce_1: 0.3057 (0.2791)  loss_ce_2: 0.3078 (0.2601)  loss_ce_3: 0.1879 (0.1805)  loss_ce_4: 0.1756 (0.1765)  loss_giou: 0.4779 (0.4596)  loss_giou_0: 0.4911 (0.5234)  loss_giou_1: 0.4691 (0.4666)  loss_giou_2: 0.4730 (0.4607)  loss_giou_3: 0.4888 (0.4638)  loss_giou_4: 0.4729 (0.4622)  cardinality_error_unscaled: 495.2500 (477.9495)  cardinality_error_0_unscaled: 495.2500 (477.9495)  cardinality_error_1_unscaled: 495.2500 (477.9495)  cardinality_error_2_unscaled: 495.2500 (477.9495)  cardinality_error_3_unscaled: 495.2500 (477.9495)  cardinality_error_4_unscaled: 495.2500 (477.9495)  class_error_unscaled: 0.0000 (0.0118)  loss_bbox_unscaled: 0.1391 (0.0555)  loss_bbox_0_unscaled: 0.1423 (0.0589)  loss_bbox_1_unscaled: 0.1387 (0.0551)  loss_bbox_2_unscaled: 0.1369 (0.0548)  loss_bbox_3_unscaled: 0.1425 (0.0558)  loss_bbox_4_unscaled: 0.1381 (0.0558)  loss_ce_unscaled: 0.0900 (0.0902)  loss_ce_0_unscaled: 0.1712 (0.1476)  loss_ce_1_unscaled: 0.1528 (0.1396)  loss_ce_2_unscaled: 0.1539 (0.1300)  loss_ce_3_unscaled: 0.0939 (0.0902)  loss_ce_4_unscaled: 0.0878 (0.0882)  loss_giou_unscaled: 0.2389 (0.2298)  loss_giou_0_unscaled: 0.2455 (0.2617)  loss_giou_1_unscaled: 0.2345 (0.2333)  loss_giou_2_unscaled: 0.2365 (0.2303)  loss_giou_3_unscaled: 0.2444 (0.2319)  loss_giou_4_unscaled: 0.2365 (0.2311)  time: 0.4133  data: 0.0124  max mem: 10712
+Epoch: [Test:]  [ 800/1332]  eta: 0:01:10  class_error: 0.00  loss: 4.9716 (5.5004)  loss_bbox: 0.0903 (0.2428)  loss_bbox_0: 0.1162 (0.2617)  loss_bbox_1: 0.0862 (0.2420)  loss_bbox_2: 0.0875 (0.2399)  loss_bbox_3: 0.0875 (0.2439)  loss_bbox_4: 0.0897 (0.2439)  loss_ce: 0.1792 (0.1682)  loss_ce_0: 0.2742 (0.2909)  loss_ce_1: 0.2502 (0.2726)  loss_ce_2: 0.2483 (0.2581)  loss_ce_3: 0.1748 (0.1696)  loss_ce_4: 0.1789 (0.1653)  loss_giou: 0.5084 (0.4377)  loss_giou_0: 0.6450 (0.4987)  loss_giou_1: 0.5292 (0.4452)  loss_giou_2: 0.5138 (0.4386)  loss_giou_3: 0.5127 (0.4415)  loss_giou_4: 0.5150 (0.4397)  cardinality_error_unscaled: 487.8750 (481.1294)  cardinality_error_0_unscaled: 487.8750 (481.1294)  cardinality_error_1_unscaled: 487.8750 (481.1294)  cardinality_error_2_unscaled: 487.8750 (481.1294)  cardinality_error_3_unscaled: 487.8750 (481.1294)  cardinality_error_4_unscaled: 487.8750 (481.1294)  class_error_unscaled: 0.0000 (0.0089)  loss_bbox_unscaled: 0.0181 (0.0486)  loss_bbox_0_unscaled: 0.0232 (0.0523)  loss_bbox_1_unscaled: 0.0172 (0.0484)  loss_bbox_2_unscaled: 0.0175 (0.0480)  loss_bbox_3_unscaled: 0.0175 (0.0488)  loss_bbox_4_unscaled: 0.0179 (0.0488)  loss_ce_unscaled: 0.0896 (0.0841)  loss_ce_0_unscaled: 0.1371 (0.1455)  loss_ce_1_unscaled: 0.1251 (0.1363)  loss_ce_2_unscaled: 0.1242 (0.1290)  loss_ce_3_unscaled: 0.0874 (0.0848)  loss_ce_4_unscaled: 0.0894 (0.0826)  loss_giou_unscaled: 0.2542 (0.2189)  loss_giou_0_unscaled: 0.3225 (0.2494)  loss_giou_1_unscaled: 0.2646 (0.2226)  loss_giou_2_unscaled: 0.2569 (0.2193)  loss_giou_3_unscaled: 0.2563 (0.2208)  loss_giou_4_unscaled: 0.2575 (0.2198)  time: 0.4714  data: 0.0123  max mem: 10712
+Epoch: [Test:]  [1000/1332]  eta: 0:00:43  class_error: 0.00  loss: 5.2836 (5.5398)  loss_bbox: 0.1341 (0.2189)  loss_bbox_0: 0.1678 (0.2397)  loss_bbox_1: 0.1420 (0.2189)  loss_bbox_2: 0.1377 (0.2166)  loss_bbox_3: 0.1391 (0.2200)  loss_bbox_4: 0.1361 (0.2200)  loss_ce: 0.2048 (0.1768)  loss_ce_0: 0.3551 (0.2996)  loss_ce_1: 0.3261 (0.2843)  loss_ce_2: 0.3292 (0.2703)  loss_ce_3: 0.2102 (0.1788)  loss_ce_4: 0.2023 (0.1745)  loss_giou: 0.4204 (0.4555)  loss_giou_0: 0.4741 (0.5264)  loss_giou_1: 0.4188 (0.4649)  loss_giou_2: 0.4155 (0.4571)  loss_giou_3: 0.4109 (0.4594)  loss_giou_4: 0.4137 (0.4581)  cardinality_error_unscaled: 490.1250 (482.1384)  cardinality_error_0_unscaled: 490.1250 (482.1394)  cardinality_error_1_unscaled: 490.1250 (482.1394)  cardinality_error_2_unscaled: 490.1250 (482.1394)  cardinality_error_3_unscaled: 490.1250 (482.1394)  cardinality_error_4_unscaled: 490.1250 (482.1394)  class_error_unscaled: 0.0000 (0.0071)  loss_bbox_unscaled: 0.0268 (0.0438)  loss_bbox_0_unscaled: 0.0336 (0.0479)  loss_bbox_1_unscaled: 0.0284 (0.0438)  loss_bbox_2_unscaled: 0.0275 (0.0433)  loss_bbox_3_unscaled: 0.0278 (0.0440)  loss_bbox_4_unscaled: 0.0272 (0.0440)  loss_ce_unscaled: 0.1024 (0.0884)  loss_ce_0_unscaled: 0.1775 (0.1498)  loss_ce_1_unscaled: 0.1630 (0.1422)  loss_ce_2_unscaled: 0.1646 (0.1351)  loss_ce_3_unscaled: 0.1051 (0.0894)  loss_ce_4_unscaled: 0.1012 (0.0872)  loss_giou_unscaled: 0.2102 (0.2278)  loss_giou_0_unscaled: 0.2370 (0.2632)  loss_giou_1_unscaled: 0.2094 (0.2324)  loss_giou_2_unscaled: 0.2078 (0.2286)  loss_giou_3_unscaled: 0.2054 (0.2297)  loss_giou_4_unscaled: 0.2069 (0.2290)  time: 0.4521  data: 0.0121  max mem: 10712
+Epoch: [Test:]  [1200/1332]  eta: 0:00:16  class_error: 0.00  loss: 6.6454 (5.5073)  loss_bbox: 0.0702 (0.2109)  loss_bbox_0: 0.0902 (0.2328)  loss_bbox_1: 0.0726 (0.2114)  loss_bbox_2: 0.0710 (0.2090)  loss_bbox_3: 0.0712 (0.2123)  loss_bbox_4: 0.0690 (0.2121)  loss_ce: 0.2809 (0.1838)  loss_ce_0: 0.3085 (0.3059)  loss_ce_1: 0.3403 (0.2914)  loss_ce_2: 0.3251 (0.2772)  loss_ce_3: 0.2867 (0.1833)  loss_ce_4: 0.2831 (0.1813)  loss_giou: 0.6807 (0.4503)  loss_giou_0: 0.8803 (0.5251)  loss_giou_1: 0.7115 (0.4606)  loss_giou_2: 0.6808 (0.4522)  loss_giou_3: 0.6773 (0.4545)  loss_giou_4: 0.6847 (0.4532)  cardinality_error_unscaled: 480.8750 (483.1408)  cardinality_error_0_unscaled: 480.8750 (483.1420)  cardinality_error_1_unscaled: 480.8750 (483.1420)  cardinality_error_2_unscaled: 480.8750 (483.1420)  cardinality_error_3_unscaled: 480.8750 (483.1420)  cardinality_error_4_unscaled: 480.8750 (483.1420)  class_error_unscaled: 0.0000 (0.0059)  loss_bbox_unscaled: 0.0140 (0.0422)  loss_bbox_0_unscaled: 0.0180 (0.0466)  loss_bbox_1_unscaled: 0.0145 (0.0423)  loss_bbox_2_unscaled: 0.0142 (0.0418)  loss_bbox_3_unscaled: 0.0142 (0.0425)  loss_bbox_4_unscaled: 0.0138 (0.0424)  loss_ce_unscaled: 0.1405 (0.0919)  loss_ce_0_unscaled: 0.1543 (0.1530)  loss_ce_1_unscaled: 0.1702 (0.1457)  loss_ce_2_unscaled: 0.1626 (0.1386)  loss_ce_3_unscaled: 0.1434 (0.0917)  loss_ce_4_unscaled: 0.1416 (0.0907)  loss_giou_unscaled: 0.3403 (0.2252)  loss_giou_0_unscaled: 0.4401 (0.2626)  loss_giou_1_unscaled: 0.3558 (0.2303)  loss_giou_2_unscaled: 0.3404 (0.2261)  loss_giou_3_unscaled: 0.3386 (0.2272)  loss_giou_4_unscaled: 0.3423 (0.2266)  time: 0.4953  data: 0.0120  max mem: 10712
+Epoch: [Test:]  [1328/1332]  eta: 0:00:00  class_error: 0.00  loss: 4.9489 (5.5460)  loss_bbox: 0.0728 (0.2011)  loss_bbox_0: 0.0901 (0.2218)  loss_bbox_1: 0.0743 (0.2016)  loss_bbox_2: 0.0706 (0.1992)  loss_bbox_3: 0.0711 (0.2023)  loss_bbox_4: 0.0706 (0.2023)  loss_ce: 0.1947 (0.1884)  loss_ce_0: 0.3156 (0.3073)  loss_ce_1: 0.2937 (0.2942)  loss_ce_2: 0.2989 (0.2805)  loss_ce_3: 0.2179 (0.1889)  loss_ce_4: 0.1885 (0.1862)  loss_giou: 0.4604 (0.4626)  loss_giou_0: 0.5639 (0.5407)  loss_giou_1: 0.4588 (0.4732)  loss_giou_2: 0.4627 (0.4645)  loss_giou_3: 0.4636 (0.4661)  loss_giou_4: 0.4579 (0.4651)  cardinality_error_unscaled: 494.0000 (483.8514)  cardinality_error_0_unscaled: 494.0000 (483.8525)  cardinality_error_1_unscaled: 494.0000 (483.8525)  cardinality_error_2_unscaled: 494.0000 (483.8525)  cardinality_error_3_unscaled: 494.0000 (483.8525)  cardinality_error_4_unscaled: 494.0000 (483.8525)  class_error_unscaled: 0.0000 (0.0078)  loss_bbox_unscaled: 0.0146 (0.0402)  loss_bbox_0_unscaled: 0.0180 (0.0444)  loss_bbox_1_unscaled: 0.0149 (0.0403)  loss_bbox_2_unscaled: 0.0141 (0.0398)  loss_bbox_3_unscaled: 0.0142 (0.0405)  loss_bbox_4_unscaled: 0.0141 (0.0405)  loss_ce_unscaled: 0.0974 (0.0942)  loss_ce_0_unscaled: 0.1578 (0.1536)  loss_ce_1_unscaled: 0.1469 (0.1471)  loss_ce_2_unscaled: 0.1494 (0.1403)  loss_ce_3_unscaled: 0.1089 (0.0945)  loss_ce_4_unscaled: 0.0943 (0.0931)  loss_giou_unscaled: 0.2302 (0.2313)  loss_giou_0_unscaled: 0.2819 (0.2704)  loss_giou_1_unscaled: 0.2294 (0.2366)  loss_giou_2_unscaled: 0.2314 (0.2323)  loss_giou_3_unscaled: 0.2318 (0.2331)  loss_giou_4_unscaled: 0.2289 (0.2326)  time: 0.4815  data: 0.0092  max mem: 10712
+Epoch: [Test:] Total time: 0:02:49 (0.5095 s / it)
+Averaged stats: class_error: 0.00  loss: 4.9489 (5.5460)  loss_bbox: 0.0728 (0.2011)  loss_bbox_0: 0.0901 (0.2218)  loss_bbox_1: 0.0743 (0.2016)  loss_bbox_2: 0.0706 (0.1992)  loss_bbox_3: 0.0711 (0.2023)  loss_bbox_4: 0.0706 (0.2023)  loss_ce: 0.1947 (0.1884)  loss_ce_0: 0.3156 (0.3073)  loss_ce_1: 0.2937 (0.2942)  loss_ce_2: 0.2989 (0.2805)  loss_ce_3: 0.2179 (0.1889)  loss_ce_4: 0.1885 (0.1862)  loss_giou: 0.4604 (0.4626)  loss_giou_0: 0.5639 (0.5407)  loss_giou_1: 0.4588 (0.4732)  loss_giou_2: 0.4627 (0.4645)  loss_giou_3: 0.4636 (0.4661)  loss_giou_4: 0.4579 (0.4651)  cardinality_error_unscaled: 494.0000 (483.8514)  cardinality_error_0_unscaled: 494.0000 (483.8525)  cardinality_error_1_unscaled: 494.0000 (483.8525)  cardinality_error_2_unscaled: 494.0000 (483.8525)  cardinality_error_3_unscaled: 494.0000 (483.8525)  cardinality_error_4_unscaled: 494.0000 (483.8525)  class_error_unscaled: 0.0000 (0.0078)  loss_bbox_unscaled: 0.0146 (0.0402)  loss_bbox_0_unscaled: 0.0180 (0.0444)  loss_bbox_1_unscaled: 0.0149 (0.0403)  loss_bbox_2_unscaled: 0.0141 (0.0398)  loss_bbox_3_unscaled: 0.0142 (0.0405)  loss_bbox_4_unscaled: 0.0141 (0.0405)  loss_ce_unscaled: 0.0974 (0.0942)  loss_ce_0_unscaled: 0.1578 (0.1536)  loss_ce_1_unscaled: 0.1469 (0.1471)  loss_ce_2_unscaled: 0.1494 (0.1403)  loss_ce_3_unscaled: 0.1089 (0.0945)  loss_ce_4_unscaled: 0.0943 (0.0931)  loss_giou_unscaled: 0.2302 (0.2313)  loss_giou_0_unscaled: 0.2819 (0.2704)  loss_giou_1_unscaled: 0.2294 (0.2366)  loss_giou_2_unscaled: 0.2314 (0.2323)  loss_giou_3_unscaled: 0.2318 (0.2331)  loss_giou_4_unscaled: 0.2289 (0.2326)
+Accumulating evaluation results...
+DONE (t=2.25s).
+IoU metric: bbox
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.440
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.746
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.454
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.150
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.330
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.592
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.037
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.271
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.538
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.275
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.441
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.680

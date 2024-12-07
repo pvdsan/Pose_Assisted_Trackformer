@@ -5,7 +5,7 @@ import random
 import time
 from argparse import Namespace
 from pathlib import Path
-
+import debugpy
 import numpy as np
 import sacred
 import torch
@@ -36,6 +36,16 @@ ex.add_named_config('multi_frame', 'cfgs/train_multi_frame.yaml')
 
 
 def train(args: Namespace) -> None:
+    
+
+    # Allow debugger to attach on port 5678
+    debugpy.listen(("localhost", 5678))
+    print("Waiting for debugger to attach...")
+
+    # Pause the script until debugger attaches
+    debugpy.wait_for_client()
+    print("Debugger attached. Continuing execution.")
+
     print(args)
 
     utils.init_distributed_mode(args)

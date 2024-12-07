@@ -1,10 +1,8 @@
 import math
 import random
 from contextlib import nullcontext
-
 import torch
 import torch.nn as nn
-
 from ..util import box_ops
 from ..util.misc import NestedTensor, get_rank
 from .deformable_detr import DeformableDETR
@@ -38,8 +36,7 @@ class DETRTrackingBase(nn.Module):
 
     def add_track_queries_to_targets(self, targets, prev_indices, prev_out, add_false_pos=True):
         device = prev_out['pred_boxes'].device
-
-        # for i, (target, prev_ind) in enumerate(zip(targets, prev_indices)):
+        
         min_prev_target_ind = min([len(prev_ind[1]) for prev_ind in prev_indices])
         num_prev_target_ind = 0
         if min_prev_target_ind:
@@ -57,7 +54,6 @@ class DETRTrackingBase(nn.Module):
             if self._track_query_false_negative_prob: # and len(prev_target_ind):
                 random_subset_mask = torch.randperm(len(prev_target_ind))[:num_prev_target_ind]
 
-
                 prev_out_ind = prev_out_ind[random_subset_mask]
                 prev_target_ind = prev_target_ind[random_subset_mask]
 
@@ -68,9 +64,6 @@ class DETRTrackingBase(nn.Module):
             target_ind_match_matrix = prev_track_ids.unsqueeze(dim=1).eq(target['track_ids'])
             target_ind_matching = target_ind_match_matrix.any(dim=1)
             target_ind_matched_idx = target_ind_match_matrix.nonzero()[:, 1]
-
-            # current frame track ids detected in the prev frame
-            # track_ids = target['track_ids'][target_ind_matched_idx]
 
             # index of prev frame detection in current frame box list
             target['track_query_match_ids'] = target_ind_matched_idx
@@ -91,7 +84,6 @@ class DETRTrackingBase(nn.Module):
                 prev_target_ind_for_fps = torch.randperm(num_prev_target_ind)[:num_prev_target_ind_for_fps]
                 
                 for j in prev_target_ind_for_fps:
-                    # if random.uniform(0, 1) < self._track_query_false_positive_prob:
                     prev_boxes_unmatched = prev_out['pred_boxes'][i, not_prev_out_ind]
                     if len(prev_boxes_matched) > j:
                         prev_box_matched = prev_boxes_matched[j]
@@ -101,8 +93,6 @@ class DETRTrackingBase(nn.Module):
                         box_weights = box_weights[:, 0] ** 2 + box_weights[:, 0] ** 2
                         box_weights = torch.sqrt(box_weights)
 
-                        # if box_weights.gt(0.0).any():
-                        # if box_weights.gt(0.0).any():
                         random_false_out_idx = not_prev_out_ind.pop(
                             torch.multinomial(box_weights.cpu(), 1).item())
                     else:
@@ -121,10 +111,6 @@ class DETRTrackingBase(nn.Module):
             track_queries_mask = torch.ones_like(target_ind_matching).bool()
             track_queries_fal_pos_mask = torch.zeros_like(target_ind_matching).bool()
             track_queries_fal_pos_mask[~target_ind_matching] = True
-
-            # track_queries_match_mask = torch.ones_like(target_ind_matching).float()
-            # matches indices with 1.0 and not matched -1.0
-            # track_queries_mask[~target_ind_matching] = -1.0
 
             # set prev frame info
             target['track_query_hs_embeds'] = prev_out['hs_embed'][i, prev_out_ind]

@@ -48,6 +48,22 @@ def build_model(args):
     if args.deformable:
         transformer = build_deforamble_transformer(args)
         if args.pose_features:
+            # Freeze the encoder of the transformer
+            if hasattr(transformer, 'encoder'):
+                for param in transformer.encoder.parameters():
+                    param.requires_grad = False
+            # Freeze the backbone
+            for param in backbone.parameters():
+                param.requires_grad = False
+
+            print("Encoder and backbone frozen.")
+        
+        # Count the number of trainable parameters in each component
+        num_trainable_transformer = sum(p.numel() for p in transformer.parameters() if p.requires_grad)
+        num_trainable_backbone = sum(p.numel() for p in backbone.parameters() if p.requires_grad)
+
+        print(f"Trainable parameters in transformer: {num_trainable_transformer}")
+        print(f"Trainable parameters in backbone: {num_trainable_backbone}")
             
 
         detr_kwargs['transformer'] = transformer

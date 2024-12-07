@@ -58,17 +58,7 @@ def build_model(args):
 
             pose_model = build_pose_model(args)          
             detr_kwargs['pose_model'] = pose_model
-
-            print("Encoder and backbone frozen.")
-        
-        # Count the number of trainable parameters in each component
-        num_trainable_transformer = sum(p.numel() for p in transformer.parameters() if p.requires_grad)
-        num_trainable_backbone = sum(p.numel() for p in backbone.parameters() if p.requires_grad)
-
-        print(f"Trainable parameters in transformer: {num_trainable_transformer}")
-        print(f"Trainable parameters in backbone: {num_trainable_backbone}")
-
-
+                        
         detr_kwargs['transformer'] = transformer
         detr_kwargs['num_feature_levels'] = args.num_feature_levels
         detr_kwargs['multi_frame_attention'] = args.multi_frame_attention

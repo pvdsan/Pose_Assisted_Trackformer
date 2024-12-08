@@ -1,15 +1,16 @@
 import torch
 import torch.nn as nn
 import mediapipe as mp
-from PIL import Image
+from PIL import Image, ImageDraw
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class PoseEmbeddingModule(nn.Module):
     """
     Pose Embedding Module
 
-    This module extracts pose embeddings from a list of bounding boxes in a batch of images
+    This module extracts pose embeddings from a batch of images and their corresponding bounding boxes
     using MediaPipe's Pose solution. It converts the extracted keypoints into fixed-size
     pose embeddings using a linear layer.
 
@@ -41,78 +42,104 @@ class PoseEmbeddingModule(nn.Module):
         nn.init.xavier_uniform_(self.keypoint_linear.weight)
         nn.init.constant_(self.keypoint_linear.bias, 0)
 
-    def forward(self, images: list, boxes: list) -> list:
+    def forward(self, images: torch.Tensor, boxes: torch.Tensor) -> list:
         """
         Forward pass to extract pose embeddings.
 
         Args:
-            images (List[PIL.Image.Image] or List[np.ndarray]): List of images in the batch.
-            boxes (List[torch.Tensor]): List of bounding boxes for each image.
-                                        Each tensor is of shape [num_boxes, 4].
+            images (torch.Tensor): Batch of images as tensors with shape [B, 3, H, W].
+                                   Pixel values should be in [0, 255] and dtype=torch.uint8.
+            boxes (torch.Tensor): Batch of bounding boxes as tensors with shape [B, N, 4].
+                                  Each box is [x_min, y_min, x_max, y_max] or [cx, cy, w, h],
+                                  depending on `bbox_format`.
 
         Returns:
-            List[torch.Tensor]: List of pose embeddings for each image.
-                                Each tensor is of shape [num_boxes, pose_embedding_dim].
+            List[torch.Tensor]: List of pose embeddings for each image in the batch.
+                                Each tensor has shape [N, pose_embedding_dim].
         """
-        device = next(self.keypoint_linear.parameters()).device
+        device = self.keypoint_linear.weight.device
+        batch_size = images.size(0)
         pose_embeddings = []
 
-        for img, boxes_i in zip(images, boxes):
-            img_w, img_h = img.size  # Assumes PIL.Image; modify if using different formats
+        # Iterate over each image in the batch
+        for idx in range(batch_size):
+            # Extract the image and corresponding boxes
+            image_tensor = images[idx]  # Shape: [3, H, W]
 
-            # Convert boxes to [x_min, y_min, x_max, y_max] if necessary
+            # Convert image tensor to NumPy array in [H, W, 3] format
+            image_np = image_tensor.permute(1, 2, 0).cpu().numpy()  # [H, W, 3]
+
+            # Ensure the image is in uint8
+            if image_np.dtype != np.uint8:
+                if image_np.max() <= 1.0:
+                    image_np = (image_np * 255).astype(np.uint8)
+                else:
+                    image_np = image_np.astype(np.uint8)
+
+            # Get image dimensions
+            img_h, img_w, _ = image_np.shape
+
+            # Convert boxes to absolute coordinates if necessary
             if self.bbox_format == 'cxcywh':
-                boxes_i = self.cxcywh_to_xyxy(boxes_i, img_w, img_h)
+                boxes_abs = self.cxcywh_to_xyxy(boxes, img_w, img_h)  # [N, 4]
             else:
-                boxes_i = boxes_i * torch.tensor([img_w, img_h, img_w, img_h],
-                                                device=boxes_i.device).unsqueeze(0)
+                # Assuming boxes are normalized, scale to absolute coordinates
+                scale = torch.tensor([img_w, img_h, img_w, img_h], device=boxes.device).unsqueeze(0)  # [1, 4]
+                boxes_abs = boxes * scale  # [N, 4]
 
-            # Convert boxes to list of lists for MediaPipe
-            boxes_i = boxes_i.cpu().numpy().tolist()
-
-            # Perform pose inference using MediaPipe
-            pose_results = self.pose.process(np.array(img))
+            # Move boxes to CPU and convert to list of lists
+            boxes_abs = boxes_abs.cpu().numpy().tolist()  # List of [x_min, y_min, x_max, y_max]
 
             # Initialize list to hold keypoints for each box
             keypoints = []
 
-            for box in boxes_i:
+            # Iterate over each bounding box
+            for box in boxes_abs:
                 x_min, y_min, x_max, y_max = box
+
+                # Ensure coordinates are within image bounds
+                x_min = max(0, int(x_min))
+                y_min = max(0, int(y_min))
+                x_max = min(img_w, int(x_max))
+                y_max = min(img_h, int(y_max))
+
                 # Crop the image to the bounding box
-                cropped_img = img.crop((x_min, y_min, x_max, y_max))
+                cropped_img_np = image_np[y_min:y_max, x_min:x_max]
 
-                # Convert PIL Image to RGB if necessary
-                if cropped_img.mode != 'RGB':
-                    cropped_img = cropped_img.convert('RGB')
-
-                # Convert image to numpy array
-                cropped_img_np = np.array(cropped_img)
-
-                # Perform pose detection on the cropped image
-                result = self.pose.process(cropped_img_np)
-
-                if result.pose_landmarks:
-                    # Extract keypoints
-                    kp = []
-                    for lm in result.pose_landmarks.landmark:
-                        kp.append(lm.x)  # Normalized to [0,1]
-                        kp.append(lm.y)
-                        kp.append(lm.visibility)
-                    kp = np.array(kp)
-                else:
-                    # If no landmarks detected, fill with zeros
+                # Check if the cropped image has non-zero area
+                if cropped_img_np.size == 0:
                     kp = np.zeros(self.num_joints * 3)
+                else:
+                    # Perform pose detection on the cropped image
+                    result = self.pose.process(cropped_img_np)
+
+                    if result.pose_landmarks:
+                        # Extract keypoints
+                        kp = []
+                        for lm in result.pose_landmarks.landmark:
+                            kp.append(lm.x)         # Normalized [0,1] within the cropped image
+                            kp.append(lm.y)
+                            kp.append(lm.visibility)
+                        kp = np.array(kp)
+                    else:
+                        # If no landmarks detected, fill with zeros
+                        kp = np.zeros(self.num_joints * 3)
 
                 keypoints.append(kp)
 
-            # Convert keypoints to torch tensor
-            keypoints = torch.tensor(keypoints).float().to(device)  # Shape: [num_boxes, num_joints * 3]
+            if len(keypoints) == 0:
+                # If no boxes are present, append an empty tensor
+                pose_embed = torch.empty(0, self.pose_embedding_dim, device=device)
+            else:
+                # Convert keypoints to torch tensor
+                keypoints_tensor = torch.tensor(keypoints, dtype=torch.float32, device=device)  # [N, num_joints * 3]
 
-            # Generate pose embeddings
-            pose_embed = self.keypoint_linear(keypoints)  # Shape: [num_boxes, pose_embedding_dim]
+                # Generate pose embeddings
+                pose_embed = self.keypoint_linear(keypoints_tensor)  # [N, pose_embedding_dim]
+
             pose_embeddings.append(pose_embed)
 
-        return pose_embeddings  # List of [num_boxes, pose_embedding_dim]
+        return pose_embeddings  # List of [N, pose_embedding_dim] tensors
 
     @staticmethod
     def cxcywh_to_xyxy(boxes: torch.Tensor, img_w: int, img_h: int) -> torch.Tensor:
@@ -120,12 +147,12 @@ class PoseEmbeddingModule(nn.Module):
         Converts bounding boxes from [cx, cy, w, h] to [x_min, y_min, x_max, y_max].
 
         Args:
-            boxes (torch.Tensor): Tensor of shape [num_boxes, 4].
+            boxes (torch.Tensor): Tensor of shape [N, 4].
             img_w (int): Width of the image.
             img_h (int): Height of the image.
 
         Returns:
-            torch.Tensor: Converted boxes of shape [num_boxes, 4].
+            torch.Tensor: Converted boxes of shape [N, 4].
         """
         cx, cy, w, h = boxes[:, 0], boxes[:, 1], boxes[:, 2], boxes[:, 3]
         x_min = (cx - 0.5 * w) * img_w
@@ -149,16 +176,8 @@ def build_pose_model(args) -> PoseEmbeddingModule:
     Returns:
         PoseEmbeddingModule: Initialized pose embedding module.
     """
-    # Extract arguments
-    pose_embedding_dim = args.pose_embedding_dim
-    bbox_format = args.bbox_format
-    pose_threshold = args.pose_threshold
-
-    # Initialize the PoseEmbeddingModule
-    pose_embedding_module = PoseEmbeddingModule(
-        pose_embedding_dim=pose_embedding_dim,
-        bbox_format=bbox_format,
-        pose_threshold=pose_threshold
+    return PoseEmbeddingModule(
+        pose_embedding_dim=args.pose_embedding_dim,
+        bbox_format=args.bbox_format,
+        pose_threshold=args.pose_threshold
     )
-
-    return pose_embedding_module

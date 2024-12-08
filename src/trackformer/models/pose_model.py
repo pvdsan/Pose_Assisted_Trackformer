@@ -56,7 +56,7 @@ class PoseEmbeddingModule(nn.Module):
 
         # Run Keypoint R-CNN on the entire batch
         # The model expects a list of images in [C,H,W], each normalized, CPU or GPU.
-        image_list = [img.to(device) for img in images_tensors]
+        image_list = [img.to(device) for img in images_tensor]
         with torch.no_grad():
             predictions = self.model(image_list)  # List of dicts
 
@@ -113,26 +113,6 @@ class PoseEmbeddingModule(nn.Module):
         y_max = (cy + 0.5 * h) * img_h
         return torch.stack([x_min, y_min, x_max, y_max], dim=1)
 
-    @staticmethod
-    def box_iou(box1, box2):
-        """
-        Compute IoU between box1 and box2.
-        box1, box2: [4] tensors [x_min, y_min, x_max, y_max]
-        """
-        # Intersection
-        inter_xmin = torch.max(box1[0], box2[:, 0])
-        inter_ymin = torch.max(box1[1], box2[:, 1])
-        inter_xmax = torch.min(box1[2], box2[:, 2])
-        inter_ymax = torch.min(box1[3], box2[:, 3])
-
-        inter_w = (inter_xmax - inter_xmin).clamp(min=0)
-        inter_h = (inter_ymax - inter_ymin).clamp(min=0)
-        inter_area = inter_w * inter_h
-
-        area1 = (box1[2] - box1[0]) * (box1[3] - box1[1])
-        area2 = (box2[:, 2] - box2[:, 0]) * (box2[:, 3] - box2[:, 1])
-        iou = inter_area / (area1 + area2 - inter_area)
-        return iou
 
     def match_and_extract_keypoints(self, gt_box, pred_boxes, pred_keypoints):
         """

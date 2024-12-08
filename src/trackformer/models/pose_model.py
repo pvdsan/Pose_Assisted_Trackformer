@@ -87,7 +87,6 @@ class PoseEmbeddingModule(nn.Module):
 
             # Iterate over each bounding box
             for box in boxes_abs:
-                print(box.shape)
                 x_min, y_min, x_max, y_max = box
 
                 # Ensure coordinates are within image bounds

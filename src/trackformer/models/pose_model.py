@@ -42,7 +42,7 @@ class PoseEmbeddingModule(nn.Module):
         nn.init.xavier_uniform_(self.keypoint_linear.weight)
         nn.init.constant_(self.keypoint_linear.bias, 0)
 
-    def forward(self, images: torch.Tensor, boxes: torch.Tensor):
+    def forward(self, images,targets):
         """
         Forward pass to extract pose embeddings.
 
@@ -57,14 +57,19 @@ class PoseEmbeddingModule(nn.Module):
             List[torch.Tensor]: List of pose embeddings for each image in the batch.
                                 Each tensor has shape [N, pose_embedding_dim].
         """
+        images = images.tensors
         device = self.keypoint_linear.weight.device
         batch_size = images.size(0)
         pose_embeddings = []
+        bbox_list = [targets[i]['boxes'] for i in range(0,batch_size) ]
 
         # Iterate over each image in the batch
         for idx in range(batch_size):
             # Extract the image and corresponding boxes
             image_tensor = images[idx]  # Shape: [3, H, W]
+            
+            # Extract box
+            box = bbox_list[idx]
 
             # Convert image tensor to NumPy array in [H, W, 3] format
             image_np = image_tensor.permute(1, 2, 0).cpu().numpy()  # [H, W, 3]
@@ -72,8 +77,7 @@ class PoseEmbeddingModule(nn.Module):
             # Get image dimensions
             img_h, img_w, _ = image_np.shape
 
-            boxes_abs = self.cxcywh_to_xyxy(boxes, img_w, img_h)  # [N, 4]
-
+            boxes_abs = self.cxcywh_to_xyxy(box, img_w, img_h)  # [N, 4]
 
             # Move boxes to CPU and convert to list of lists
             boxes_abs = boxes_abs.cpu().numpy().tolist()  # List of [x_min, y_min, x_max, y_max]
@@ -170,3 +174,6 @@ def build_pose_model(args) -> PoseEmbeddingModule:
         bbox_format=args.bbox_format,
         pose_threshold=args.pose_threshold
     )
+    
+    
+    

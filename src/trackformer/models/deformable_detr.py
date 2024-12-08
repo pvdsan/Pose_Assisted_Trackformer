@@ -105,7 +105,7 @@ class DeformableDETR(DETR):
             self.merge_features = _get_clones(self.merge_features, num_feature_levels)
 
 
-    def forward(self, samples: NestedTensor, targets: list = None, prev_features=None):
+    def forward(self, samples: NestedTensor, targets: list = None, prev_features=None, training = True):
         """ The forward expects a NestedTensor, which consists of:
                - samples.tensors: batched images, of shape [batch_size x 3 x H x W]
                - samples.mask: a binary mask of shape [batch_size x H x W], containing 1 on padded pixels
@@ -186,12 +186,12 @@ class DeformableDETR(DETR):
         query_embeds = None
         query_embeds = self.query_embed.weight
         
-        if targets is not None:
-            prev_samples = [t['prev_image'] for t in targets]
-            prev_boxes   = [t['prev_target']['boxes'] for t in targets]
-            
-            pose_embeddings, _ = self.pose_model(prev_samples, prev_boxes)
-            
+        if training:
+            if targets is not None:
+                prev_samples = [t['prev_image'] for t in targets]
+                prev_boxes   = [t['prev_target']['boxes'] for t in targets]
+                
+                pose_embeddings, _ = self.pose_model(prev_samples, prev_boxes)
         
         hs, memory, init_reference, inter_references, enc_outputs_class, enc_outputs_coord_unact = \
             self.transformer(src_list, mask_list, pos_list, query_embeds, targets)

@@ -17,7 +17,7 @@ from ..util.misc import (NestedTensor, accuracy, dice_loss, get_world_size,
 class DETR(nn.Module):
     """ This is the DETR module that performs object detection. """
 
-    def __init__(self, backbone, transformer, num_classes, num_queries,
+    def __init__(self, backbone, transformer, pose_model, num_classes, num_queries, 
                  aux_loss=False, overflow_boxes=False):
         """ Initializes the model.
         Parameters:
@@ -30,7 +30,7 @@ class DETR(nn.Module):
             aux_loss: True if auxiliary decoding losses (loss at each decoder layer) are to be used.
         """
         super().__init__()
-
+        self.pose_model = pose_model
         self.num_queries = num_queries
         self.transformer = transformer
         self.overflow_boxes = overflow_boxes
@@ -38,12 +38,8 @@ class DETR(nn.Module):
         self.bbox_embed = MLP(self.hidden_dim, self.hidden_dim, 4, 3)
         self.query_embed = nn.Embedding(num_queries, self.hidden_dim)
 
-        # match interface with deformable DETR
         self.input_proj = nn.Conv2d(backbone.num_channels[-1], self.hidden_dim, kernel_size=1)
-        # self.input_proj = nn.ModuleList([
-        #     nn.Sequential(
-        #         nn.Conv2d(backbone.num_channels[-1], self.hidden_dim, kernel_size=1)
-        #     )])
+
 
         self.backbone = backbone
         self.aux_loss = aux_loss

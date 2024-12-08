@@ -56,7 +56,7 @@ class PoseEmbeddingModule(nn.Module):
 
         # Run Keypoint R-CNN on the entire batch
         # The model expects a list of images in [C,H,W], each normalized, CPU or GPU.
-        image_list = [img.to(device) for img in images_norm]
+        image_list = [img.to(device) for img in images_tensors]
         with torch.no_grad():
             predictions = self.model(image_list)  # List of dicts
 

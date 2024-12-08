@@ -138,7 +138,7 @@ class DETRTrackingBase(nn.Module):
                     backprop_context = nullcontext
 
                 with backprop_context():
-                    prev_out, _, prev_features, _, _ = super().forward([t['prev_image'] for t in targets])
+                    prev_out, _, prev_features, _, _ = super().forward([t['prev_image'] for t in targets], training = self.training)
                     prev_outputs_without_aux = {
                         k: v for k, v in prev_out.items() if 'aux_outputs' not in k}
                     prev_indices = self._matcher(prev_outputs_without_aux, prev_targets)
@@ -156,7 +156,7 @@ class DETRTrackingBase(nn.Module):
                     target['track_query_boxes'] = torch.zeros(0, 4).to(device)
                     target['track_query_match_ids'] = torch.tensor([]).long().to(device)
 
-        out, targets, features, memory, hs  = super().forward(samples, targets, prev_features)
+            out, targets, features, memory, hs  = super().forward(samples, targets, prev_features,training = self.training)
 
         return out, targets, features, memory, hs
 

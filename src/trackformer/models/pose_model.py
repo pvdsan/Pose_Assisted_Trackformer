@@ -42,7 +42,7 @@ class PoseEmbeddingModule(nn.Module):
         nn.init.xavier_uniform_(self.keypoint_linear.weight)
         nn.init.constant_(self.keypoint_linear.bias, 0)
 
-    def forward(self, images: torch.Tensor, boxes: torch.Tensor) -> list:
+    def forward(self, images: torch.Tensor, boxes: torch.Tensor):
         """
         Forward pass to extract pose embeddings.
 
@@ -69,23 +69,11 @@ class PoseEmbeddingModule(nn.Module):
             # Convert image tensor to NumPy array in [H, W, 3] format
             image_np = image_tensor.permute(1, 2, 0).cpu().numpy()  # [H, W, 3]
 
-            # Ensure the image is in uint8
-            if image_np.dtype != np.uint8:
-                if image_np.max() <= 1.0:
-                    image_np = (image_np * 255).astype(np.uint8)
-                else:
-                    image_np = image_np.astype(np.uint8)
-
             # Get image dimensions
             img_h, img_w, _ = image_np.shape
 
-            # Convert boxes to absolute coordinates if necessary
-            if self.bbox_format == 'cxcywh':
-                boxes_abs = self.cxcywh_to_xyxy(boxes, img_w, img_h)  # [N, 4]
-            else:
-                # Assuming boxes are normalized, scale to absolute coordinates
-                scale = torch.tensor([img_w, img_h, img_w, img_h], device=boxes.device).unsqueeze(0)  # [1, 4]
-                boxes_abs = boxes * scale  # [N, 4]
+            boxes_abs = self.cxcywh_to_xyxy(boxes, img_w, img_h)  # [N, 4]
+
 
             # Move boxes to CPU and convert to list of lists
             boxes_abs = boxes_abs.cpu().numpy().tolist()  # List of [x_min, y_min, x_max, y_max]
@@ -95,6 +83,7 @@ class PoseEmbeddingModule(nn.Module):
 
             # Iterate over each bounding box
             for box in boxes_abs:
+                print(box.shape)
                 x_min, y_min, x_max, y_max = box
 
                 # Ensure coordinates are within image bounds
@@ -139,7 +128,7 @@ class PoseEmbeddingModule(nn.Module):
 
             pose_embeddings.append(pose_embed)
 
-        return pose_embeddings  # List of [N, pose_embedding_dim] tensors
+        return pose_embeddings, keypoints  # List of [N, pose_embedding_dim] tensors
 
     @staticmethod
     def cxcywh_to_xyxy(boxes: torch.Tensor, img_w: int, img_h: int) -> torch.Tensor:

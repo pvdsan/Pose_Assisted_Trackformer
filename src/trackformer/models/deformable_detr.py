@@ -186,6 +186,13 @@ class DeformableDETR(DETR):
         query_embeds = None
         query_embeds = self.query_embed.weight
         
+        if targets is not None:
+            prev_samples = [t['prev_image'] for t in targets]
+            prev_boxes   = [t['prev_target']['boxes'] for t in targets]
+            
+            pose_embeddings, _ = self.pose_model(prev_samples, prev_boxes)
+            
+        
         hs, memory, init_reference, inter_references, enc_outputs_class, enc_outputs_coord_unact = \
             self.transformer(src_list, mask_list, pos_list, query_embeds, targets)
 

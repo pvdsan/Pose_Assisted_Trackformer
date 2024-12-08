@@ -128,7 +128,7 @@ class PoseEmbeddingModule(nn.Module):
         best_iou = ious[best_idx]
 
         # You can set a minimum IoU threshold if desired
-        if best_iou < 0.1:
+        if best_iou < self.pose_threshold:
             # No good match found
             return np.zeros((self.num_joints, 3), dtype=np.float32)
 
@@ -138,6 +138,27 @@ class PoseEmbeddingModule(nn.Module):
         # If you need them normalized, you can divide by image width/height.
         return kp
 
+
+    @staticmethod
+    def box_iou(box1, box2):
+        """
+        Compute IoU between box1 and box2.
+        box1, box2: [4] tensors [x_min, y_min, x_max, y_max]
+        """
+        # Intersection
+        inter_xmin = torch.max(box1[0], box2[:, 0])
+        inter_ymin = torch.max(box1[1], box2[:, 1])
+        inter_xmax = torch.min(box1[2], box2[:, 2])
+        inter_ymax = torch.min(box1[3], box2[:, 3])
+
+        inter_w = (inter_xmax - inter_xmin).clamp(min=0)
+        inter_h = (inter_ymax - inter_ymin).clamp(min=0)
+        inter_area = inter_w * inter_h
+
+        area1 = (box1[2] - box1[0]) * (box1[3] - box1[1])
+        area2 = (box2[:, 2] - box2[:, 0]) * (box2[:, 3] - box2[:, 1])
+        iou = inter_area / (area1 + area2 - inter_area)
+        return iou
 
 def build_pose_model(args) -> PoseEmbeddingModule:
     """

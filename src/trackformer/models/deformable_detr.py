@@ -208,6 +208,26 @@ class DeformableDETR(DETR):
                     else:
                         # If no track queries, assign empty tensor
                         target['track_query_pose_embeds'] = torch.empty(0, pose_embeddings[i].size(1), device=pose_embeddings[i].device)
+                        
+                        num_tracks = target['track_query_hs_embeds'].shape[0]
+                        
+                        # Create a mask for matched track queries
+                        mask = target['track_queries_mask']  # Shape: [num_tracks]
+                        
+                        # Initialize a tensor for pose embeddings, filled with zeros
+                        pose_padded = torch.zeros_like(target['track_query_hs_embeds'])
+                        
+                        # Assign the pose embeddings to the corresponding track queries
+                        pose_padded[mask] = target['track_query_pose_embeds']
+                        
+                        # Concatenate track embeddings with pose embeddings
+                        concatenated = torch.cat([target['track_query_hs_embeds'], pose_padded], dim=1)  # Shape: [num_tracks, 2*hidden_dim]
+                        
+                        # Pass through the fusion layer
+                        fused_embeds = self.track_pose_fusion(concatenated)  # Shape: [num_tracks, hidden_dim]
+                        
+                        # Update the track_query_hs_embeds with the fused embeddings
+                        target['track_query_hs_embeds'] = fused_embeds
     
         
         hs, memory, init_reference, inter_references, enc_outputs_class, enc_outputs_coord_unact = \

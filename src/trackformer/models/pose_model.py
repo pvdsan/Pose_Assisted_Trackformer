@@ -35,7 +35,7 @@ class PoseEmbeddingModule(nn.Module):
         nn.init.xavier_uniform_(self.keypoint_linear.weight)
         nn.init.constant_(self.keypoint_linear.bias, 0)
 
-    def forward(self, images, targets):
+    def forward(self, image_list, bbox_list):
         """
         Forward pass to extract pose embeddings.
 
@@ -47,24 +47,21 @@ class PoseEmbeddingModule(nn.Module):
             pose_embeddings (List[torch.Tensor]): List of [N, pose_embedding_dim] per image.
             keypoints_out (List[np.ndarray]): Corresponding keypoints for inspection.
         """
-        images_tensor = images.tensors
         device = self.keypoint_linear.weight.device
-        batch_size = images_tensor.size(0)
+        batch_size = len(image_list)
         pose_embeddings = []
         keypoints_out = []
 
 
         # Run Keypoint R-CNN on the entire batch
         # The model expects a list of images in [C,H,W], each normalized, CPU or GPU.
-        image_list = [img.to(device) for img in images_tensor]
         with torch.no_grad():
             predictions = self.model(image_list)  # List of dicts
 
-        bbox_list = [t['boxes'] for t in targets]
 
         for idx in range(batch_size):
             # Get image dimensions
-            _, img_h, img_w = images_tensor[idx].shape
+            _, img_h, img_w = image_list[idx].shape
             boxes_cxcywh = bbox_list[idx].to(device)
             boxes_abs = self.cxcywh_to_xyxy(boxes_cxcywh, img_w, img_h)
 

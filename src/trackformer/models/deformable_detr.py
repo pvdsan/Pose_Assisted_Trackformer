@@ -192,6 +192,23 @@ class DeformableDETR(DETR):
                 prev_boxes   = [t['prev_target']['boxes'] for t in targets]
                 
                 pose_embeddings, _ = self.pose_model(prev_samples, prev_boxes)
+                
+                # Select pose embeddings corresponding to track queries
+                for i, target in enumerate(targets):
+                    if 'track_query_match_ids' in target:
+                        matched_ids = target['track_query_match_ids']  # Tensor of indices
+                        if matched_ids.numel() > 0:
+                            # Ensure matched_ids are within bounds
+                            matched_ids = matched_ids[matched_ids < pose_embeddings[i].size(0)]
+                            selected_pose_embeds = pose_embeddings[i][matched_ids]
+                            target['track_query_pose_embeds'] = selected_pose_embeds
+                        else:
+                            # No matched tracks
+                            target['track_query_pose_embeds'] = torch.empty(0, pose_embeddings[i].size(1), device=pose_embeddings[i].device)
+                    else:
+                        # If no track queries, assign empty tensor
+                        target['track_query_pose_embeds'] = torch.empty(0, pose_embeddings[i].size(1), device=pose_embeddings[i].device)
+    
         
         hs, memory, init_reference, inter_references, enc_outputs_class, enc_outputs_coord_unact = \
             self.transformer(src_list, mask_list, pos_list, query_embeds, targets)

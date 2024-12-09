@@ -2,8 +2,8 @@
 #SBATCH -p qTRDGPUH
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH -c 4
-#SBATCH --gres=gpu:4
+#SBATCH -c 8
+#SBATCH --gres=gpu:2
 #SBATCH --mem=128G
 #SBATCH -e error%A.err 
 #SBATCH -o out%A.out
@@ -23,7 +23,7 @@ source /home/users/sdeshpande8/anaconda3/bin/activate trackformer
 cd /data/users4/sdeshpande8/DL_Assignements/trackformer
 
 # run the batch script
-torchrun --nproc_per_node=4 src/train.py with \
+torchrun --nproc_per_node=2 src/train.py with \
     mot17 \
     deformable \
     multi_frame \

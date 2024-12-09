@@ -1,0 +1,99 @@
+W1209 05:02:02.734658 2566636 site-packages/torch/distributed/run.py:793] 
+W1209 05:02:02.734658 2566636 site-packages/torch/distributed/run.py:793] *****************************************
+W1209 05:02:02.734658 2566636 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1209 05:02:02.734658 2566636 site-packages/torch/distributed/run.py:793] *****************************************
+WARNING - train - No observers have been added to this run
+WARNING - train - No observers have been added to this run
+WARNING - train - No observers have been added to this run
+WARNING - train - No observers have been added to this run
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Running command 'load_config'
+INFO - train - Started
+INFO - train - Completed after 0:00:00
+INFO - train - Completed after 0:00:00
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+Traceback (most recent call last):
+  File "/data/users4/sdeshpande8/DL_Assignements/trackformer/src/train.py", line 334, in <module>
+    train(args)
+  File "/data/users4/sdeshpande8/DL_Assignements/trackformer/src/train.py", line 40, in train
+    utils.init_distributed_mode(args)
+  File "/data/users4/sdeshpande8/DL_Assignements/trackformer/src/trackformer/util/misc.py", line 437, in init_distributed_mode
+    torch.cuda.set_device(args.gpu)
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py", line 478, in set_device
+    torch._C._cuda_setDevice(device)
+RuntimeError: CUDA error: invalid device ordinal
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/cuda/__init__.py:716: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=KeypointRCNN_ResNet50_FPN_Weights.COCO_V1`. You can also use `weights=KeypointRCNN_ResNet50_FPN_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=KeypointRCNN_ResNet50_FPN_Weights.COCO_V1`. You can also use `weights=KeypointRCNN_ResNet50_FPN_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=KeypointRCNN_ResNet50_FPN_Weights.COCO_V1`. You can also use `weights=KeypointRCNN_ResNet50_FPN_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+W1209 05:02:15.678354 2566636 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2566648 closing signal SIGTERM
+W1209 05:02:15.678755 2566636 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2566649 closing signal SIGTERM
+W1209 05:02:15.678871 2566636 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2566650 closing signal SIGTERM
+E1209 05:02:15.837066 2566636 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 3 (pid: 2566651) of binary: /home/users/sdeshpande8/anaconda3/envs/trackformer/bin/python
+Traceback (most recent call last):
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.5.1', 'console_scripts', 'torchrun')())
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/sdeshpande8/anaconda3/envs/trackformer/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+src/train.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-12-09_05:02:15
+  host      : arctrdagn047
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 2566651)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

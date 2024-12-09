@@ -133,7 +133,7 @@ debug: false
 save_model_interval: 5
 # distributed training parameters
 # number of distributed processes
-world_size: 4
+world_size: 2
 # url used to set up distributed training
 dist_url: env://
 # Visdom params

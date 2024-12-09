@@ -54,7 +54,7 @@ track_prev_frame_range: 0
 track_prev_frame_rnd_augs: 0.01
 track_prev_prev_frame: False
 track_backprop_prev_frame: False
-track_query_false_positive_prob: 0.1
+track_query_false_positive_prob: 0
 track_query_false_negative_prob: 0.4
 # only for vanilla DETR
 track_query_false_positive_eos_weight: true

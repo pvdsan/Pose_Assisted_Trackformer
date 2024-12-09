@@ -31,13 +31,6 @@ def main(seed, dataset_name, obj_detect_checkpoint_file, tracker_cfg,
          data_root_dir, generate_attention_maps, frame_range,
          _config, _log, _run, obj_detector_model=None):
     
-    # Allow debugger to attach on port 5678
-    debugpy.listen(("localhost", 5678))
-    print("Waiting for debugger to attach...")
-
-    # Pause the script until debugger attaches
-    debugpy.wait_for_client()
-    print("Debugger attached. Continuing execution.")
     if write_images:
         assert output_dir is not None
 

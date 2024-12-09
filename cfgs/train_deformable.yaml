@@ -8,4 +8,3 @@ focal_gamma: 2
 cls_loss_coef: 2.0
 set_cost_class: 2.0
 overflow_boxes: true
-with_box_refine: true

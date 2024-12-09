@@ -28,7 +28,10 @@ class PoseEmbeddingModule(nn.Module):
 
         # Load the pretrained Keypoint R-CNN model
         self.model = keypointrcnn_resnet50_fpn(pretrained=True)
-        self.model.eval()  # set to eval mode
+        
+        # Freeze Keypoint R-CNN parameters
+        for param in self.model.parameters():
+            param.requires_grad = False
 
         # Linear layer to convert keypoints to embeddings
         self.keypoint_linear = nn.Linear(self.num_joints * 3, pose_embedding_dim)
@@ -56,6 +59,7 @@ class PoseEmbeddingModule(nn.Module):
         # Run Keypoint R-CNN on the entire batch
         # The model expects a list of images in [C,H,W], each normalized, CPU or GPU.
         with torch.no_grad():
+            self.model.eval()
             predictions = self.model(image_list)  # List of dicts
 
 

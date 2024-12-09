@@ -90,7 +90,7 @@ class DETRTrackingBase(nn.Module):
                         box_weights = \
                             prev_box_matched.unsqueeze(dim=0)[:, :2] - \
                             prev_boxes_unmatched[:, :2]
-                        box_weights = box_weights[:, 0] ** 2 + box_weights[:, 0] ** 2
+                        box_weights = box_weights[:, 0] ** 2 + box_weights[:, 1] ** 2
                         box_weights = torch.sqrt(box_weights)
 
                         random_false_out_idx = not_prev_out_ind.pop(

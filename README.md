@@ -1,6 +1,5 @@
 # Pose Assisted TrackFormer
-
-Multi-object tracking (MOT) is a critical component in applications ranging from autonomous driving and surveillance to sports analytics. Despite advancements in transformer-based MOT models like TrackFormer, challenges remain, especially in crowded, dynamic environments where maintaining identity consistency, managing occlusions, and differentiating visually similar individuals are essential. Pose estimation provides unique spatial and temporal cues, aiding in identity consistency by distinguishing individuals based on body posture. Incorporating pose estimation into MOT allows for the integration of keypoint data with bounding box-based tracking, leading to a hybrid model that combines spatial accuracy with temporal consistency.
+This is an adaptation of the original Trackformer code for the project component Deep learning course under Dr Hemanth Damkethappali
 
 <!-- **As the paper is still under submission this repository will continuously be updated and might at times not reflect the current state of the [arXiv paper](https://arxiv.org/abs/2012.01866).** -->
 
@@ -11,12 +10,7 @@ Multi-object tracking (MOT) is a critical component in applications ranging from
 
 ## Abstract
 
-The challenging task of multi-object tracking (MOT) requires simultaneous reasoning about track initialization, identity, and spatiotemporal trajectories.
-We formulate this task as a frame-to-frame set prediction problem and introduce TrackFormer, an end-to-end MOT approach based on an encoder-decoder Transformer architecture.
-Our model achieves data association between frames via attention by evolving a set of track predictions through a video sequence.
-The Transformer decoder initializes new tracks from static object queries and autoregressively follows existing tracks in space and time with the new concept of identity preserving track queries.
-Both decoder query types benefit from self- and encoder-decoder attention on global frame-level features, thereby omitting any additional graph optimization and matching or modeling of motion and appearance.
-TrackFormer represents a new tracking-by-attention paradigm and yields state-of-the-art performance on the task of multi-object tracking (MOT17) and segmentation (MOTS20).
+Multi-object tracking (MOT) is a critical component in applications ranging from autonomous driving and surveillance to sports analytics. Despite advancements in transformer-based MOT models like TrackFormer, challenges remain, especially in crowded, dynamic environments where maintaining identity consistency, managing occlusions, and differentiating visually similar individuals are essential. Pose estimation provides unique spatial and temporal cues, aiding in identity consistency by distinguishing individuals based on body posture. Incorporating pose estimation into MOT allows for the integration of keypoint data with bounding box-based tracking, leading to a hybrid model that combines spatial accuracy with temporal consistency.
 
 <div align="center">
     <img src="docs/method.png" alt="TrackFormer casts multi-object tracking as a set prediction problem performing joint detection and tracking-by-attention. The architecture consists of a CNN for image feature extraction, a Transformer encoder for image feature encoding and a Transformer decoder which applies self- and encoder-decoder attention to produce output embeddings with bounding box and class information."/>

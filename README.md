@@ -1,6 +1,6 @@
-# TrackFormer: Multi-Object Tracking with Transformers
+# Pose Assisted TrackFormer
 
-This repository provides the official implementation of the [TrackFormer: Multi-Object Tracking with Transformers](https://arxiv.org/abs/2101.02702) paper by [Tim Meinhardt](https://dvl.in.tum.de/team/meinhardt/), [Alexander Kirillov](https://alexander-kirillov.github.io/), [Laura Leal-Taixe](https://dvl.in.tum.de/team/lealtaixe/) and [Christoph Feichtenhofer](https://feichtenhofer.github.io/). The codebase builds upon [DETR](https://github.com/facebookresearch/detr), [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR) and [Tracktor](https://github.com/phil-bergmann/tracking_wo_bnw).
+Multi-object tracking (MOT) is a critical component in applications ranging from autonomous driving and surveillance to sports analytics. Despite advancements in transformer-based MOT models like TrackFormer, challenges remain, especially in crowded, dynamic environments where maintaining identity consistency, managing occlusions, and differentiating visually similar individuals are essential. Pose estimation provides unique spatial and temporal cues, aiding in identity consistency by distinguishing individuals based on body posture. Incorporating pose estimation into MOT allows for the integration of keypoint data with bounding box-based tracking, leading to a hybrid model that combines spatial accuracy with temporal consistency.
 
 <!-- **As the paper is still under submission this repository will continuously be updated and might at times not reflect the current state of the [arXiv paper](https://arxiv.org/abs/2012.01866).** -->
 

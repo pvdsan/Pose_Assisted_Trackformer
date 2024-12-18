@@ -4,11 +4,11 @@ This is an adaptation of the original Trackformer code done under an academic pr
 ## Results of the Work
 
 ### MOT17-02
-<video src="MOT17_02_Comparsion.mp4" controls width="700"></video>
+<video src="MOT17_02_Comparsion.mp4"></video>
 
 
 ### MOT17-04
-<video src="MOT17_04_Comparsion.mp4" controls width="700"></video>
+<video src="MOT17_04_Comparsion.mp4"></video>
 
 ## Abstract
 

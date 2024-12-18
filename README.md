@@ -4,11 +4,11 @@ This is an adaptation of the original Trackformer code done under an academic pr
 ## Results of the Work
 
 ### MOT17-02
-<video src="docs/MOT17_02_Comparsion.mp4" controls width="700"></video>
+<video src="MOT17_02_Comparsion.mp4" controls width="700"></video>
 
 
 ### MOT17-04
-<video src="docs/MOT17_04_Comparsion.mp4" controls width="700"></video>
+<video src="MOT17_04_Comparsion.mp4" controls width="700"></video>
 ## Abstract
 
 Multi-object tracking (MOT) is a critical component in applications ranging from autonomous driving and surveillance to sports analytics. Despite advancements in transformer-based MOT models like TrackFormer, challenges remain, especially in crowded, dynamic environments where maintaining identity consistency, managing occlusions, and differentiating visually similar individuals are essential. Pose estimation provides unique spatial and temporal cues, aiding in identity consistency by distinguishing individuals based on body posture. Incorporating pose estimation into MOT allows for the integration of keypoint data with bounding box-based tracking, leading to a hybrid model that combines spatial accuracy with temporal consistency.

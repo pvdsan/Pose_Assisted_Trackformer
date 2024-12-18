@@ -3,8 +3,10 @@ This is an adaptation of the original Trackformer code done under an academic pr
 
 ## Results of the Work
 
+### MOT17-02
 ![MOT17-02 Comparison](MOT17_02_Comparsion.gif)
 
+### MOT17-04
 ![MOT17-04 Comparison](MOT17_04_Comparsion.gif)
 
 The left side is the baseline model and the right side is the pose-assisted model. MOT17-02 is where the baseline model performs better wheras the pose-assisted model performs better in MOT17-04

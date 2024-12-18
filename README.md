@@ -1,5 +1,5 @@
 # Pose Assisted TrackFormer
-This is an adaptation of the original Trackformer code for the project component Deep learning course under Dr Hemanth Damkethappali
+This is an adaptation of the original Trackformer code done under an academic project at Georgia State University, Atlanta.
 
 ## Results of the Work
 

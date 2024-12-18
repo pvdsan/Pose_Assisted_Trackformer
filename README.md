@@ -1,13 +1,14 @@
 # Pose Assisted TrackFormer
 This is an adaptation of the original Trackformer code for the project component Deep learning course under Dr Hemanth Damkethappali
 
-<!-- **As the paper is still under submission this repository will continuously be updated and might at times not reflect the current state of the [arXiv paper](https://arxiv.org/abs/2012.01866).** -->
+## Results of the Work
 
-<div align="center">
-    <img src="docs/MOT17-03-SDP.gif" alt="MOT17-03-SDP" width="375"/>
-    <img src="docs/MOTS20-07.gif" alt="MOTS20-07" width="375"/>
-</div>
+### MOT17-02
+<video src="docs/MOT17_02_Comparsion.mp4" controls width="700"></video>
 
+
+### MOT17-04
+<video src="docs/MOT17_04_Comparsion.mp4" controls width="700"></video>
 ## Abstract
 
 Multi-object tracking (MOT) is a critical component in applications ranging from autonomous driving and surveillance to sports analytics. Despite advancements in transformer-based MOT models like TrackFormer, challenges remain, especially in crowded, dynamic environments where maintaining identity consistency, managing occlusions, and differentiating visually similar individuals are essential. Pose estimation provides unique spatial and temporal cues, aiding in identity consistency by distinguishing individuals based on body posture. Incorporating pose estimation into MOT allows for the integration of keypoint data with bounding box-based tracking, leading to a hybrid model that combines spatial accuracy with temporal consistency.
@@ -15,6 +16,10 @@ Multi-object tracking (MOT) is a critical component in applications ranging from
 <div align="center">
     <img src="docs/method.png" alt="TrackFormer casts multi-object tracking as a set prediction problem performing joint detection and tracking-by-attention. The architecture consists of a CNN for image feature extraction, a Transformer encoder for image feature encoding and a Transformer decoder which applies self- and encoder-decoder attention to produce output embeddings with bounding box and class information."/>
 </div>
+
+
+
+
 
 ## Installation
 

@@ -4,12 +4,13 @@ This is an adaptation of the original Trackformer code done under an academic pr
 ## Results of the Work
 
 ### MOT17-02
-[Watch the MOT17-02 Comparison Video](MOT17_02_Comparsion.mp4)
+![MOT17-02 Comparison](MOT17_02_Comparsion.gif)
 
 https://drive.google.com/file/d/1aPwaGjZ_wgpOqRKl7V8TalYwvLvrDa45/view?usp=drive_link
 
 ### MOT17-04
-[Watch the MOT17-04 Comparison Video](MOT17_04_Comparsion.mp4)
+![MOT17-04 Comparison](MOT17_04_Comparsion.gif)
+
 https://drive.google.com/file/d/1k4gBFnPlHE6IW-Y-7rh4rnBCHyYE-GEC/view?usp=drive_link
 
 ## Abstract

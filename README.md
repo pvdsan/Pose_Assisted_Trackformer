@@ -19,6 +19,10 @@ Multi-object tracking (MOT) is a critical component in applications ranging from
     <img src="docs/method.png" alt="TrackFormer casts multi-object tracking as a set prediction problem performing joint detection and tracking-by-attention. The architecture consists of a CNN for image feature extraction, a Transformer encoder for image feature encoding and a Transformer decoder which applies self- and encoder-decoder attention to produce output embeddings with bounding box and class information."/>
 </div>
 
+<div align="center">
+    <img src="Training_3.png" alt="The Pose Assisted Model "/>
+</div>
+
 
 
 
